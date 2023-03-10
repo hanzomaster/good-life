@@ -1,6 +1,6 @@
-[![CI](https://github.com/perkinsjr/t3-turbo-and-clerk/actions/workflows/ci.yml/badge.svg)](https://github.com/perkinsjr/t3-turbo-and-clerk/actions/workflows/ci.yml)
-
 # Create T3 Turbo with Clerk Authentication
+
+[![CI](https://github.com/perkinsjr/t3-turbo-and-clerk/actions/workflows/ci.yml/badge.svg)](https://github.com/perkinsjr/t3-turbo-and-clerk/actions/workflows/ci.yml)
 
 ## Clerk Dashboard Setup
 
@@ -10,9 +10,13 @@ For this template to work you need to enable Discord as an OAuth provider. You c
 
 It uses [Turborepo](https://turborepo.org/) and contains:
 
+## Lưu ý
+
+Đây là project cho bên database. Cần chạy thì phải có file `.env` với format như file `.env.example` ở root folder. Các biến môi trường cần thiết để chạy project thì hỏi Thịnh (Hanzo).
+
 ## Code Layout
 
-```
+```text
 .github
   └─ workflows
         └─ CI with pnpm cache setup
@@ -132,7 +136,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
 2. After the initial setup, you can create your first build. You can build for Android and iOS platforms and use different [**eas.json** build profiles](https://docs.expo.dev/build-reference/eas-json/) to create production builds or development, or test builds. Let's make a production build for iOS.
 
    ```
-   $ eas build --platform ios --profile production
+   eas build --platform ios --profile production
    ```
 
    > If you don't specify the `--profile` flag, EAS uses the `production` profile by default.
@@ -140,7 +144,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
 3. Now that you have your first production build, you can submit this to the stores. [EAS Submit](https://docs.expo.dev/submit/introduction/) can help you send the build to the stores.
 
    ```
-   $ eas submit --platform ios --latest
+   eas submit --platform ios --latest
    ```
 
    > You can also combine build and submit in a single command, using `eas build ... --auto-submit`.
@@ -157,10 +161,10 @@ Deploying your Expo application works slightly differently compared to Next.js o
    const CLERK_PUBLISHABLE_KEY = "your-clerk-publishable-key";
 
    const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
-      name: "expo",
-      slug: "expo",
-      scheme: "your-app-scheme",
-      // ...
+     name: "expo",
+     slug: "expo",
+     scheme: "your-app-scheme",
+     // ...
    });
    ```
 
@@ -189,18 +193,18 @@ Deploying your Expo application works slightly differently compared to Next.js o
    $ eas update:configure
    ```
 
-6. Before we can send out updates to your app, you have to create a new build and submit it to the app stores. For every change that includes native APIs, you have to rebuild the app and submit the update to the app stores. See steps 2 and 3.
+7. Before we can send out updates to your app, you have to create a new build and submit it to the app stores. For every change that includes native APIs, you have to rebuild the app and submit the update to the app stores. See steps 2 and 3.
 
-7. Now that everything is ready for updates, let's create a new update for `production` builds. With the `--auto` flag, EAS Update uses your current git branch name and commit message for this update. See [How EAS Update works](https://docs.expo.dev/eas-update/how-eas-update-works/#publishing-an-update) for more information.
+8. Now that everything is ready for updates, let's create a new update for `production` builds. With the `--auto` flag, EAS Update uses your current git branch name and commit message for this update. See [How EAS Update works](https://docs.expo.dev/eas-update/how-eas-update-works/#publishing-an-update) for more information.
 
    ```bash
-   $ cd apps/expo
-   $ eas update --auto
+   cd apps/expo
+   eas update --auto
    ```
 
    > Your OTA (Over The Air) updates must always follow the app store's rules. You can't change your app's primary functionality without getting app store approval. But this is a fast way to update your app for minor changes and bug fixes.
 
-8. Done! Now that you have created your production build, submitted it to the stores, and installed EAS Update, you are ready for anything!
+9. Done! Now that you have created your production build, submitted it to the stores, and installed EAS Update, you are ready for anything!
 
 ## References
 
