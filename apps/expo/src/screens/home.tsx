@@ -1,12 +1,13 @@
 import React from "react";
 
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import type { AppRouter } from "@acme/api";
 import { useAuth } from "@clerk/clerk-expo";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { FlashList } from "@shopify/flash-list";
 import type { inferProcedureOutput } from "@trpc/server";
-import type { AppRouter } from "@acme/api";
+import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
+import { ScreenProps } from "../types/navigation";
 import { trpc } from "../utils/trpc";
 
 const SignOut = () => {
@@ -51,11 +52,13 @@ const CreatePost: React.FC = () => {
         className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
         onChangeText={onChangeTitle}
         placeholder="Title"
+        placeholderTextColor={"#ccc"}
       />
       <TextInput
         className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
         onChangeText={onChangeContent}
         placeholder="Content"
+        placeholderTextColor={"#ccc"}
       />
       <TouchableOpacity
         className="rounded bg-[#cc66ff] p-2"
@@ -72,7 +75,7 @@ const CreatePost: React.FC = () => {
   );
 };
 
-export const HomeScreen = () => {
+export const HomeScreen = (props: ScreenProps<"Home">) => {
   const postQuery = trpc.post.all.useQuery();
   const [showPost, setShowPost] = React.useState<string | null>(null);
 
@@ -82,6 +85,10 @@ export const HomeScreen = () => {
         <Text className="mx-auto pb-2 text-5xl font-bold text-white">
           Create <Text className="text-[#cc66ff]">T3</Text> Turbo
         </Text>
+        <Button
+          title="Go to back screen"
+          onPress={() => props.navigation.navigate("Mind")}
+        />
 
         <View className="py-2">
           {showPost ? (

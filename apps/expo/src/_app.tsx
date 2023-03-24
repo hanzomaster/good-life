@@ -1,13 +1,23 @@
 import { StatusBar } from "expo-status-bar";
+
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TRPCProvider } from "./utils/trpc";
 
-import { HomeScreen } from "./screens/home";
-import { SignInSignUpScreen } from "./screens/signin";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
-import { tokenCache } from "./utils/cache";
 import Constants from "expo-constants";
+import { DefaultTheme, Provider } from "react-native-paper";
+import Root from "./root";
+import { SignInSignUpScreen } from "./screens/signin";
+import { tokenCache } from "./utils/cache";
+
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    secondaryContainer: "transparent",
+  },
+};
 
 export const App = () => {
   return (
@@ -18,8 +28,10 @@ export const App = () => {
       <SignedIn>
         <TRPCProvider>
           <SafeAreaProvider>
-            <HomeScreen />
-            <StatusBar />
+            <Provider theme={theme}>
+              <Root />
+            </Provider>
+            <StatusBar hidden={true} />
           </SafeAreaProvider>
         </TRPCProvider>
       </SignedIn>

@@ -14,6 +14,8 @@ It uses [Turborepo](https://turborepo.org/) and contains:
 
 Đây là project cho bên database. Cần chạy thì phải có file `.env` với format như file `.env.example` ở root folder. Các biến môi trường cần thiết để chạy project thì hỏi Thịnh (Hanzo).
 
+- Nếu gặp lỗi ở trong folder [nextjs](apps/nextjs/) thì cần xóa [node_modules](apps/nextjs/node_modules/) trong folder đó đi và chạy `pnpm i` lại
+
 ## Code Layout
 
 ```text
