@@ -1,4 +1,4 @@
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { View } from "react-native";
 import {
@@ -11,30 +11,32 @@ import {
 import { BodyIcon, HomeIcon, MindIcon, ProfileIcon, SocialIcon } from "./svgs";
 import { RootStackParamList } from "./types/navigation";
 
-const Tab = createMaterialBottomTabNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
 const Root = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Body"
-        screenOptions={({ route }) => ({
-          tabBarBadge: route.name === "Mind" ? 3 : undefined,
-          headerShown: true,
+        screenOptions={() => ({
+          headerShown: false,
+          tabBarActiveTintColor: "#FF835C",
+          tabBarInactiveTintColor: "#CBB8B1",
+          tabBarInactiveBackgroundColor: "#FFF4ED",
+          tabBarActiveBackgroundColor: "#FFF4ED",
+          tabBarLabelStyle: {
+            fontFamily: "Quicksand_500Medium",
+            fontWeight: "normal",
+            fontSize: 11,
+            lineHeight: 21,
+          },
         })}
-        shifting={true}
-        activeColor="#FF835C"
-        inactiveColor="#CBB8B1"
-        compact={false}
-        keyboardHidesNavigationBar={true}
-        sceneAnimationEnabled={true}
-        sceneAnimationType="shifting"
-        barStyle={{ backgroundColor: "#FFF4ED" }}
       >
         <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={{
+            tabBarAccessibilityLabel: "Home",
             tabBarLabel: "Home",
             tabBarIcon: ({ color, focused }) => {
               return focused ? (
@@ -51,6 +53,8 @@ const Root = () => {
           name="Body"
           component={BodyScreen}
           options={{
+            tabBarAccessibilityLabel: "Body",
+            tabBarLabel: "Body",
             tabBarIcon: ({ color, focused }) => {
               return focused ? (
                 <View className="border-t-primary-orange border-t-2 pt-1">
@@ -66,6 +70,8 @@ const Root = () => {
           name="Mind"
           component={MindScreen}
           options={{
+            tabBarAccessibilityLabel: "Mind",
+            tabBarLabel: "Mind",
             tabBarIcon: ({ color, focused }) => {
               return focused ? (
                 <View className="border-t-primary-orange border-t-2 pt-1">
@@ -81,6 +87,8 @@ const Root = () => {
           name="Social"
           component={SocialScreen}
           options={{
+            tabBarAccessibilityLabel: "Social",
+            tabBarLabel: "Social",
             tabBarIcon: ({ color, focused }) => {
               return focused ? (
                 <View className="border-t-primary-orange border-t-2 pt-1">
@@ -96,6 +104,8 @@ const Root = () => {
           name="Profile"
           component={ProfileScreen}
           options={{
+            tabBarAccessibilityLabel: "Profile",
+            tabBarLabel: "Profile",
             tabBarIcon: ({ color, focused }) => {
               return focused ? (
                 <View className="border-t-primary-orange border-t-2 pt-1">

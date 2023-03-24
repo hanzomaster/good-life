@@ -5,7 +5,9 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TRPCProvider } from "./utils/trpc";
 
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
+import { Quicksand_500Medium, useFonts } from "@expo-google-fonts/quicksand";
 import Constants from "expo-constants";
+
 import { DefaultTheme, Provider } from "react-native-paper";
 import Root from "./root";
 import { SignInSignUpScreen } from "./screens/signin";
@@ -20,6 +22,12 @@ const theme = {
 };
 
 export const App = () => {
+  const [loaded] = useFonts({
+    Quicksand_500Medium,
+  });
+  if (!loaded) {
+    return null;
+  }
   return (
     <ClerkProvider
       publishableKey={Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY}
@@ -31,7 +39,7 @@ export const App = () => {
             <Provider theme={theme}>
               <Root />
             </Provider>
-            <StatusBar hidden={true} />
+            <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
           </SafeAreaProvider>
         </TRPCProvider>
       </SignedIn>
