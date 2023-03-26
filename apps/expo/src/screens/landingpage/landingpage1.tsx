@@ -1,6 +1,7 @@
 import { Image, SafeAreaView, View } from "react-native";
+import { ScreenProps } from "../../types/navigation";
 
-export const LandingPage1 = () => {
+export const LandingPage1 = (props: ScreenProps<"LandingPage1">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className=" relative top-0 left-auto p-0">

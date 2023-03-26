@@ -9,7 +9,7 @@ import { Quicksand_500Medium, useFonts } from "@expo-google-fonts/quicksand";
 import Constants from "expo-constants";
 
 import { DefaultTheme, Provider } from "react-native-paper";
-import Root from "./root";
+import RootNavigator from "./rootNavigator";
 import { SignInSignUpScreen } from "./screens/signin";
 import { tokenCache } from "./utils/cache";
 
@@ -37,7 +37,7 @@ export const App = () => {
         <TRPCProvider>
           <SafeAreaProvider>
             <Provider theme={theme}>
-              <Root />
+              <RootNavigator />
             </Provider>
             <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
           </SafeAreaProvider>

@@ -7,6 +7,9 @@ export type RootStackParamList = {
   Mind: undefined;
   Social: undefined;
   Profile: undefined;
+  LandingPage1: undefined;
+  LandingPage2: undefined;
+  LandingPage3: undefined;
 };
 
 export type ScreenProps<T extends keyof RootStackParamList> = {
