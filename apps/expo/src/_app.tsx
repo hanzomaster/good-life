@@ -8,9 +8,9 @@ import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import { Quicksand_500Medium, useFonts } from "@expo-google-fonts/quicksand";
 import Constants from "expo-constants";
 
+import { NavigationContainer } from "@react-navigation/native";
 import { DefaultTheme, Provider } from "react-native-paper";
 import Root from "./root";
-import { SignInSignUpScreen } from "./screens/signin";
 import { tokenCache } from "./utils/cache";
 
 const theme = {
@@ -37,14 +37,26 @@ export const App = () => {
         <TRPCProvider>
           <SafeAreaProvider>
             <Provider theme={theme}>
-              <Root />
+              <NavigationContainer>
+                <Root />
+              </NavigationContainer>
             </Provider>
             <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
           </SafeAreaProvider>
         </TRPCProvider>
       </SignedIn>
       <SignedOut>
-        <SignInSignUpScreen />
+        {/* <SignInSignUpScreen /> */}
+        <TRPCProvider>
+          <SafeAreaProvider>
+            <Provider theme={theme}>
+              <NavigationContainer>
+                <Root />
+              </NavigationContainer>
+            </Provider>
+            <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
+          </SafeAreaProvider>
+        </TRPCProvider>
       </SignedOut>
     </ClerkProvider>
   );
