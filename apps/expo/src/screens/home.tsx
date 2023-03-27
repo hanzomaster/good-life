@@ -138,15 +138,15 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
             >
               Thứ 2, ngày 1 tháng 12{" "}
             </Text>
-            <TouchableOpacity className=" inset-x-0 z-10 mx-2 mt-10">
+            <TouchableOpacity className=" inset-x-0 z-10 mx-3 mt-10">
               <View className="inset-x-0 flex w-full flex-row space-x-3">
                 <View className="box-content rounded-2xl bg-white object-fill">
                   <Image
-                    className="m-2"
+                    className="m-2 "
                     source={require("../assets/images/home/neutral.png")}
                   />
                 </View>
-                <View className="inset-0flex-col relative flex  w-full justify-between">
+                <View className="relative inset-0 flex w-full  flex-col justify-between">
                   <Text className="text-[#DED5C6]" style={styles.textFont}>
                     DAILY CHECK IN
                   </Text>
@@ -164,174 +164,12 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
             </TouchableOpacity>
 
             <View>
-              <TouchableOpacity className=" inset-x-0 mx-2 mt-10">
+              <TouchableOpacity className=" inset-x-0 mx-3 mt-10">
                 <View className="inset-x-0 flex w-full flex-row space-x-3">
                   <View className="box-content rounded-2xl bg-white object-fill">
                     <Image
                       className="m-2"
-                      source={require("../assets/images/home/neutral.png")}
-                    />
-                  </View>
-                  <View className="inset-0flex-col relative flex  w-full justify-between">
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      DAILY CHECK IN
-                    </Text>
-                    <Text
-                      className="text-[#FFFFFF]"
-                      style={styles.textFontSemiBold}
-                    >
-                      Hôm nay bạn cảm thấy thế nào?
-                    </Text>
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      Tạm ổn &#8226; 2 ngày trước
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View>
-              <TouchableOpacity className=" inset-x-0 mx-2 mt-10">
-                <View className="inset-x-0 flex w-full flex-row space-x-3">
-                  <View className="box-content rounded-2xl bg-white object-fill">
-                    <Image
-                      className="m-2"
-                      source={require("../assets/images/home/neutral.png")}
-                    />
-                  </View>
-                  <View className="inset-0flex-col relative flex  w-full justify-between">
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      DAILY CHECK IN
-                    </Text>
-                    <Text
-                      className="text-[#FFFFFF]"
-                      style={styles.textFontSemiBold}
-                    >
-                      Hôm nay bạn cảm thấy thế nào?
-                    </Text>
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      Tạm ổn &#8226; 2 ngày trước
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View>
-              <TouchableOpacity className=" inset-x-0 mx-2 mt-10">
-                <View className="inset-x-0 flex w-full flex-row space-x-3">
-                  <View className="box-content rounded-2xl bg-white object-fill">
-                    <Image
-                      className="m-2"
-                      source={require("../assets/images/home/neutral.png")}
-                    />
-                  </View>
-                  <View className="inset-0flex-col relative flex  w-full justify-between">
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      DAILY CHECK IN
-                    </Text>
-                    <Text
-                      className="text-[#FFFFFF]"
-                      style={styles.textFontSemiBold}
-                    >
-                      Hôm nay bạn cảm thấy thế nào?
-                    </Text>
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      Tạm ổn &#8226; 2 ngày trước
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View>
-              <TouchableOpacity className=" inset-x-0 mx-2 mt-10">
-                <View className="inset-x-0 flex w-full flex-row space-x-3">
-                  <View className="box-content rounded-2xl bg-white object-fill">
-                    <Image
-                      className="m-2"
-                      source={require("../assets/images/home/neutral.png")}
-                    />
-                  </View>
-                  <View className="inset-0flex-col relative flex  w-full justify-between">
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      DAILY CHECK IN
-                    </Text>
-                    <Text
-                      className="text-[#FFFFFF]"
-                      style={styles.textFontSemiBold}
-                    >
-                      Hôm nay bạn cảm thấy thế nào?
-                    </Text>
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      Tạm ổn &#8226; 2 ngày trước
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View>
-              <TouchableOpacity className=" inset-x-0 mx-2 mt-10">
-                <View className="inset-x-0 flex w-full flex-row space-x-3">
-                  <View className="box-content rounded-2xl bg-white object-fill">
-                    <Image
-                      className="m-2"
-                      source={require("../assets/images/home/neutral.png")}
-                    />
-                  </View>
-                  <View className="inset-0flex-col relative flex  w-full justify-between">
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      DAILY CHECK IN
-                    </Text>
-                    <Text
-                      className="text-[#FFFFFF]"
-                      style={styles.textFontSemiBold}
-                    >
-                      Hôm nay bạn cảm thấy thế nào?
-                    </Text>
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      Tạm ổn &#8226; 2 ngày trước
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View>
-              <TouchableOpacity className=" inset-x-0 mx-2 mt-10">
-                <View className="inset-x-0 flex w-full flex-row space-x-3">
-                  <View className="box-content rounded-2xl bg-white object-fill">
-                    <Image
-                      className="m-2"
-                      source={require("../assets/images/home/neutral.png")}
-                    />
-                  </View>
-                  <View className="inset-0flex-col relative flex  w-full justify-between">
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      DAILY CHECK IN
-                    </Text>
-                    <Text
-                      className="text-[#FFFFFF]"
-                      style={styles.textFontSemiBold}
-                    >
-                      Hôm nay bạn cảm thấy thế nào?
-                    </Text>
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
-                      Tạm ổn &#8226; 2 ngày trước
-                    </Text>
-                  </View>
-                </View>
-              </TouchableOpacity>
-            </View>
-
-            <View>
-              <TouchableOpacity className=" inset-x-0 mx-2 mt-10">
-                <View className="inset-x-0 flex w-full flex-row space-x-3">
-                  <View className="box-content rounded-2xl bg-white object-fill">
-                    <Image
-                      className="m-2"
-                      source={require("../assets/images/home/neutral.png")}
+                      source={require("../assets/images/home/coffee.png")}
                     />
                   </View>
                   <View className="inset-0flex-col relative flex  w-full justify-between">
@@ -352,6 +190,254 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
               </TouchableOpacity>
             </View>
           </View>
+        </View>
+
+        <View
+          className="mx-2 mt-9"
+          style={{ flexDirection: "row", alignItems: "center" }}
+        >
+          <View style={{ flex: 1, height: 1, backgroundColor: "#C4C4C4" }} />
+        </View>
+
+        <View>
+          <View className="inset-x-0 mx-3 mt-5 flex flex-row items-baseline justify-between">
+            <Text
+              className="text-lg text-white"
+              style={styles.textFontSemiBold}
+            >
+              Dành cho bạn
+            </Text>
+            <Text className="text-sm text-white" style={styles.textFont}>
+              Xem thêm
+            </Text>
+          </View>
+        </View>
+        <View
+          className=" mt-2"
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+        >
+          <ScrollView
+            className="flex h-fit"
+            alwaysBounceHorizontal
+            alwaysBounceVertical={false}
+          >
+            <View className=" relative ml-3 flex w-4/5 flex-row space-x-6">
+              <TouchableOpacity className="">
+                <View className="relative box-content">
+                  <Image
+                    className="rounded-lg object-fill"
+                    source={require("../assets/images/home/testpic.png")}
+                  />
+                  <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                    <Text className="text-white" style={styles.textFont}>
+                      21 phút
+                    </Text>
+                  </View>
+                </View>
+
+                <View className="mt-2">
+                  <Text
+                    className="text-base text-white"
+                    style={styles.textFontSemiBold}
+                  >
+                    Thiền buổi sáng
+                  </Text>
+                  <View className=" flex flex-row items-baseline space-x-1">
+                    <Image
+                      source={require("../assets/images/home/heart.png")}
+                    />
+                    <Text className="text-xs text-[#DED5C6]">
+                      22 &#8226; 11.02.2023{" "}
+                    </Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity className="">
+                <View className="relative box-content">
+                  <Image
+                    className="rounded-lg object-fill"
+                    source={require("../assets/images/home/testpic.png")}
+                  />
+                  <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                    <Text className="text-white" style={styles.textFont}>
+                      21 phút
+                    </Text>
+                  </View>
+                </View>
+
+                <View className="mt-2">
+                  <Text
+                    className="text-base text-white"
+                    style={styles.textFontSemiBold}
+                  >
+                    Thiền buổi sáng
+                  </Text>
+                  <View className=" flex flex-row items-baseline space-x-1">
+                    <Image
+                      source={require("../assets/images/home/heart.png")}
+                    />
+                    <Text className="text-xs text-[#DED5C6]">
+                      22 &#8226; 11.02.2023{" "}
+                    </Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity className="">
+                <View className="relative box-content">
+                  <Image
+                    className="rounded-lg object-fill"
+                    source={require("../assets/images/home/testpic.png")}
+                  />
+                  <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                    <Text className="text-white" style={styles.textFont}>
+                      21 phút
+                    </Text>
+                  </View>
+                </View>
+
+                <View className="mt-2">
+                  <Text
+                    className="text-base text-white"
+                    style={styles.textFontSemiBold}
+                  >
+                    Thiền buổi sáng
+                  </Text>
+                  <View className=" flex flex-row items-baseline space-x-1">
+                    <Image
+                      source={require("../assets/images/home/heart.png")}
+                    />
+                    <Text className="text-xs text-[#DED5C6]">
+                      22 &#8226; 11.02.2023{" "}
+                    </Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </View>
+
+        <View>
+          <View className="inset-x-0 mx-3 mt-5 flex flex-row items-baseline justify-between">
+            <Text
+              className="text-lg text-white"
+              style={styles.textFontSemiBold}
+            >
+              Nội dung mới
+            </Text>
+            <Text className="text-sm text-white" style={styles.textFont}>
+              Xem thêm
+            </Text>
+          </View>
+        </View>
+
+        <View
+          className=" mt-2 mb-5"
+          style={{
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "flex-start",
+          }}
+        >
+          <ScrollView
+            className="flex h-fit"
+            alwaysBounceHorizontal
+            alwaysBounceVertical={false}
+          >
+            <View className=" relative ml-3 flex flex-row space-x-6">
+              <TouchableOpacity className="">
+                <View className="relative box-content">
+                  <Image
+                    className="h-40 w-40 rounded-lg object-fill"
+                    source={require("../assets/images/home/testnewcontentpic.png")}
+                  />
+                  <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                    <Text className="text-white" style={styles.textFont}>
+                      21 phút
+                    </Text>
+                  </View>
+                </View>
+
+                <View className="mt-2">
+                  <Text
+                    className="text-base text-white"
+                    style={styles.textFontSemiBold}
+                  >
+                    Thiền buổi tối
+                  </Text>
+                  <View className=" flex flex-row items-baseline space-x-1">
+                    <Image
+                      source={require("../assets/images/home/heart.png")}
+                    />
+                    <Text className="text-xs text-[#DED5C6]">
+                      22 &#8226; 11.02.2023{" "}
+                    </Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity className="">
+                <View className="relative box-content">
+                  <Image
+                    className="relative h-40 w-40 rounded-lg object-fill"
+                    source={require("../assets/images/home/testpic.png")}
+                  />
+                  <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                    <Text className="text-white" style={styles.textFont}>
+                      21 phút
+                    </Text>
+                  </View>
+                </View>
+
+                <View className="mt-2">
+                  <Text
+                    className="text-base text-white"
+                    style={styles.textFontSemiBold}
+                  >
+                    Thiền buổi tối
+                  </Text>
+                  <View className=" flex flex-row items-baseline space-x-1">
+                    <Image
+                      source={require("../assets/images/home/heart.png")}
+                    />
+                    <Text className="text-xs text-[#DED5C6]">
+                      22 &#8226; 11.02.2023{" "}
+                    </Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity className="">
+                <View className="relative box-content">
+                  <Image
+                    className="relative h-40 w-40 rounded-lg object-fill"
+                    source={require("../assets/images/home/testpic.png")}
+                  />
+                  <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                    <Text className="text-white" style={styles.textFont}>
+                      21 phút
+                    </Text>
+                  </View>
+                </View>
+
+                <View className="mt-2">
+                  <Text
+                    className="text-base text-white"
+                    style={styles.textFontSemiBold}
+                  >
+                    Thiền buổi tối
+                  </Text>
+                  <View className=" flex flex-row items-baseline space-x-1">
+                    <Image
+                      source={require("../assets/images/home/heart.png")}
+                    />
+                    <Text className="text-xs text-[#DED5C6]">
+                      22 &#8226; 11.02.2023{" "}
+                    </Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
         </View>
       </ScrollView>
     </SafeAreaView>
