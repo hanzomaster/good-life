@@ -4,8 +4,9 @@ import {
   SafeAreaView,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
+import { styles } from "../../root";
 
 export const LandingPage3 = () => {
   const navigation = useNavigation();
@@ -27,12 +28,18 @@ export const LandingPage3 = () => {
 
       <View className="absolute inset-x-0 mt-28 ml-auto mr-auto flex h-3/5 flex-col items-center justify-between align-baseline">
         <View className=" relative inset-x-0 mx-auto w-full items-center">
-          <Text className=" font-quicksand h-auto w-2/3 flex-wrap text-center text-3xl text-[#FFFF] ">
+          <Text
+            className=" font-quicksand h-auto w-2/3 flex-wrap text-center text-3xl text-[#FFFF]"
+            style={styles.textFont}
+          >
             BODY
           </Text>
         </View>
 
-        <Text className="font-primary h-auto w-2/3 flex-wrap text-justify text-2xl text-[#FFFF]">
+        <Text
+          className="font-primary h-auto w-2/3 flex-wrap text-justify text-lg text-[#FFFF]"
+          style={styles.textFont}
+        >
           Cung cấp những bài tập rèn luyện thể chất và phương pháp ăn uống đủ
           dinh dưỡng cho cơ thể.
         </Text>

@@ -5,7 +5,12 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TRPCProvider } from "./utils/trpc";
 
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
-import { Quicksand_500Medium, useFonts } from "@expo-google-fonts/quicksand";
+import {
+  Quicksand_500Medium,
+  Quicksand_600SemiBold,
+  Quicksand_700Bold,
+  useFonts,
+} from "@expo-google-fonts/quicksand";
 import Constants from "expo-constants";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -25,6 +30,8 @@ const theme = {
 export const App = () => {
   const [loaded] = useFonts({
     Quicksand_500Medium,
+    Quicksand_700Bold,
+    Quicksand_600SemiBold,
   });
   if (!loaded) {
     return null;

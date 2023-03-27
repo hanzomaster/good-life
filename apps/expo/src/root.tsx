@@ -22,6 +22,14 @@ export const styles = StyleSheet.create({
   textFont: {
     fontFamily: "Quicksand_500Medium",
   },
+  textFontBold: {
+    fontFamily: "Quicksand_700Bold",
+    fontWeight: "bold",
+  },
+  textFontSemiBold: {
+    fontFamily: "Quicksand_600SemiBold",
+    fontWeight: "bold",
+  },
 });
 
 const Root = () => {

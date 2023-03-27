@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import { styles } from "../../root";
 
 export const LandingPage2 = () => {
   const navigation = useNavigation();
@@ -39,7 +40,10 @@ export const LandingPage2 = () => {
         />
 
         <View className=" relative inset-x-0 mx-auto w-full items-center">
-          <Text className=" font-quicksand h-auto w-2/3 flex-wrap text-justify text-lg text-[#608144]">
+          <Text
+            className=" font-quicksand h-auto w-2/3 flex-wrap text-justify text-lg text-[#608144]"
+            style={styles.textFont}
+          >
             The good life - ứng dụng điện thoại sẽ đồng hành xây dựng Cuộc Sống
             Tốt Đẹp cùng bạn thông qua các nội dung về thể chất, dinh dưỡng, tâm
             lý và phát triển bản thân.
