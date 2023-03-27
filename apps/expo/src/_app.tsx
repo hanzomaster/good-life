@@ -13,6 +13,7 @@ import { DefaultTheme, Provider } from "react-native-paper";
 import Root from "./root";
 import { tokenCache } from "./utils/cache";
 
+// Remove background color from the bottom navigation bar when focus
 const theme = {
   ...DefaultTheme,
   colors: {
