@@ -5,13 +5,166 @@ generator client {
     provider = "prisma-client-js"
 }
 
+// generator erd {
+//     provider = "prisma-erd-generator"
+//     output   = "erd.pdf"
+// }
+
 datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+    provider     = "mysql"
+    url          = env("DATABASE_URL")
+    relationMode = "prisma"
 }
 
-model Post {
-    id      String @id @default(cuid())
-    title   String
-    content String
+enum Gender {
+    MALE
+    FEMALE
+    OTHER
+}
+
+model User {
+    id      String    @id @default(cuid())
+    email   String    @unique
+    name    String
+    phone   String?   @unique
+    avatar  String?
+    sex     Gender?
+    dob     DateTime?
+    address String?
+
+    HealthPost_User   HealthPost_User[]
+    GroupMember       GroupMember[]
+    GroupPost         GroupPost[]
+    Comment           GroupPostComment[]
+    HealthPostComment HealthPostComment[]
+    CheckIn           CheckIn[]
+}
+
+model HealthPost_User {
+    healthPostId String
+    userId       String
+
+    healthPost HealthPost @relation(fields: [healthPostId], references: [id])
+    user       User       @relation(fields: [userId], references: [id])
+
+    @@id([healthPostId, userId])
+    @@index([healthPostId])
+    @@index([userId])
+}
+
+enum Type {
+    VIDEO
+    MUSIC
+    RECIPE
+}
+
+model HealthPost {
+    id   String @id @default(cuid())
+    name String
+    type Type
+    like Int    @default(0)
+
+    content           String
+    createdAt         DateTime            @default(now())
+    HealthPost_User   HealthPost_User[]
+    HealthPostComment HealthPostComment[]
+}
+
+model HealthPostComment {
+    id        String   @id @default(cuid())
+    postId    String
+    userId    String
+    content   String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    post   HealthPost @relation(fields: [postId], references: [id])
+    author User       @relation(fields: [userId], references: [id])
+
+    @@index([postId])
+    @@index([userId])
+}
+
+model Group {
+    id              String        @id @default(cuid())
+    name            String
+    numberOfMembers Int           @default(1)
+    createdAt       DateTime      @default(now())
+    GroupMember     GroupMember[]
+    GroupPost       GroupPost[]
+}
+
+enum Role {
+    ADMIN
+    MEMBER
+    OWNER
+}
+
+model GroupMember {
+    groupId String
+    userId  String
+    role    Role
+
+    group   Group @relation(fields: [groupId], references: [id])
+    memeber User  @relation(fields: [userId], references: [id])
+
+    @@id([groupId, userId])
+    @@index([groupId])
+    @@index([userId])
+}
+
+model GroupPost {
+    id        String             @id @default(cuid())
+    groupId   String
+    userId    String
+    content   String
+    like      Int                @default(0)
+    createdAt DateTime           @default(now())
+    updatedAt DateTime           @updatedAt
+    comment   GroupPostComment[]
+
+    group  Group @relation(fields: [groupId], references: [id])
+    author User  @relation(fields: [userId], references: [id])
+
+    @@index([groupId])
+    @@index([userId])
+}
+
+model GroupPostComment {
+    id              String             @id @default(cuid())
+    postId          String
+    userId          String
+    content         String
+    createdAt       DateTime           @default(now())
+    updatedAt       DateTime           @updatedAt
+    parentCommentId String?
+    reply           GroupPostComment[] @relation("parentComment")
+    parent          GroupPostComment?  @relation("parentComment", fields: [parentCommentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+    post   GroupPost @relation(fields: [postId], references: [id])
+    author User      @relation(fields: [userId], references: [id])
+
+    @@index([postId])
+    @@index([userId])
+    @@index([parentCommentId])
+}
+
+enum Emotion {
+    HAPPY
+    EXCITED
+    SAD
+    ANGRY
+    NEUTRAL
+}
+
+model CheckIn {
+    userId    String
+    createdAt DateTime @default(now())
+    emotion   Emotion
+    status    String
+
+    user User @relation(fields: [userId], references: [id])
+
+    @@id([userId, createdAt])
+    @@index([userId])
 }
