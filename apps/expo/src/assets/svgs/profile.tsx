@@ -1,7 +1,7 @@
 import Svg, { Path } from "react-native-svg";
 
 export const ProfileIcon = ({ color }: { color: string }) => (
-  <Svg {...{ color }} width={18} height={20} fill="none">
+  <Svg {...{ color }} width={18} height={22} fill="none">
     <Path
       fillRule="evenodd"
       clipRule="evenodd"

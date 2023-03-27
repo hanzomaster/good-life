@@ -2,8 +2,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { LandingPage2 } from "./screens/landingpage/landingpage2";
 import { LandingPage3 } from "./screens/landingpage/landingpage3";
+import { RootStackParamList } from './types/navigation';
 
-const HomeStack = createNativeStackNavigator();
+const HomeStack = createNativeStackNavigator<RootStackParamList>();
 
 const HomeStackNavigator = () => {
   return (

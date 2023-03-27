@@ -1,12 +1,12 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import {
   BodyIcon,
   HomeIcon,
   MindIcon,
   ProfileIcon,
   SocialIcon,
-} from "./common/svgs";
+} from "./assets/svgs";
 import {
   BodyScreen,
   HomeScreen,
@@ -17,6 +17,12 @@ import {
 import { RootStackParamList } from "./types/navigation";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
+
+export const styles = StyleSheet.create({
+  textFont: {
+    fontFamily: "Quicksand_500Medium",
+  },
+});
 
 const Root = () => {
   return (
@@ -33,6 +39,9 @@ const Root = () => {
           fontWeight: "normal",
           fontSize: 11,
           lineHeight: 21,
+        },
+        tabBarStyle: {
+          height: 60,
         },
       })}
     >
