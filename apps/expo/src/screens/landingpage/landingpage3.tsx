@@ -51,7 +51,7 @@ export const LandingPage3 = () => {
         <TouchableOpacity
           className="absolute z-10 mt-44 h-14 w-14 items-center justify-center rounded-full bg-[#FF835C]"
           onPress={() => {
-            navigation.navigate("LandingPage2" as never);
+            navigation.navigate("LandingPage4" as never);
           }}
         >
           <Image
