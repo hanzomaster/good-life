@@ -217,7 +217,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
           <ScrollView
-            className="flex h-fit"
+            className="flex h-fit pb-2"
             alwaysBounceHorizontal
             alwaysBounceVertical={false}
           >
@@ -340,7 +340,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
           }}
         >
           <ScrollView
-            className="flex h-fit"
+            className="flex h-fit pb-2"
             alwaysBounceHorizontal
             alwaysBounceVertical={false}
           >
