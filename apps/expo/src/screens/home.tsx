@@ -93,7 +93,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
         <View className="inset-x-0 mt-5 flex flex-row justify-between px-4">
           <Text
             className="text text-2xl text-[#5A2D22]"
-            style={styles.textFont}
+            style={styles().textFont}
           >
             The good life
           </Text>
@@ -112,11 +112,11 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
           <View className="inset-x-0 items-center">
             <Text
               className="text-2xl text-[#5A2D22]"
-              style={styles.textFontSemiBold}
+              style={styles().textFontSemiBold}
             >
               Chào bạn
             </Text>
-            <Text className="text-md text-[#5A2D22]" style={styles.textFont}>
+            <Text className="text-md text-[#5A2D22]" style={styles().textFont}>
               Hãy đồng hành cùng với TGL mỗi ngày nhé !
             </Text>
           </View>
@@ -134,7 +134,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
           <View className="relative -mt-28">
             <Text
               className=" relative pl-4 text-lg text-white"
-              style={styles.textFontSemiBold}
+              style={styles().textFontSemiBold}
             >
               Thứ 2, ngày 1 tháng 12{" "}
             </Text>
@@ -147,16 +147,16 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                   />
                 </View>
                 <View className="relative inset-0 flex w-full  flex-col justify-between">
-                  <Text className="text-[#DED5C6]" style={styles.textFont}>
+                  <Text className="text-[#DED5C6]" style={styles().textFont}>
                     DAILY CHECK IN
                   </Text>
                   <Text
                     className="text-[#FFFFFF]"
-                    style={styles.textFontSemiBold}
+                    style={styles().textFontSemiBold}
                   >
                     Hôm nay bạn cảm thấy thế nào?
                   </Text>
-                  <Text className="text-[#DED5C6]" style={styles.textFont}>
+                  <Text className="text-[#DED5C6]" style={styles().textFont}>
                     Tạm ổn &#8226; 2 ngày trước
                   </Text>
                 </View>
@@ -173,16 +173,16 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                     />
                   </View>
                   <View className="inset-0flex-col relative flex  w-full justify-between">
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
+                    <Text className="text-[#DED5C6]" style={styles().textFont}>
                       DAILY CHECK IN
                     </Text>
                     <Text
                       className="text-[#FFFFFF]"
-                      style={styles.textFontSemiBold}
+                      style={styles().textFontSemiBold}
                     >
                       Hôm nay bạn cảm thấy thế nào?
                     </Text>
-                    <Text className="text-[#DED5C6]" style={styles.textFont}>
+                    <Text className="text-[#DED5C6]" style={styles().textFont}>
                       Tạm ổn &#8226; 2 ngày trước
                     </Text>
                   </View>
@@ -203,11 +203,11 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
           <View className="inset-x-0 mx-3 mt-5 flex flex-row items-baseline justify-between">
             <Text
               className="text-lg text-white"
-              style={styles.textFontSemiBold}
+              style={styles().textFontSemiBold}
             >
               Dành cho bạn
             </Text>
-            <Text className="text-sm text-white" style={styles.textFont}>
+            <Text className="text-sm text-white" style={styles().textFont}>
               Xem thêm
             </Text>
           </View>
@@ -229,7 +229,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                     source={require("../assets/images/home/testpic.png")}
                   />
                   <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                    <Text className="text-white" style={styles.textFont}>
+                    <Text className="text-white" style={styles().textFont}>
                       21 phút
                     </Text>
                   </View>
@@ -238,7 +238,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                 <View className="mt-2">
                   <Text
                     className="text-base text-white"
-                    style={styles.textFontSemiBold}
+                    style={styles().textFontSemiBold}
                   >
                     Thiền buổi sáng
                   </Text>
@@ -260,7 +260,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                     source={require("../assets/images/home/testpic.png")}
                   />
                   <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                    <Text className="text-white" style={styles.textFont}>
+                    <Text className="text-white" style={styles().textFont}>
                       21 phút
                     </Text>
                   </View>
@@ -269,7 +269,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                 <View className="mt-2">
                   <Text
                     className="text-base text-white"
-                    style={styles.textFontSemiBold}
+                    style={styles().textFontSemiBold}
                   >
                     Thiền buổi sáng
                   </Text>
@@ -290,7 +290,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                     source={require("../assets/images/home/testpic.png")}
                   />
                   <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                    <Text className="text-white" style={styles.textFont}>
+                    <Text className="text-white" style={styles().textFont}>
                       21 phút
                     </Text>
                   </View>
@@ -299,7 +299,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                 <View className="mt-2">
                   <Text
                     className="text-base text-white"
-                    style={styles.textFontSemiBold}
+                    style={styles().textFontSemiBold}
                   >
                     Thiền buổi sáng
                   </Text>
@@ -321,11 +321,11 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
           <View className="inset-x-0 mx-3 mt-5 flex flex-row items-baseline justify-between">
             <Text
               className="text-lg text-white"
-              style={styles.textFontSemiBold}
+              style={styles().textFontSemiBold}
             >
               Nội dung mới
             </Text>
-            <Text className="text-sm text-white" style={styles.textFont}>
+            <Text className="text-sm text-white" style={styles().textFont}>
               Xem thêm
             </Text>
           </View>
@@ -352,7 +352,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                     source={require("../assets/images/home/testnewcontentpic.png")}
                   />
                   <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                    <Text className="text-white" style={styles.textFont}>
+                    <Text className="text-white" style={styles().textFont}>
                       21 phút
                     </Text>
                   </View>
@@ -361,7 +361,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                 <View className="mt-2">
                   <Text
                     className="text-base text-white"
-                    style={styles.textFontSemiBold}
+                    style={styles().textFontSemiBold}
                   >
                     Thiền buổi tối
                   </Text>
@@ -383,7 +383,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                     source={require("../assets/images/home/testpic.png")}
                   />
                   <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                    <Text className="text-white" style={styles.textFont}>
+                    <Text className="text-white" style={styles().textFont}>
                       21 phút
                     </Text>
                   </View>
@@ -392,7 +392,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                 <View className="mt-2">
                   <Text
                     className="text-base text-white"
-                    style={styles.textFontSemiBold}
+                    style={styles().textFontSemiBold}
                   >
                     Thiền buổi tối
                   </Text>
@@ -413,7 +413,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                     source={require("../assets/images/home/testpic.png")}
                   />
                   <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                    <Text className="text-white" style={styles.textFont}>
+                    <Text className="text-white" style={styles().textFont}>
                       21 phút
                     </Text>
                   </View>
@@ -422,7 +422,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                 <View className="mt-2">
                   <Text
                     className="text-base text-white"
-                    style={styles.textFontSemiBold}
+                    style={styles().textFontSemiBold}
                   >
                     Thiền buổi tối
                   </Text>

@@ -21,7 +21,7 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
               source={require("../assets/images/home/testpic.png")}
             />
             <View>
-              <Text className="" style={styles.textFontSemiBold}>
+              <Text className="" style={styles().textFontSemiBold}>
                 Thiền buổi sáng
               </Text>
               <View className=" flex flex-row">
@@ -37,7 +37,7 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
               source={require("../assets/images/home/testpic.png")}
             />
             <View>
-              <Text className="" style={styles.textFontSemiBold}>
+              <Text className="" style={styles().textFontSemiBold}>
                 Thiền buổi sáng
               </Text>
               <View className=" flex flex-row">
@@ -53,7 +53,7 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
               source={require("../assets/images/home/testpic.png")}
             />
             <View>
-              <Text className="" style={styles.textFontSemiBold}>
+              <Text className="" style={styles().textFontSemiBold}>
                 Thiền buổi sáng
               </Text>
               <View className=" flex flex-row">
@@ -69,7 +69,7 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
               source={require("../assets/images/home/testpic.png")}
             />
             <View>
-              <Text className="" style={styles.textFontSemiBold}>
+              <Text className="" style={styles().textFontSemiBold}>
                 Thiền buổi sáng
               </Text>
               <View className="flex flex-row">

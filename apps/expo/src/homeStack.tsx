@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { LandingPage2 } from "./screens/landingpage/landingpage2";
-import { LandingPage3 } from "./screens/landingpage/landingpage3";
-import { LandingPage4 } from "./screens/landingpage/landingpage4";
+import { EmotionChoosing } from "./screens/chooseEmotion/chooseEmotion";
+import { EmotionChoosing1 } from "./screens/chooseEmotion/chooseEmotion1";
+import { EmotionChoosing2 } from "./screens/chooseEmotion/chooseEmotion2";
 import { RootStackParamList } from "./types/navigation";
 
 const HomeStack = createNativeStackNavigator<RootStackParamList>();
@@ -14,9 +14,9 @@ const HomeStackNavigator = () => {
         headerShown: false,
       }}
     >
-      <HomeStack.Screen name="LandingPage2" component={LandingPage2} />
-      <HomeStack.Screen name="LandingPage3" component={LandingPage3} />
-      <HomeStack.Screen name="LandingPage4" component={LandingPage4} />
+      <HomeStack.Screen name="EmotionChoosing" component={EmotionChoosing} />
+      <HomeStack.Screen name="EmotionChoosing1" component={EmotionChoosing1} />
+      <HomeStack.Screen name="EmotionChoosing2" component={EmotionChoosing2} />
     </HomeStack.Navigator>
   );
 };

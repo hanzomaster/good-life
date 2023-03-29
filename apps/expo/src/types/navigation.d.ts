@@ -11,6 +11,9 @@ export type RootStackParamList = {
   LandingPage2: undefined;
   LandingPage3: undefined;
   LandingPage4: undefined;
+  EmotionChoosing: undefined;
+  EmotionChoosing1: undefined;
+  EmotionChoosing2: undefined;
 };
 
 export type ScreenProps<T extends keyof RootStackParamList> = {

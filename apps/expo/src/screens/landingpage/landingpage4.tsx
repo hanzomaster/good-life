@@ -35,13 +35,13 @@ export const LandingPage4 = () => {
         <View className=" relative inset-x-0 mx-auto flex h-1/3 w-full flex-col items-center justify-between">
           <Text
             className=" font-quicksand h-auto w-2/3 flex-wrap text-center text-2xl text-[#608144] "
-            style={styles.textFont}
+            style={styles().textFont}
           >
             MIND
           </Text>
           <Text
             className=" font-quicksand h-auto w-2/3 flex-wrap text-justify text-lg text-[#608144] "
-            style={styles.textFont}
+            style={styles().textFont}
           >
             Những bài học về tâm lý, hướng dẫn thiền, list âm nhạc giúp bạn có
             một tâm trí khỏe mạnh.
