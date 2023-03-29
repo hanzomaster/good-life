@@ -66,7 +66,7 @@ export const EmotionChoosing = () => {
 
         <View className="inset-x-0  mt-12 flex w-full flex-col items-center space-y-1">
           <View className="inset-x-0 items-center justify-center duration-700">
-            <View className="tooltip z-10 inline-block h-10  w-1/2 items-center justify-center rounded-full bg-[#A5A5A5A5] px-3 py-2  text-sm font-medium text-white shadow-sm">
+            <View className=" inline-block h-10  w-1/2 items-center justify-center rounded-full bg-[#DED5C6] px-3 py-2  text-sm font-medium text-white shadow-sm">
               <Text
                 className="color-[#5A2D22]"
                 style={styles().textFontSemiBold}
@@ -78,7 +78,7 @@ export const EmotionChoosing = () => {
               className="h-0 w-0 
                         border-l-8 border-t-[15px]
                         border-r-8 border-l-transparent
-                      border-t-[#A5A5A5A5] border-r-transparent
+                      border-t-[#DED5C6] border-r-transparent
                       "
             ></View>
           </View>
@@ -95,7 +95,7 @@ export const EmotionChoosing = () => {
               <Image
                 className={classNames(
                   selectedEmotion === Emotion.TERRIBLE
-                    ? "scale-125 shadow-black drop-shadow-2xl"
+                    ? "z-10 scale-125 shadow-black drop-shadow-2xl"
                     : "",
                 )}
                 source={require("../../assets/images/emotion/terrible.png")}

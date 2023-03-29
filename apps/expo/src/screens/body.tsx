@@ -4,12 +4,11 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
-import { styles } from ();
-} from "../root";
 
 export const BodyScreen = (props: ScreenProps<"Body">) => {
   return (

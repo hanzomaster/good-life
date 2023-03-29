@@ -46,7 +46,7 @@ export const EmotionChoosing2 = () => {
             source={require("../../assets/images/emotion/topright.png")}
           />
         </View>
-        <View className="absolute inset-x-0 z-10 mx-7 mt-16 items-end">
+        <View className="absolute inset-x-0 z-10 mx-7 mt-10 items-end">
           <TouchableOpacity className="h-10 w-10 items-center justify-center rounded-full bg-[#FFFFFF]">
             <Image
               className=""
@@ -54,7 +54,7 @@ export const EmotionChoosing2 = () => {
             />
           </TouchableOpacity>
         </View>
-        <View className="inset-x-0 -mt-5 items-center justify-center">
+        <View className="inset-x-0 -mt-7 items-center justify-center">
           <View className="relative w-1/2">
             <Text
               className="text-center text-lg text-[#5A2D22]"
@@ -106,7 +106,7 @@ export const EmotionChoosing2 = () => {
           </View>
         </View>
 
-        <View className="inset-x-0 mx-6 mt-10 mb-20 h-auto justify-center rounded-lg border border-[#FF835C]/20">
+        <View className="inset-x-0 mx-6 mt-10 mb-20 h-20 justify-center rounded-lg border border-[#FF835C]/20">
           <View>
             <TextInput
               className="overflow-y-scroll p-2 text-[#5A2D22]"
