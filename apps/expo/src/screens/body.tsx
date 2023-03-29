@@ -150,10 +150,16 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
                   className="h-40 w-40 rounded-lg object-fill"
                   source={require("../assets/images/physique/img1.png")}
                 />
-                <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                <View className="absolute bottom-2 left-2 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
                   <Text className="text-white" style={styles.textFont}>
                     21 phút
                   </Text>
+                </View>
+                <View className="absolute bottom-2 right-2 rounded-2xl p-1 ">
+                  <Image
+                    className="h-6 w-6 object-fill"
+                    source={require("../assets/images/physique/play.png")}
+                  />
                 </View>
               </View>
 
@@ -179,10 +185,16 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
                   className="relative h-40 w-40 rounded-lg object-fill"
                   source={require("../assets/images/physique/img2.png")}
                 />
-                <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                <View className="absolute bottom-2 left-2 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
                   <Text className="text-white" style={styles.textFont}>
                     21 phút
                   </Text>
+                </View>
+                <View className="absolute bottom-2 right-2 rounded-2xl p-1 ">
+                  <Image
+                    className="h-6 w-6 object-fill"
+                    source={require("../assets/images/physique/play.png")}
+                  />
                 </View>
               </View>
 
@@ -219,10 +231,16 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
                   className="h-40 w-40 rounded-lg object-fill"
                   source={require("../assets/images/physique/img3.png")}
                 />
-                <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                <View className="absolute bottom-2 left-2 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
                   <Text className="text-white" style={styles.textFont}>
                     21 phút
                   </Text>
+                </View>
+                <View className="absolute bottom-2 right-2 rounded-2xl p-1 ">
+                  <Image
+                    className="h-6 w-6 object-fill"
+                    source={require("../assets/images/physique/play.png")}
+                  />
                 </View>
               </View>
 
@@ -248,10 +266,16 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
                   className="relative h-40 w-40 rounded-lg object-fill"
                   source={require("../assets/images/physique/img4.png")}
                 />
-                <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                <View className="absolute bottom-2 left-2 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
                   <Text className="text-white" style={styles.textFont}>
                     21 phút
                   </Text>
+                </View>
+                <View className="absolute bottom-2 right-2 rounded-2xl p-1 ">
+                  <Image
+                    className="h-6 w-6 object-fill"
+                    source={require("../assets/images/physique/play.png")}
+                  />
                 </View>
               </View>
 

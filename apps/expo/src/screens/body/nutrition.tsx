@@ -135,11 +135,6 @@ export const Nutrition = () => {
                   className="h-40 w-40 rounded-lg object-fill"
                   source={require("../../assets/images/nutrition/img1.png")}
                 />
-                <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                  <Text className="text-white" style={styles.textFont}>
-                    21 phút
-                  </Text>
-                </View>
               </View>
 
               <View className="mt-2">
@@ -166,11 +161,6 @@ export const Nutrition = () => {
                   className="relative h-40 w-40 rounded-lg object-fill"
                   source={require("../../assets/images/nutrition/img2.png")}
                 />
-                <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                  <Text className="text-white" style={styles.textFont}>
-                    21 phút
-                  </Text>
-                </View>
               </View>
 
               <View className="mt-2">
@@ -208,11 +198,6 @@ export const Nutrition = () => {
                   className="h-40 w-40 rounded-lg object-fill"
                   source={require("../../assets/images/nutrition/img3.png")}
                 />
-                <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                  <Text className="text-white" style={styles.textFont}>
-                    21 phút
-                  </Text>
-                </View>
               </View>
 
               <View className="mt-2">
@@ -239,11 +224,6 @@ export const Nutrition = () => {
                   className="relative h-40 w-40 rounded-lg object-fill"
                   source={require("../../assets/images/nutrition/img4.png")}
                 />
-                <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                  <Text className="text-white" style={styles.textFont}>
-                    21 phút
-                  </Text>
-                </View>
               </View>
 
               <View className="mt-2">

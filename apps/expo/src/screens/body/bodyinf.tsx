@@ -1,4 +1,10 @@
-import { Image, SafeAreaView, Text, View } from "react-native";
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
 
 export const BodyPage = () => {
   return (
@@ -8,6 +14,9 @@ export const BodyPage = () => {
           className="h-auto object-contain"
           source={require("../../assets/images/body/body_page_header.png")}
         />
+        <TouchableOpacity className="absolute top-20 left-5 p-1">
+          <Image source={require("../../assets/images/body/back.png")} />
+        </TouchableOpacity>
       </View>
 
       <View className="absolute inset-x-0 mt-40 ml-auto mr-auto flex h-2/3 flex-col ">
