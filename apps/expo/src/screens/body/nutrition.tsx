@@ -10,8 +10,61 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
 import { ScreenProps } from "../../types/navigation";
+import React, { useState } from "react";
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const food = [
+  {
+    name: "Súp bí đỏ",
+    image: require("../../assets/images/nutrition/img1.png"),
+    heart: 2,
+    date: "11.02.2023",
+  },
+  {
+    name: "Sinh tố dâu",
+    image: require("../../assets/images/nutrition/img2.png"),
+    heart: 20,
+    date: "11.02.2023",
+  },
+  {
+    name: "Bánh plan",
+    image: require("../../assets/images/nutrition/img4.png"),
+    heart: 10,
+    date: "11.02.2023",
+  },
+  {
+    name: "Cốm",
+    image: require("../../assets/images/nutrition/img3.png"),
+    heart: 52,
+    date: "11.02.2023",
+  },
+];
+
+const suggest = [
+  {
+    name: "Gợi ý",
+  },
+  {
+    name: "Món chính",
+  },
+  {
+    name: "Bữa sáng",
+  },
+  {
+    name: "Ăn nhẹ",
+  },
+];
 
 export const Nutrition = () => {
+  const [selectedSuggest, setSelectedSuggest] = useState<string[]>([]);
+  const updateSelectedSuggest = (item: string) => {
+    const copyArray = [...selectedSuggest];
+    copyArray.push(item);
+    setSelectedSuggest(copyArray);
+  };
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className=" absolute top-0 left-0">
@@ -56,70 +109,51 @@ export const Nutrition = () => {
         </View>
       </View>
 
-      <View className="inset-x-5 mt-10 flex flex-row">
-        <TouchableOpacity
-          style={{
-            height: 40,
-            width: "15%",
-            borderRadius: 10,
-            backgroundColor: "#7A9861",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text className=" font-quicksand text-sm text-white ">Gợi ý</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          className="ml-5"
-          style={{
-            height: 40,
-            width: "20%",
-            borderRadius: 10,
-            backgroundColor: "#FFFFFF",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text className=" font-quicksand text-sm text-[#A5A5A5] ">
-            Món chính
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          className="ml-5"
-          style={{
-            height: 40,
-            width: "20%",
-            borderRadius: 10,
-            backgroundColor: "#FFFFFF",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text className=" font-quicksand text-sm text-[#A5A5A5] ">
-            Bữa sáng
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          className="ml-5"
-          style={{
-            height: 40,
-            width: "20%",
-            borderRadius: 10,
-            backgroundColor: "#FFFFFF",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text className=" font-quicksand text-sm text-[#A5A5A5] ">
-            Ăn nhẹ
-          </Text>
-        </TouchableOpacity>
+      <View className="inset-x-5 mt-5 flex flex-row">
+        {suggest.map((item) => {
+          return (
+            <>
+              <TouchableOpacity
+                key={item.name}
+                className={classNames(
+                  selectedSuggest.includes(item.name)
+                    ? "bg-[#7A9861]"
+                    : "bg-[#FFFFFF]",
+                  "mr-5",
+                )}
+                style={{
+                  height: 40,
+                  width: "20%",
+                  borderRadius: 10,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onPress={() => {
+                  if (selectedSuggest.includes(item.name)) {
+                    setSelectedSuggest(
+                      selectedSuggest.filter((i) => i !== item.name),
+                    );
+                  } else {
+                    updateSelectedSuggest(item.name);
+                  }
+                }}
+              >
+                <Text
+                  className={classNames(
+                    selectedSuggest.includes(item.name)
+                      ? "text-[#FFFFFF]"
+                      : "text-[#A5A5A5]",
+                  )}
+                >
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+            </>
+          );
+        })}
       </View>
 
-      <ScrollView className=" mt-10">
+      <ScrollView className=" mt-5">
         <View
           className=" mt-0"
           style={{
@@ -128,121 +162,38 @@ export const Nutrition = () => {
             justifyContent: "flex-start",
           }}
         >
-          <View className=" relative flex flex-row space-x-6">
-            <TouchableOpacity className="">
-              <View className="relative box-content">
-                <Image
-                  className="h-40 w-40 rounded-lg object-fill"
-                  source={require("../../assets/images/nutrition/img1.png")}
-                />
-              </View>
+          <View className=" relative" style={styles().itemsWrap}>
+            {food.map((item) => {
+              return (
+                <>
+                  <TouchableOpacity className="" style={styles(2).singleItem}>
+                    <View className="relative box-content">
+                      <Image
+                        className="h-40 w-40 rounded-lg object-fill"
+                        source={item.image}
+                      />
+                    </View>
 
-              <View className="mt-2">
-                <Text
-                  className="text-base text-[#5A2D22]"
-                  style={styles.textFont}
-                >
-                  Súp bí đỏ
-                </Text>
-                <View className=" flex flex-row items-baseline space-x-1">
-                  <Image
-                    source={require("../../assets/images/home/heart.png")}
-                  />
-                  <Text className="text-xs text-[#DED5C6]">
-                    22 &#8226; 11.02.2023{" "}
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity className="">
-              <View className="relative box-content">
-                <Image
-                  className="relative h-40 w-40 rounded-lg object-fill"
-                  source={require("../../assets/images/nutrition/img2.png")}
-                />
-              </View>
-
-              <View className="mt-2">
-                <Text
-                  className="text-base text-[#5A2D22]"
-                  style={styles.textFont}
-                >
-                  Sinh tố dâu
-                </Text>
-                <View className=" flex flex-row items-baseline space-x-1">
-                  <Image
-                    source={require("../../assets/images/home/heart.png")}
-                  />
-                  <Text className="text-xs text-[#DED5C6]">
-                    22 &#8226; 11.02.2023{" "}
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        <View
-          className=" mt-10"
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "flex-start",
-          }}
-        >
-          <View className=" relative flex flex-row space-x-6">
-            <TouchableOpacity className="">
-              <View className="relative box-content">
-                <Image
-                  className="h-40 w-40 rounded-lg object-fill"
-                  source={require("../../assets/images/nutrition/img3.png")}
-                />
-              </View>
-
-              <View className="mt-2">
-                <Text
-                  className="text-base text-[#5A2D22]"
-                  style={styles.textFont}
-                >
-                  Bánh plan
-                </Text>
-                <View className=" flex flex-row items-baseline space-x-1">
-                  <Image
-                    source={require("../../assets/images/home/heart.png")}
-                  />
-                  <Text className="text-xs text-[#DED5C6]">
-                    22 &#8226; 11.02.2023{" "}
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity className="">
-              <View className="relative box-content">
-                <Image
-                  className="relative h-40 w-40 rounded-lg object-fill"
-                  source={require("../../assets/images/nutrition/img4.png")}
-                />
-              </View>
-
-              <View className="mt-2">
-                <Text
-                  className="text-base text-[#5A2D22]"
-                  style={styles.textFont}
-                >
-                  Cốm
-                </Text>
-                <View className=" flex flex-row items-baseline space-x-1">
-                  <Image
-                    source={require("../../assets/images/home/heart.png")}
-                  />
-                  <Text className="text-xs text-[#DED5C6]">
-                    22 &#8226; 11.02.2023{" "}
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
+                    <View className="mt-2">
+                      <Text
+                        className="text-base text-[#5A2D22]"
+                        style={styles().textFont}
+                      >
+                        {item.name}
+                      </Text>
+                      <View className=" flex flex-row items-baseline space-x-1">
+                        <Image
+                          source={require("../../assets/images/home/heart.png")}
+                        />
+                        <Text className="text-xs text-[#DED5C6]">
+                          {item.heart} &#8226; {item.date}{" "}
+                        </Text>
+                      </View>
+                    </View>
+                  </TouchableOpacity>
+                </>
+              );
+            })}
           </View>
         </View>
       </ScrollView>
