@@ -16,6 +16,10 @@ It uses [Turborepo](https://turborepo.org/) and contains:
 
 - Nếu gặp lỗi ở trong folder [nextjs](apps/nextjs/) thì cần xóa [node_modules](apps/nextjs/node_modules/) trong folder đó đi và chạy `pnpm i` lại
 
+## Trang đăng nhập
+
+- Có 2 trường email và password có thể dùng cho cả đăng ký và đăng nhập (có xác thực email bằng code)
+
 ## Code Layout
 
 ```text

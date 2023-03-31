@@ -138,9 +138,8 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
           <View className="relative ml-5 mt-4 flex h-fit flex-row space-x-6 ">
             {suggest.map((item) => {
               return (
-                <View className="h-[1/9] w-fit">
+                <View className="h-[1/9] w-fit" key={item.name}>
                   <TouchableOpacity
-                    key={item.name}
                     className={classNames(
                       selectedSuggest.includes(item.name)
                         ? "bg-[#7A9861]"
@@ -190,48 +189,46 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
           >
             {video.map((item) => {
               return (
-                <>
-                  <TouchableOpacity
-                    key={item.name}
-                    className=""
-                    style={styles(2).singleItem}
-                  >
-                    <View className="relative box-content w-40">
-                      <Image
-                        className="h-40 w-40 rounded-lg object-fill"
-                        source={item.image}
-                      />
-                      <View className="absolute bottom-2 left-2 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                        <Text className="text-white" style={styles().textFont}>
-                          {item.time} phút
-                        </Text>
-                      </View>
-                      <View className="absolute bottom-2 right-2 rounded-2xl">
-                        <Image
-                          className="h-6 w-6 object-fill"
-                          source={require("../assets/images/physique/play.png")}
-                        />
-                      </View>
-                    </View>
-
-                    <View className="mt-2">
-                      <Text
-                        className="text-base text-[#5A2D22]"
-                        style={styles().textFont}
-                      >
-                        {item.name}
+                <TouchableOpacity
+                  key={item.name}
+                  className=""
+                  style={styles(2).singleItem}
+                >
+                  <View className="relative box-content w-40">
+                    <Image
+                      className="h-40 w-40 rounded-lg object-fill"
+                      source={item.image}
+                    />
+                    <View className="absolute bottom-2 left-2 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                      <Text className="text-white" style={styles().textFont}>
+                        {item.time} phút
                       </Text>
-                      <View className=" flex flex-row items-baseline space-x-1">
-                        <Image
-                          source={require("../assets/images/home/heart.png")}
-                        />
-                        <Text className="text-xs text-[#DED5C6]">
-                          {item.heart} &#8226; {item.date}{" "}
-                        </Text>
-                      </View>
                     </View>
-                  </TouchableOpacity>
-                </>
+                    <View className="absolute bottom-2 right-2 rounded-2xl">
+                      <Image
+                        className="h-6 w-6 object-fill"
+                        source={require("../assets/images/physique/play.png")}
+                      />
+                    </View>
+                  </View>
+
+                  <View className="mt-2">
+                    <Text
+                      className="text-base text-[#5A2D22]"
+                      style={styles().textFont}
+                    >
+                      {item.name}
+                    </Text>
+                    <View className=" flex flex-row items-baseline space-x-1">
+                      <Image
+                        source={require("../assets/images/home/heart.png")}
+                      />
+                      <Text className="text-xs text-[#DED5C6]">
+                        {item.heart} &#8226; {item.date}{" "}
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
               );
             })}
           </View>

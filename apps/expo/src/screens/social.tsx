@@ -82,7 +82,7 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
             >
               {data.map((item) => {
                 return (
-                  <View className="mr-5 mb-5 h-[1/9] w-72">
+                  <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
                     <TouchableOpacity className="flex flex-row justify-start space-x-3">
                       <View className="rounded-3xl">
                         <Image
@@ -146,7 +146,7 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
             >
               {data.map((item) => {
                 return (
-                  <View className="mr-5 mb-5 h-[1/9] w-72">
+                  <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
                     <TouchableOpacity className="flex flex-row justify-start space-x-3">
                       <View className="rounded-3xl">
                         <Image
