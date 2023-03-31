@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import {
   BodyIcon,
   HomeIcon,
@@ -18,19 +18,53 @@ import { RootStackParamList } from "./types/navigation";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
-export const styles = StyleSheet.create({
-  textFont: {
-    fontFamily: "Quicksand_500Medium",
-  },
-  textFontBold: {
-    fontFamily: "Quicksand_700Bold",
-    fontWeight: "bold",
-  },
-  textFontSemiBold: {
-    fontFamily: "Quicksand_600SemiBold",
-    fontWeight: "bold",
-  },
-});
+// Gap stuff
+const { width } = Dimensions.get("window");
+const gap = 12;
+const itemPerRow = 2;
+const totalGapSize = (itemPerRow - 1) * gap;
+const windowWidth = width;
+const childWidth =
+  (windowWidth - (itemPerRow - 1) * gap - gap * 4) / itemPerRow;
+
+export const styles = (props?: any) =>
+  StyleSheet.create({
+    textFont: {
+      fontFamily: "Quicksand_500Medium",
+    },
+    textFontBold: {
+      fontFamily: "Quicksand_700Bold",
+      fontWeight: "bold",
+    },
+    textFontSemiBold: {
+      fontFamily: "Quicksand_600SemiBold",
+      fontWeight: "bold",
+    },
+
+    itemsWrap: {
+      display: "flex",
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      marginVertical: -(gap / 2),
+      marginHorizontal: -(gap / 2),
+    },
+    singleItem: {
+      marginHorizontal: gap / 2,
+      marginVertical: gap / 2,
+
+      minWidth: (windowWidth - (itemPerRow - 1) * gap - gap * 4) / props,
+      maxWidth: (windowWidth - (itemPerRow - 1) * gap - gap * 4) / props,
+    },
+
+    singleItemCloser: {
+      marginHorizontal: 0,
+      marginVertical: 0,
+
+      minWidth: (windowWidth - (itemPerRow - 1) * gap - gap * 4) / props,
+      maxWidth: (windowWidth - (itemPerRow - 1) * gap - gap * 4) / props,
+    },
+  });
 
 const Root = () => {
   return (

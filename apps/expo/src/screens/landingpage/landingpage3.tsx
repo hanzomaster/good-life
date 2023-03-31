@@ -30,7 +30,7 @@ export const LandingPage3 = () => {
         <View className=" relative inset-x-0 mx-auto w-full items-center">
           <Text
             className=" font-quicksand h-auto w-2/3 flex-wrap text-center text-3xl text-[#FFFF]"
-            style={styles.textFont}
+            style={styles().textFont}
           >
             BODY
           </Text>
@@ -38,7 +38,7 @@ export const LandingPage3 = () => {
 
         <Text
           className="font-primary h-auto w-2/3 flex-wrap text-justify text-lg text-[#FFFF]"
-          style={styles.textFont}
+          style={styles().textFont}
         >
           Cung cấp những bài tập rèn luyện thể chất và phương pháp ăn uống đủ
           dinh dưỡng cho cơ thể.
