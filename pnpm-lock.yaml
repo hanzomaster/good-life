@@ -59,6 +59,7 @@ importers:
       postcss: ^8.4.19
       react: 18.1.0
       react-dom: 18.1.0
+      react-hook-form: ^7.43.9
       react-native: 0.70.5
       react-native-paper: ^5.5.0
       react-native-safe-area-context: 4.4.1
@@ -92,6 +93,7 @@ importers:
       nativewind: 2.0.11_f3xea42f6zrwqyr5c6mbkdauxa
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
+      react-hook-form: 7.43.9_react@18.1.0
       react-native: 0.70.5_rnbco5eodjkfp6ucueusre3z4i_2hkxedd44to6uuf252s62q5boq
       react-native-paper: 5.5.0_574jn7b75qaijls27alli4kpmi
       react-native-safe-area-context: 4.4.1_tj3nonr5gneraukzjkxpsiy7yu
@@ -9132,6 +9134,15 @@ packages:
     engines: {node: '>=10'}
     peerDependencies:
       react: '>=17.0.0'
+    dependencies:
+      react: 18.1.0
+    dev: false
+
+  /react-hook-form/7.43.9_react@18.1.0:
+    resolution: {integrity: sha512-AUDN3Pz2NSeoxQ7Hs6OhQhDr6gtF9YRuutGDwPQqhSUAHJSgGl2VeY3qN19MG0SucpjgDiuMJ4iC5T5uB+eaNQ==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
     dependencies:
       react: 18.1.0
     dev: false

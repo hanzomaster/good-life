@@ -1,66 +1,65 @@
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { Image, Text, TouchableOpacity, View, TextInput } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
 
 export const MindScreen = (props: ScreenProps<"Mind">) => {
+  const [isPressed, setIsPressed] = useState(false);
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#7A9861]">
-      <View className=" relative top-0 left-auto p-0">
+    <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
+      <View className="absolute">
         <Image
-          className=" h-40 w-1/2 object-scale-down"
-          source={require("../assets/images/landingpage3/topleft.png")}
+          source={require("../assets/images/mind/Group_36924.png")}
+          className=""
         />
       </View>
-
-      <View className="relative right-0 flex-1 items-end">
-        <Image
-          className="object-fit h-auto w-auto scale-[.8]"
-          source={require("../assets/images/landingpage3/centerright.png")}
-        />
+      <View className="absolute inset-x-0 mt-16 items-center">
+        <Text className=" text-2xl font-semibold text-white">Mind</Text>
+      </View>
+      <View className="absolute right-0 mt-20 mr-5">
+        <Image source={require("../assets/images/mind/Vector.png")} />
       </View>
 
-      <View className="absolute inset-x-0 mt-28 ml-auto mr-auto flex h-3/5 flex-col items-center justify-between align-baseline">
-        <View className=" relative inset-x-0 mx-auto w-full items-center">
-          <Text className=" font-quicksand h-auto w-2/3 flex-wrap text-center text-3xl text-[#FFFF] ">
-            BODY
-          </Text>
+      <View className="absolute mt-44 px-5 ">
+        <View className="flex flex-row gap-10">
+          <TouchableOpacity onPress={() => setIsPressed(!isPressed)}>
+            <Text
+              className={`${
+                !isPressed ? "text-[#FF8669]" : "text-[#9B9B9BE0]/80"
+              }
+            mb-2 text-xl font-semibold`}
+            >
+              Tâm trí
+            </Text>
+            {!isPressed && (
+              <Image
+                source={require("../assets/images/mind/Rectangle_1315.png")}
+              />
+            )}
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => setIsPressed(!isPressed)}>
+            <Text
+              className={`${
+                isPressed ? "text-[#FF8669]" : "text-[#9B9B9BE0]/80"
+              }
+            mb-2 text-xl font-semibold`}
+            >
+              Âm nhạc
+            </Text>
+            {isPressed && (
+              <Image
+                source={require("../assets/images/mind/Rectangle_1315.png")}
+              />
+            )}
+          </TouchableOpacity>
         </View>
 
-        <Text
-          className="h-auto w-2/3 flex-wrap text-justify text-2xl"
-          style={styles.textFont}
-        >
-          Cung cấp những bài tập rèn luyện thể chất và phương pháp ăn uống đủ
-          dinh dưỡng cho cơ thể.
-        </Text>
-
-        <Image
-          className=" relative h-fit w-fit scale-[.8]"
-          source={require("../assets/images/landingpage3/center.png")}
-        />
-      </View>
-
-      <View className="inset-x-0 mb-0 items-center ">
-        <Image
-          className=" absolute mt-40 h-fit w-fit"
-          source={require("../assets/images/landingpage3/slider.png")}
-        />
-        <TouchableOpacity
-          className="absolute z-10 mt-44 h-14 w-14 items-center justify-center rounded-full bg-[#FF835C]"
-          onPress={() => {
-            props.navigation.navigate("LandingPage2");
-          }}
-        >
-          <Image
-            className=" relative h-fit w-fit "
-            source={require("../assets/images/landingpage3/arrow.png")}
-          />
-        </TouchableOpacity>
-        <View>
-          <Image
-            className="h-auto w-auto scale-x-90 object-fill"
-            source={require("../assets/images/landingpage3/bottom.png")}
+        <View className="flex flex-row items-center rounded-xl border-2  border-[#FF835C33]/20 bg-white px-3 py-1">
+          <Image source={require("../assets/images/mind/Icon.png")} />
+          <TextInput
+            placeholder="Tìm kiếm"
+            className="px-2 py-1 text-sm text-[#9B9B9B]"
           />
         </View>
       </View>
