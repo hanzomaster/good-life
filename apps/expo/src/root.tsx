@@ -64,6 +64,14 @@ export const styles = (props?: any) =>
       minWidth: (windowWidth - (itemPerRow - 1) * gap - gap * 4) / props,
       maxWidth: (windowWidth - (itemPerRow - 1) * gap - gap * 4) / props,
     },
+
+    GridHorizontal: {
+      marginHorizontal: 0,
+      marginVertical: 0,
+
+      // minWidth: (windowWidth - (itemPerRow - 1) * gap - gap * 4) / 3,
+      // maxWidth: (windowWidth - (itemPerRow - 1) * gap - gap * 4) / 3,
+    },
   });
 
 const Root = () => {
@@ -92,7 +100,7 @@ const Root = () => {
         component={HomeScreen}
         options={{
           tabBarAccessibilityLabel: "Home",
-          tabBarLabel: "Home",
+          tabBarLabel: "Trang chủ",
           tabBarIcon: ({ color, focused }) => {
             return focused ? (
               <View className="border-t-primary-orange border-t-2 pt-1">
@@ -143,7 +151,7 @@ const Root = () => {
         component={SocialScreen}
         options={{
           tabBarAccessibilityLabel: "Social",
-          tabBarLabel: "Social",
+          tabBarLabel: "Kết nối",
           tabBarIcon: ({ color, focused }) => {
             return focused ? (
               <View className="border-t-primary-orange border-t-2 pt-1">
@@ -160,7 +168,7 @@ const Root = () => {
         component={ProfileScreen}
         options={{
           tabBarAccessibilityLabel: "Profile",
-          tabBarLabel: "Profile",
+          tabBarLabel: "Hồ sơ",
           tabBarIcon: ({ color, focused }) => {
             return focused ? (
               <View className="border-t-primary-orange border-t-2 pt-1">
