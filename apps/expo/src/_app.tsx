@@ -16,6 +16,7 @@ import Constants from "expo-constants";
 import { NavigationContainer } from "@react-navigation/native";
 import { DefaultTheme, Provider } from "react-native-paper";
 import Root from "./root";
+import { SignInSignUpScreen } from "./screens/signin";
 import { tokenCache } from "./utils/cache";
 
 // Remove background color from the bottom navigation bar when focus
@@ -54,8 +55,8 @@ export const App = () => {
         </TRPCProvider>
       </SignedIn>
       <SignedOut>
-        {/* <SignInSignUpScreen /> */}
-        <TRPCProvider>
+        <SignInSignUpScreen />
+        {/* <TRPCProvider>
           <SafeAreaProvider>
             <Provider theme={theme}>
               <NavigationContainer>
@@ -64,7 +65,7 @@ export const App = () => {
             </Provider>
             <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
           </SafeAreaProvider>
-        </TRPCProvider>
+        </TRPCProvider> */}
       </SignedOut>
     </ClerkProvider>
   );

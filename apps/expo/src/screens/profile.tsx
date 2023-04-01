@@ -1,4 +1,5 @@
-import { Button, Text, View, Image, TouchableOpacity } from "react-native";
+import { useAuth } from "@clerk/clerk-expo";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScreenProps } from "../types/navigation";
 
@@ -37,6 +38,7 @@ const data = [
   },
 ];
 export const ProfileScreen = (props: ScreenProps<"Profile">) => {
+  const { signOut } = useAuth();
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className=" absolute" style={{ alignItems: "center" }}>
@@ -65,32 +67,41 @@ export const ProfileScreen = (props: ScreenProps<"Profile">) => {
       <View className="relative mt-60" style={{ left: "5%" }}>
         {data.map((item) => {
           return (
-            <>
-              <View className="mt-5" style={{ justifyContent: "center" }}>
-                <TouchableOpacity className="flex flex-row ">
-                  <Image
-                    className="ml-5 mt-2 h-auto object-cover"
-                    source={item.image}
-                  />
-                  <Text
-                    className=" font-quicksand ml-10 text-lg text-[#5A2D22] "
-                    style={{
-                      fontWeight: "500",
-                    }}
-                  >
-                    {item.name}
-                  </Text>
-                </TouchableOpacity>
-                <View
+            <View
+              className="mt-5"
+              style={{ justifyContent: "center" }}
+              key={item.name}
+            >
+              <TouchableOpacity
+                className="flex flex-row"
+                onPress={() => {
+                  if (item.name === "Đăng xuất") {
+                    signOut();
+                  }
+                }}
+              >
+                <Image
+                  className="ml-5 mt-2 h-auto object-cover"
+                  source={item.image}
+                />
+                <Text
+                  className=" font-quicksand ml-10 text-lg text-[#5A2D22] "
                   style={{
-                    height: 1,
-                    width: "90%",
-                    borderRadius: 10,
-                    backgroundColor: "#CACACA",
+                    fontWeight: "500",
                   }}
-                ></View>
-              </View>
-            </>
+                >
+                  {item.name}
+                </Text>
+              </TouchableOpacity>
+              <View
+                style={{
+                  height: 1,
+                  width: "90%",
+                  borderRadius: 10,
+                  backgroundColor: "#CACACA",
+                }}
+              ></View>
+            </View>
           );
         })}
       </View>

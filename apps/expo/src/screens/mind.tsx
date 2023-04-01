@@ -10,7 +10,6 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ScreenProps } from "../types/navigation";
 import { styles } from "../root";
-import Study from "../assets/svgs/things/study";
 
 export const MindScreen = (props: ScreenProps<"Mind">) => {
   const [isPressed, setIsPressed] = useState(false);
