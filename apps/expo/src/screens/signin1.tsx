@@ -25,7 +25,7 @@ export const SignIn = () => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED] px-6">
       <View className="absolute">
-        <Image source={require("../common/signin/Vector.png")} />
+        <Image source={require("../assets/images/signin/Vector.png")} />
       </View>
       <View className=" mt-14 flex flex-row justify-between">
         <TouchableOpacity>
