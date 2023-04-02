@@ -95,7 +95,7 @@ export const ProfileScreen = (props: ScreenProps<"Profile">) => {
                     {item.name}
                   </Text>
                 </TouchableOpacity>
-                <View className="h-0.5 rounded-xl bg-[#CACACA]"></View>
+                <View className="h-0.5 bg-[#CACACA]"></View>
               </View>
             </>
           );
