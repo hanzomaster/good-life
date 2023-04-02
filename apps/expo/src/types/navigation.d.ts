@@ -16,6 +16,16 @@ export type RootStackParamList = {
   EmotionChoosing2: undefined;
 };
 
+export type AuthStackParamList = {
+  Login: undefined;
+  Register: undefined;
+};
+
+export type AuthScreenProps<T extends keyof AuthStackParamList> = {
+  navigation: NativeStackNavigationProp<AuthStackParamList, T>;
+  route: RouteProp<AuthStackParamList, T>;
+};
+
 export type ScreenProps<T extends keyof RootStackParamList> = {
   navigation: NativeStackNavigationProp<RootStackParamList, T>;
   route: RouteProp<RootStackParamList, T>;

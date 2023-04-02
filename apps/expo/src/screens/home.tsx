@@ -53,7 +53,6 @@ const CreatePost: React.FC = () => {
 
   const [title, onChangeTitle] = React.useState("");
   const [content, onChangeContent] = React.useState("");
-  const date = Date.now();
   return (
     <View className="flex flex-col border-t-2 border-gray-500 p-4">
       <TextInput
@@ -84,9 +83,6 @@ const CreatePost: React.FC = () => {
 };
 
 export const HomeScreen = (props: ScreenProps<"Home">) => {
-  const postQuery = trpc.post.all.useQuery();
-  const [showPost, setShowPost] = React.useState<string | null>(null);
-
   return (
     <SafeAreaView className="inset-0 h-full w-full overflow-y-scroll bg-[#FFF4ED]">
       <ScrollView>

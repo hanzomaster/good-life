@@ -29,7 +29,7 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
 
         <Text
           className="h-auto w-2/3 flex-wrap text-justify text-2xl"
-          style={styles.textFont}
+          style={styles().textFont}
         >
           Cung cấp những bài tập rèn luyện thể chất và phương pháp ăn uống đủ
           dinh dưỡng cho cơ thể.
@@ -49,7 +49,7 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
         <TouchableOpacity
           className="absolute z-10 mt-44 h-14 w-14 items-center justify-center rounded-full bg-[#FF835C]"
           onPress={() => {
-            props.navigation.navigate("LandingPage2");
+            props.navigation.navigate("Body");
           }}
         >
           <Image

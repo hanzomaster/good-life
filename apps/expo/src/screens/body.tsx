@@ -65,6 +65,7 @@ const suggest = [
   },
 ];
 
+const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 export const BodyScreen = (props: ScreenProps<"Body">) => {
   const [selectedSuggest, setSelectedSuggest] = useState<string[]>([]);
   const updateSelectedSuggest = (item: string) => {
@@ -119,48 +120,58 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
           />
         </View>
       </View>
-      <View className="inset-x-5 mt-5 flex flex-row">
-        {suggest.map((item) => {
-          return (
-            <>
-              <TouchableOpacity
-                key={item.name}
-                className={classNames(
-                  selectedSuggest.includes(item.name)
-                    ? "bg-[#7A9861]"
-                    : "bg-[#FFFFFF]",
-                  "mr-5",
-                )}
-                style={{
-                  height: 40,
-                  width: "20%",
-                  borderRadius: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                onPress={() => {
-                  if (selectedSuggest.includes(item.name)) {
-                    setSelectedSuggest(
-                      selectedSuggest.filter((i) => i !== item.name),
-                    );
-                  } else {
-                    updateSelectedSuggest(item.name);
-                  }
-                }}
-              >
-                <Text
-                  className={classNames(
-                    selectedSuggest.includes(item.name)
-                      ? "text-[#FFFFFF]"
-                      : "text-[#A5A5A5]",
-                  )}
-                >
-                  {item.name}
-                </Text>
-              </TouchableOpacity>
-            </>
-          );
-        })}
+      <View
+        className=" mt-2"
+        style={{
+          alignItems: "center",
+          justifyContent: "flex-start",
+        }}
+      >
+        <ScrollView
+          className=""
+          alwaysBounceHorizontal
+          alwaysBounceVertical={false}
+          automaticallyAdjustContentInsets={false}
+          directionalLockEnabled
+          showsHorizontalScrollIndicator={false}
+        >
+          <View className="relative ml-5 mt-4 flex h-fit flex-row space-x-6 ">
+            {suggest.map((item) => {
+              return (
+                <View className="h-[1/9] w-fit" key={item.name}>
+                  <TouchableOpacity
+                    className={classNames(
+                      selectedSuggest.includes(item.name)
+                        ? "bg-[#7A9861]"
+                        : "bg-[#FFFFFF]",
+                      "h-10 w-20 items-center justify-center rounded-xl",
+                    )}
+                    onPress={() => {
+                      if (selectedSuggest.includes(item.name)) {
+                        setSelectedSuggest(
+                          selectedSuggest.filter((i) => i !== item.name),
+                        );
+                      } else {
+                        updateSelectedSuggest(item.name);
+                      }
+                    }}
+                  >
+                    <Text
+                      className={classNames(
+                        selectedSuggest.includes(item.name)
+                          ? "text-[#FFFFFF]"
+                          : "text-[#A5A5A5]",
+                      )}
+                      style={styles().textFontSemiBold}
+                    >
+                      {item.name}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+          </View>
+        </ScrollView>
       </View>
 
       <ScrollView className=" mt-5">
@@ -172,51 +183,52 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
             justifyContent: "flex-start",
           }}
         >
-          <View className=" relative" style={styles().itemsWrap}>
+          <View
+            className=" relative ml-1 items-center"
+            style={styles().itemsWrap}
+          >
             {video.map((item) => {
               return (
-                <>
-                  <TouchableOpacity
-                    key={item.name}
-                    className=""
-                    style={styles(2).singleItem}
-                  >
-                    <View className="relative box-content">
-                      <Image
-                        className="h-40 w-40 rounded-lg object-fill"
-                        source={item.image}
-                      />
-                      <View className="absolute bottom-2 left-2 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                        <Text className="text-white" style={styles().textFont}>
-                          {item.time} phút
-                        </Text>
-                      </View>
-                      <View className="absolute bottom-2 right-2 rounded-2xl p-1 ">
-                        <Image
-                          className="h-6 w-6 object-fill"
-                          source={require("../assets/images/physique/play.png")}
-                        />
-                      </View>
-                    </View>
-
-                    <View className="mt-2">
-                      <Text
-                        className="text-base text-[#5A2D22]"
-                        style={styles().textFont}
-                      >
-                        {item.name}
+                <TouchableOpacity
+                  key={item.name}
+                  className=""
+                  style={styles(2).singleItem}
+                >
+                  <View className="relative box-content w-40">
+                    <Image
+                      className="h-40 w-40 rounded-lg object-fill"
+                      source={item.image}
+                    />
+                    <View className="absolute bottom-2 left-2 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                      <Text className="text-white" style={styles().textFont}>
+                        {item.time} phút
                       </Text>
-                      <View className=" flex flex-row items-baseline space-x-1">
-                        <Image
-                          source={require("../assets/images/home/heart.png")}
-                        />
-                        <Text className="text-xs text-[#DED5C6]">
-                          {item.heart} &#8226; {item.date}{" "}
-                        </Text>
-                      </View>
                     </View>
-                  </TouchableOpacity>
-                </>
+                    <View className="absolute bottom-2 right-2 rounded-2xl">
+                      <Image
+                        className="h-6 w-6 object-fill"
+                        source={require("../assets/images/physique/play.png")}
+                      />
+                    </View>
+                  </View>
+
+                  <View className="mt-2">
+                    <Text
+                      className="text-base text-[#5A2D22]"
+                      style={styles().textFont}
+                    >
+                      {item.name}
+                    </Text>
+                    <View className=" flex flex-row items-baseline space-x-1">
+                      <Image
+                        source={require("../assets/images/home/heart.png")}
+                      />
+                      <Text className="text-xs text-[#DED5C6]">
+                        {item.heart} &#8226; {item.date}{" "}
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
               );
             })}
           </View>
