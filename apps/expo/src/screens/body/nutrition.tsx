@@ -72,8 +72,11 @@ export const Nutrition = () => {
           className="h-auto object-cover"
           source={require("../../assets/images/nutrition/header.png")}
         />
-        <TouchableOpacity className="absolute top-20 right-10 p-1">
-          <Image source={require("../../assets/images/physique/expand.png")} />
+        <TouchableOpacity
+          className="absolute top-20 right-10 p-1"
+          onPress={() => {}}
+        >
+          <Image source={require("../../assets/images/nutrition/expand.png")} />
         </TouchableOpacity>
       </View>
       <View className="absolute inset-x-5 mt-40 ml-auto mr-auto flex flex-row">
@@ -82,11 +85,11 @@ export const Nutrition = () => {
             Thể chất
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Text className=" font-quicksand ml-10 text-2xl text-[#FF8669] ">
+        <TouchableOpacity className="ml-10" onPress={() => {}}>
+          <Text className=" font-quicksand text-2xl text-[#FF8669] ">
             Dinh dưỡng
           </Text>
-          <View className=" absolute inset-x-10 mt-0">
+          <View className=" absolute inset-x-0 mt-0">
             <Image
               className="mt-10 h-auto object-cover"
               source={require("../../assets/images/nutrition/tab.png")}
@@ -94,13 +97,9 @@ export const Nutrition = () => {
           </View>
         </TouchableOpacity>
       </View>
+
       <View className="mt-10">
-        <View
-          className="ml-5 mr-5 mt-40 flex flex-row items-center border-2  border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1"
-          style={{
-            borderRadius: 10,
-          }}
-        >
+        <View className=" ml-5 mr-5 mt-40 flex flex-row items-center rounded-lg  border-2 border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1">
           <Image source={require("../../assets/images/nutrition/Icon.png")} />
           <TextInput
             placeholder="Tìm kiếm"
@@ -108,49 +107,52 @@ export const Nutrition = () => {
           />
         </View>
       </View>
-
-      <View className="inset-x-5 mt-5 flex flex-row">
-        {suggest.map((item) => {
-          return (
-            <>
-              <TouchableOpacity
-                key={item.name}
-                className={classNames(
-                  selectedSuggest.includes(item.name)
-                    ? "bg-[#7A9861]"
-                    : "bg-[#FFFFFF]",
-                  "mr-5",
-                )}
-                style={{
-                  height: 40,
-                  width: "20%",
-                  borderRadius: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                onPress={() => {
-                  if (selectedSuggest.includes(item.name)) {
-                    setSelectedSuggest(
-                      selectedSuggest.filter((i) => i !== item.name),
-                    );
-                  } else {
-                    updateSelectedSuggest(item.name);
-                  }
-                }}
-              >
-                <Text
-                  className={classNames(
-                    selectedSuggest.includes(item.name)
-                      ? "text-[#FFFFFF]"
-                      : "text-[#A5A5A5]",
-                  )}
-                >
-                  {item.name}
-                </Text>
-              </TouchableOpacity>
-            </>
-          );
-        })}
+      <View className=" mt-2 justify-center align-middle">
+        <ScrollView
+          className=""
+          alwaysBounceHorizontal
+          alwaysBounceVertical={false}
+          automaticallyAdjustContentInsets={false}
+          directionalLockEnabled
+          showsHorizontalScrollIndicator={false}
+        >
+          <View className="relative ml-5 mt-4 flex h-fit flex-row space-x-6 ">
+            {suggest.map((item) => {
+              return (
+                <View className="h-[1/9] w-fit" key={item.name}>
+                  <TouchableOpacity
+                    className={classNames(
+                      selectedSuggest.includes(item.name)
+                        ? "bg-[#7A9861]"
+                        : "bg-[#FFFFFF]",
+                      "h-10 w-20 items-center justify-center rounded-xl",
+                    )}
+                    onPress={() => {
+                      if (selectedSuggest.includes(item.name)) {
+                        setSelectedSuggest(
+                          selectedSuggest.filter((i) => i !== item.name),
+                        );
+                      } else {
+                        updateSelectedSuggest(item.name);
+                      }
+                    }}
+                  >
+                    <Text
+                      className={classNames(
+                        selectedSuggest.includes(item.name)
+                          ? "text-[#FFFFFF]"
+                          : "text-[#A5A5A5]",
+                      )}
+                      style={styles().textFontSemiBold}
+                    >
+                      {item.name}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            })}
+          </View>
+        </ScrollView>
       </View>
 
       <ScrollView className=" mt-5">
@@ -162,36 +164,41 @@ export const Nutrition = () => {
             justifyContent: "flex-start",
           }}
         >
-          <View className=" relative" style={styles().itemsWrap}>
+          <View
+            className=" relative ml-1 items-center"
+            style={styles().itemsWrap}
+          >
             {food.map((item) => {
               return (
-                <>
-                  <TouchableOpacity className="" style={styles(2).singleItem}>
-                    <View className="relative box-content">
-                      <Image
-                        className="h-40 w-40 rounded-lg object-fill"
-                        source={item.image}
-                      />
-                    </View>
+                <TouchableOpacity
+                  key={item.name}
+                  className=""
+                  style={styles(2).singleItem}
+                >
+                  <View className="relative box-content w-40">
+                    <Image
+                      className="h-40 w-40 rounded-lg object-fill"
+                      source={item.image}
+                    />
+                  </View>
 
-                    <View className="mt-2">
-                      <Text
-                        className="text-base text-[#5A2D22]"
-                        style={styles().textFont}
-                      >
-                        {item.name}
+                  <View className="mt-2">
+                    <Text
+                      className="text-base text-[#5A2D22]"
+                      style={styles().textFont}
+                    >
+                      {item.name}
+                    </Text>
+                    <View className=" flex flex-row items-baseline space-x-1">
+                      <Image
+                        source={require("../../assets/images/home/heart.png")}
+                      />
+                      <Text className="text-xs text-[#DED5C6]">
+                        {item.heart} &#8226; {item.date}
                       </Text>
-                      <View className=" flex flex-row items-baseline space-x-1">
-                        <Image
-                          source={require("../../assets/images/home/heart.png")}
-                        />
-                        <Text className="text-xs text-[#DED5C6]">
-                          {item.heart} &#8226; {item.date}{" "}
-                        </Text>
-                      </View>
                     </View>
-                  </TouchableOpacity>
-                </>
+                  </View>
+                </TouchableOpacity>
               );
             })}
           </View>
