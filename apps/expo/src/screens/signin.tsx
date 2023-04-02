@@ -16,6 +16,7 @@ import { Controller, useForm } from "react-hook-form";
 import { styles } from "../root";
 import { ForgotPasswordScreen } from "./forgotPassword";
 import { ChangePasswordScreen } from "./changePassword";
+import { VerifyEmailScreen } from "./verifyEmail";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
@@ -31,6 +32,7 @@ const SignInSignUpScreen = () => {
       <Stack.Screen name="Register" component={SignUpScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
       <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
+      <Stack.Screen name="VerifyEmail" component={VerifyEmailScreen} />
     </Stack.Navigator>
   );
 };
@@ -211,28 +213,10 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
   const { isLoaded, setSession, signUp } = useSignUp();
   const [code, setCode] = React.useState("");
 
-  // const onPress = async () => {
-  //   if (!isLoaded) {
-  //     return;
-  //   }
-
-  //   try {
-  //     const completeSignUp = await signUp.attemptEmailAddressVerification({
-  //       code,
-  //     });
-
-  //     await setSession(completeSignUp.createdSessionId);
-  //   } catch (err: any) {
-  //     console.log("Error:> " + err?.status || "");
-  //     console.log("Error:> " + err?.errors ? JSON.stringify(err.errors) : err);
-  //   }
-  // };
-
   const {
     control,
     handleSubmit,
     formState: { errors, isSubmitSuccessful },
-    reset,
     watch,
   } = useForm();
 
@@ -251,6 +235,10 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
 
       await signUp.prepareEmailAddressVerification({
         strategy: "email_code",
+      });
+
+      props.navigation.navigate("VerifyEmail", {
+        email: data.email,
       });
     } catch (err: any) {
       alert(

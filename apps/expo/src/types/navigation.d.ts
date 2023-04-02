@@ -23,6 +23,9 @@ export type AuthStackParamList = {
   ChangePassword: {
     email: string;
   };
+  VerifyEmail: {
+    email: string;
+  };
 };
 
 export type AuthScreenProps<T extends keyof AuthStackParamList> = {
