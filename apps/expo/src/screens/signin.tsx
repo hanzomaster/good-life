@@ -15,18 +15,11 @@ import { AuthScreenProps, AuthStackParamList } from "../types/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { styles } from "../root";
 import { ForgotPasswordScreen } from "./forgotPassword";
+import { ChangePasswordScreen } from "./changePassword";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 const SignInSignUpScreen = () => {
-  // return (
-  //   <SafeAreaView className="bg-primary-background">
-  //     <View className="h-full w-full p-4">
-  //       <SignInWithOAuth />
-  //     </View>
-  //   </SafeAreaView>
-  // );
-
   return (
     <Stack.Navigator
       initialRouteName="Login"
@@ -37,31 +30,13 @@ const SignInSignUpScreen = () => {
       <Stack.Screen name="Login" component={SignInScreen} />
       <Stack.Screen name="Register" component={SignUpScreen} />
       <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+      <Stack.Screen name="ChangePassword" component={ChangePasswordScreen} />
     </Stack.Navigator>
   );
 };
 
 const SignInScreen = (props: AuthScreenProps<"Login">) => {
   const { isLoaded, setSession, signIn } = useSignIn();
-  // const [emailAddress, setEmailAddress] = React.useState("");
-  // const [password, setPassword] = React.useState("");
-  // const onSignInPress = async () => {
-  //   if (!isLoaded) {
-  //     return;
-  //   }
-
-  //   try {
-  //     const completeSignIn = await signIn.create({
-  //       identifier: emailAddress,
-  //       password,
-  //     });
-
-  //     await setSession(completeSignIn.createdSessionId);
-  //   } catch (err: any) {
-  //     console.log("Error:> " + err?.status || "");
-  //     console.log("Error:> " + err?.errors ? JSON.stringify(err.errors) : err);
-  //   }
-  // };
 
   const {
     control,
@@ -71,7 +46,7 @@ const SignInScreen = (props: AuthScreenProps<"Login">) => {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
     if (!isLoaded) {
       return;
     }
@@ -99,41 +74,10 @@ const SignInScreen = (props: AuthScreenProps<"Login">) => {
 
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED] px-6">
-      {/* <SignInWithOAuth />
-      <View>
-        <TextInput
-          autoCapitalize="none"
-          value={emailAddress}
-          placeholder="Email..."
-          placeholderTextColor="#000"
-          onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
-        />
-      </View>
-
-      <View>
-        <TextInput
-          value={password}
-          placeholder="Password..."
-          placeholderTextColor="#000"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
-      </View>
-      <TouchableOpacity onPress={onSignInPress}>
-        <Text>Sign in</Text>
-      </TouchableOpacity>
-      <View>
-        <Text>Don't have an account?</Text>
-
-        <TouchableOpacity onPress={() => props.navigation.navigate("Register")}>
-          <Text>Sign up</Text>
-        </TouchableOpacity>
-      </View> */}
-
       <View className="absolute">
         <Image source={require("../assets/images/signin/Vector.png")} />
       </View>
-      <View className=" mt-14 flex flex-row justify-between">
+      <View className=" mt-20 flex flex-row justify-between">
         <TouchableOpacity>
           <Image source={require("../assets/images/signin/Mask.png")} />
         </TouchableOpacity>
@@ -223,7 +167,9 @@ const SignInScreen = (props: AuthScreenProps<"Login">) => {
                 </View>
               )}
               name="password"
-              rules={{ required: true }}
+              rules={{
+                required: true,
+              }}
             />
             {errors.password && (
               <Text className="mt-2 text-[#A5A5A5]" style={styles().textFont}>
@@ -263,45 +209,24 @@ const SignInScreen = (props: AuthScreenProps<"Login">) => {
 
 const SignUpScreen = (props: AuthScreenProps<"Register">) => {
   const { isLoaded, setSession, signUp } = useSignUp();
-  // const [emailAddress, setEmailAddress] = React.useState("");
-  // const [password, setPassword] = React.useState("");
   const [code, setCode] = React.useState("");
-  // const onSignUpPress = async () => {
+
+  // const onPress = async () => {
   //   if (!isLoaded) {
   //     return;
   //   }
 
   //   try {
-  //     await signUp.create({
-  //       emailAddress: emailAddress,
-  //       password,
+  //     const completeSignUp = await signUp.attemptEmailAddressVerification({
+  //       code,
   //     });
 
-  //     await signUp.prepareEmailAddressVerification({
-  //       strategy: "email_code",
-  //     });
+  //     await setSession(completeSignUp.createdSessionId);
   //   } catch (err: any) {
   //     console.log("Error:> " + err?.status || "");
   //     console.log("Error:> " + err?.errors ? JSON.stringify(err.errors) : err);
   //   }
   // };
-
-  const onPress = async () => {
-    if (!isLoaded) {
-      return;
-    }
-
-    try {
-      const completeSignUp = await signUp.attemptEmailAddressVerification({
-        code,
-      });
-
-      await setSession(completeSignUp.createdSessionId);
-    } catch (err: any) {
-      console.log("Error:> " + err?.status || "");
-      console.log("Error:> " + err?.errors ? JSON.stringify(err.errors) : err);
-    }
-  };
 
   const {
     control,
@@ -312,80 +237,38 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
   } = useForm();
 
   const onSubmit = async (data: any) => {
-    alert(JSON.stringify(data));
+    // alert(JSON.stringify(data));
 
-    // if (!isLoaded) {
-    //   return;
-    // }
+    if (!isLoaded) {
+      return;
+    }
 
-    // try {
-    //   await signUp.create({
-    //     emailAddress: data.email,
-    //     password: data.password,
-    //   });
+    try {
+      await signUp.create({
+        emailAddress: data.email,
+        password: data.password,
+      });
 
-    //   await signUp.prepareEmailAddressVerification({
-    //     strategy: "email_code",
-    //   });
-    // } catch (err: any) {
-    //   console.log("Error:> " + err?.status || "");
-    //   console.log("Error:> " + err?.errors ? JSON.stringify(err.errors) : err);
-    // }
+      await signUp.prepareEmailAddressVerification({
+        strategy: "email_code",
+      });
+    } catch (err: any) {
+      alert(
+        "Vui lòng nhập mật khẩu có ít nhất 8 kí tự, trong đó có ít nhất một kí tự đặc biệt !!!",
+      );
+      console.log("Error:> " + err?.status || "");
+      console.log("Error:> " + err?.errors ? JSON.stringify(err.errors) : err);
+    }
   };
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
   return (
-    // <>
-    //   <View>
-    //     <TextInput
-    //       autoCapitalize="none"
-    //       value={emailAddress}
-    //       placeholder="Email..."
-    //       placeholderTextColor="#000"
-    //       onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
-    //     />
-    //   </View>
-
-    //   <View>
-    //     <TextInput
-    //       value={password}
-    //       placeholder="Password..."
-    //       placeholderTextColor="#000"
-    //       secureTextEntry={true}
-    //       onChangeText={(password) => setPassword(password)}
-    //     />
-    //   </View>
-    //   <TouchableOpacity onPress={onSignUpPress}>
-    //     <Text>Sign up</Text>
-    //   </TouchableOpacity>
-    //   <View>
-    //     <Text>Have an account?</Text>
-
-    //     <TouchableOpacity onPress={() => props.navigation.navigate("Login")}>
-    //       <Text>Sign in</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    //   <View>
-    //     <View>
-    //       <TextInput
-    //         value={code}
-    //         placeholder="Code..."
-    //         placeholderTextColor="#000"
-    //         onChangeText={(code) => setCode(code)}
-    //       />
-    //     </View>
-    //     <TouchableOpacity onPress={onPress}>
-    //       <Text>Verify Email</Text>
-    //     </TouchableOpacity>
-    //   </View>
-    // </>
-
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED] px-6">
       <View className="absolute">
         <Image source={require("../assets/images/signin/Vector.png")} />
       </View>
-      <View className=" mt-14 flex flex-row justify-between">
+      <View className=" mt-20 flex flex-row justify-between">
         <TouchableOpacity>
           <Image source={require("../assets/images/signin/Mask.png")} />
         </TouchableOpacity>
@@ -450,7 +333,7 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
                       source={require("../assets/images/signin/Frame.png")}
                     />
                     <TextInput
-                      placeholder="Mật khẩu"
+                      placeholder="Password"
                       className="w-full px-3 py-2 text-inherit focus:outline-none"
                       secureTextEntry={!showPassword}
                       onChangeText={onChange}
@@ -468,7 +351,6 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
                   >
                     <Image
                       source={require("../assets/images/signin/Group.png")}
-                      className=""
                     />
                   </TouchableOpacity>
                 </View>
@@ -476,16 +358,22 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
               name="password"
               rules={{
                 required: true,
-                minLength: 8,
                 pattern: {
-                  value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
-                  message: "Mật khẩu phải có ít nhất 8 ký tự",
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                  message:
+                    "Mật khẩu phải có ít nhất 8 ký tự, chữ hoa, chữ thường, số và ký tự đặc biệt",
                 },
               }}
             />
-            {errors.password && (
+            {errors.password && errors.password?.type === "required" && (
               <Text className="mt-2 text-[#A5A5A5]" style={styles().textFont}>
                 Vui lòng nhập vào trường này
+              </Text>
+            )}
+            {errors.password && errors.password?.type === "pattern" && (
+              <Text className="mt-2 text-[#A5A5A5]" style={styles().textFont}>
+                {errors.password?.message}
               </Text>
             )}
           </View>
@@ -558,7 +446,7 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
         </TouchableOpacity>
       </View>
 
-      <View className="inset-x-0 mt-20 flex flex-col">
+      <View className="inset-x-0 mt-28 flex flex-col">
         <View className="mt-10 flex flex-row justify-center">
           <TouchableOpacity>
             <Text

@@ -1,15 +1,45 @@
-import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  useWindowDimensions,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../root";
 import { Controller, useForm } from "react-hook-form";
+import { AuthScreenProps } from "../types/navigation";
 
-export const ForgotPasswordScreen = () => {
-  const { control } = useForm();
+export const ForgotPasswordScreen = (
+  props: AuthScreenProps<"ForgotPassword">,
+) => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const windowHeight = useWindowDimensions().height;
+
+  const onSubmit = (data: any) => {
+    alert(JSON.stringify(data));
+    props.navigation.navigate("ChangePassword", { email: data.email });
+  };
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
+    <SafeAreaView
+      className="absolute inset-0 content-end bg-[#FFF4ED]"
+      style={[{ minHeight: Math.round(windowHeight) }]}
+    >
       <View className="absolute top-0 left-0">
         <Image source={require("../assets/images/forgot/Vector.png")} />
       </View>
+      <TouchableOpacity
+        className=" absolute ml-6 mt-20"
+        onPress={() => props.navigation.navigate("Login")}
+      >
+        <Image source={require("../assets/images/signin/Mask.png")} />
+      </TouchableOpacity>
       <View className="mt-44 px-6">
         <Text className="text-xl text-[#5A2D22]" style={styles().textFontBold}>
           Quên mật khẩu
@@ -37,6 +67,11 @@ export const ForgotPasswordScreen = () => {
             name="email"
             rules={{ required: true }}
           />
+          {errors.email && (
+            <Text className="mt-2 text-[#A5A5A5]" style={styles().textFont}>
+              Vui lòng nhập vào trường này
+            </Text>
+          )}
         </View>
 
         <View className="mt-5 w-full">
@@ -49,6 +84,12 @@ export const ForgotPasswordScreen = () => {
       <View className="absolute bottom-0">
         <Image source={require("../assets/images/forgot/Group_37206.png")} />
       </View>
+      <TouchableOpacity
+        className="absolute inset-x-0 bottom-24 items-center"
+        onPress={handleSubmit(onSubmit)}
+      >
+        <Image source={require("../assets/images/forgot/Group_37056.png")} />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
