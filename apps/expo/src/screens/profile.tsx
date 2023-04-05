@@ -1,4 +1,4 @@
-import { Button, Text, View, Image, TouchableOpacity } from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
@@ -78,29 +78,37 @@ export const ProfileScreen = (props: ScreenProps<"Profile">) => {
         </View>
       </View>
 
-      <View className="relative mt-60" style={styles().itemsWrap}>
-        {data.map((item) => {
-          return (
-            <>
-              <View
-                className="mt-5 justify-center"
-                style={styles(1).singleItem}
-              >
-                <TouchableOpacity className="flex flex-row items-baseline space-x-6">
-                  <Image className="h-auto object-cover" source={item.image} />
-                  <Text
-                    className=" font-quicksand ml-10 text-lg text-[#5A2D22] "
-                    style={styles().textFontBold}
-                  >
-                    {item.name}
-                  </Text>
-                </TouchableOpacity>
-                <View className="h-0.5 bg-[#CACACA]"></View>
-              </View>
-            </>
-          );
-        })}
-      </View>
+      <ScrollView
+        className="inset-x-0 -z-10"
+        showsVerticalScrollIndicator={false}
+      >
+        <View className="relative mt-60" style={styles().itemsWrap}>
+          {data.map((item) => {
+            return (
+              <>
+                <View
+                  className="mt-5 justify-center"
+                  style={styles(1).singleItem}
+                >
+                  <TouchableOpacity className="flex flex-row items-baseline space-x-6">
+                    <Image
+                      className="h-auto object-cover"
+                      source={item.image}
+                    />
+                    <Text
+                      className=" font-quicksand ml-10 text-lg text-[#5A2D22] "
+                      style={styles().textFontBold}
+                    >
+                      {item.name}
+                    </Text>
+                  </TouchableOpacity>
+                  <View className="h-0.5 bg-[#CACACA]"></View>
+                </View>
+              </>
+            );
+          })}
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

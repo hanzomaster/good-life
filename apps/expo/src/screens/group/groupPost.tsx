@@ -1,181 +1,200 @@
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useState } from "react";
-import {
-  Alert,
-  Image,
-  Modal,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Heart from "../../assets/svgs/things/heart";
+import Message from "../../assets/svgs/things/message";
 import { styles } from "../../root";
+import { RootStackParamList } from "../../types/navigation";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const data = [1, 2, 3, 4, 5];
+const Tab = createBottomTabNavigator<RootStackParamList>();
 
-export const GroupPost = () => {
+const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+export const GroupPost = ({ setVisible }: any) => {
   const [modalVisible, setModalVisible] = useState(false);
-
+  let offset = 0;
   return (
     <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
-      <View className="relative top-0 -mt-14 h-1/2">
-        <Image
-          className=" top-0"
-          source={require("../../assets/images/group/top.png")}
-        />
-      </View>
-
-      <TouchableOpacity className="absolute mt-12 ml-5 h-10 w-10 items-center justify-center rounded-xl bg-[#000]/25">
-        <Image source={require("../../assets/images/group/arrowleft.png")} />
-      </TouchableOpacity>
-
-      <View className="absolute inset-x-0 mt-24 items-center">
-        <Image
-          className=" h-24 w-24 object-cover"
-          source={require("../../assets/images/group/avatarTest.png")}
-        />
-        <Text
-          className="mt-4 text-center text-xl text-white"
-          style={styles().textFontSemiBold}
-        >
-          Self-love
-        </Text>
-        <Text
-          className="mt-1 text-center text-base text-white"
-          style={styles().textFont}
-        >
-          Nhóm kín &#8226; 111 thành viên
-        </Text>
-        <View className="mt-2 flex w-3/5 flex-row justify-around space-x-1 ">
-          {data.map((item) => {
-            if (item === 5) {
-              return (
-                <>
-                  <View
-                    key={item}
-                    className="h-9 w-9 items-center justify-center rounded-full bg-slate-50"
-                  >
-                    <Text>5+</Text>
-                  </View>
-                </>
-              );
-            } else
-              return (
-                <>
-                  <View
-                    key={item}
-                    className="box-content h-9 w-9 items-center justify-center rounded-full bg-slate-50"
-                  >
+      <FlatList
+        className="relative top-0 -mt-4"
+        data={data}
+        onScroll={(e) => {
+          const currentOffset = e.nativeEvent.contentOffset.y;
+          const direction = currentOffset > offset ? "down" : "up";
+          offset = currentOffset;
+          direction === "down" ? setVisible(false) : null;
+          currentOffset < 0 || currentOffset === 0 ? setVisible(true) : null;
+          //   // console.log(direction);
+          // console.log("current: " + offset);
+        }}
+        renderItem={(item) => {
+          return (
+            <>
+              <View className="mb-3 flex flex-col rounded-xl bg-white p-4 ">
+                <View className="ml-4 flex h-fit flex-row space-x-2 ">
+                  <View className="box-content h-12 w-12 overflow-hidden rounded-full bg-slate-50">
                     <Image
                       className="relative max-h-full max-w-full rounded-full"
                       source={require("../../assets/images/group/avatarTest.png")}
                     />
                   </View>
-                </>
-              );
+                  <View className="justify-center">
+                    <Text
+                      style={styles().textFontBold}
+                      className="text-[#5A2D22]"
+                    >
+                      Nguyễn Nguyên + {item.item}
+                    </Text>
+                    <Text
+                      style={styles().textFont}
+                      className="text-base text-[#9B9B9B]"
+                    >
+                      4 giờ trước
+                    </Text>
+                  </View>
+                </View>
+                <View className="mx-4 mt-3">
+                  <Text className="text-justify" style={styles().textFont}>
+                    Chỉ cho đến khi bạn hiểu ra rằng mình là bất diệt, là vĩnh
+                    hằng, là vô tận, bạn mới biết điều gì là thực sự quan trọng
+                    ở đời này.
+                  </Text>
+                </View>
+                <View className="ml-4 mt-2">
+                  <TouchableOpacity>
+                    <Text
+                      style={styles().textFontBold}
+                      className="text-[#FF835C]"
+                    >
+                      Đọc thêm
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View className="ml-4 mt-4 flex flex-row space-x-5">
+                  <TouchableOpacity className="flex flex-row items-center space-x-1">
+                    <Heart color="#5A2D22" />
+                    <Text
+                      className="text-lg text-[#5A2D22]"
+                      style={styles().textFont}
+                    >
+                      6
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity className="flex flex-row items-center space-x-1">
+                    <Message color="#5A2D22" />
+                    <Text
+                      className="text-lg text-[#5A2D22]"
+                      style={styles().textFont}
+                    >
+                      6
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </>
+          );
+        }}
+      ></FlatList>
+      {/* <ScrollView
+        className="top-0 -mt-4"
+        // onScrollBeginDrag={() => {
+        //   setVisible(false);
+        // }}
+        scrollEventThrottle={16}
+        overScrollMode="never"
+        pagingEnabled={true}
+        onScrollEndDrag={(e) => {
+          const currentOffset = e.nativeEvent.contentOffset.y;
+          const direction = currentOffset > offset ? "down" : "up";
+          offset = currentOffset;
+          direction === "down" ? setVisible(false) : setVisible(true);
+          console.log(direction);
+        }}
+        // onScrollToTop={() => {
+        //   setVisible(true);
+        // }}
+        stickyHeaderHiddenOnScroll
+      >
+        <View className=" top-0 flex flex-col">
+          {data.map((item) => {
+            return (
+              <>
+                <View
+                  key={item}
+                  className="mb-3 flex flex-col rounded-xl bg-white p-4 "
+                >
+                  <View className="ml-4 flex h-fit flex-row space-x-2 ">
+                    <View className="box-content h-12 w-12 overflow-hidden rounded-full bg-slate-50">
+                      <Image
+                        className="relative max-h-full max-w-full rounded-full"
+                        source={require("../../assets/images/group/avatarTest.png")}
+                      />
+                    </View>
+                    <View className="justify-center">
+                      <Text
+                        style={styles().textFontBold}
+                        className="text-[#5A2D22]"
+                      >
+                        Nguyễn Nguyên
+                      </Text>
+                      <Text
+                        style={styles().textFont}
+                        className="text-base text-[#9B9B9B]"
+                      >
+                        4 giờ trước
+                      </Text>
+                    </View>
+                  </View>
+                  <View className="mx-4 mt-3">
+                    <Text className="text-justify" style={styles().textFont}>
+                      Chỉ cho đến khi bạn hiểu ra rằng mình là bất diệt, là vĩnh
+                      hằng, là vô tận, bạn mới biết điều gì là thực sự quan
+                      trọng ở đời này.
+                    </Text>
+                  </View>
+                  <View className="ml-4 mt-2">
+                    <TouchableOpacity>
+                      <Text
+                        style={styles().textFontBold}
+                        className="text-[#FF835C]"
+                      >
+                        Đọc thêm
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+
+                  <View className="ml-4 mt-4 flex flex-row space-x-5">
+                    <TouchableOpacity className="flex flex-row items-center space-x-1">
+                      <Heart color="#5A2D22" />
+                      <Text
+                        className="text-lg text-[#5A2D22]"
+                        style={styles().textFont}
+                      >
+                        6
+                      </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity className="flex flex-row items-center space-x-1">
+                      <Message color="#5A2D22" />
+                      <Text
+                        className="text-lg text-[#5A2D22]"
+                        style={styles().textFont}
+                      >
+                        6
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </>
+            );
           })}
         </View>
-      </View>
-      <View className="relative inset-x-0 mt-14 items-center">
-        <View className="h-36 w-5/6 p-1">
-          <Text
-            className="mb-3 text-[#9B9B9B]"
-            style={styles().textFontSemiBold}
-          >
-            Mô tả
-          </Text>
-          <ScrollView
-            className="relative h-auto w-full"
-            showsVerticalScrollIndicator={false}
-          >
-            <Text
-              className="relative w-full flex-wrap text-justify text-[#5A2D22]"
-              style={styles().textFont}
-            >
-              Self-love lập ra giúp mọi người trao đổi với nhau, cùng nhau học
-              cách yêu thương bản thân mình, tìm được những người bạn mới, giúp
-              cho cuộc sống nhiều màu sắc hơn. Self-love lập ra giúp mọi người
-              trao đổi với nhau, cùng nhau học cách yêu thương bản thân mình,
-              tìm được những người bạn mới, giúp cho cuộc sống nhiều màu sắc
-              hơn. Self-love lập ra giúp mọi người trao đổi với nhau, cùng nhau
-              học cách yêu thương bản thân mình, tìm được những người bạn mới,
-              giúp cho cuộc sống nhiều màu sắc hơn.
-            </Text>
-          </ScrollView>
-        </View>
-      </View>
-
-      <View className="inset-x-0 mt-20 items-center ">
-        <TouchableOpacity
-          className="z-10 h-14 w-1/2 items-center justify-center rounded-full bg-[#7A9861] text-lg "
-          onPress={() => {
-            setModalVisible(true);
-          }}
-        >
-          <Text className="text-lg text-white">Tham gia nhóm</Text>
-        </TouchableOpacity>
-      </View>
-      <Modal
-        className=" rounded-xl bg-white"
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
-        }}
-      >
-        <View className="bg-black/75">
-          <View className="mt-[50%] h-full rounded-2xl bg-white">
-            <View className="inset-x-0 items-end">
-              <TouchableOpacity
-                className="mt-6 mr-6"
-                onPress={() => {
-                  setModalVisible(false);
-                }}
-              >
-                <Image
-                  source={require("../../assets/images/group/blackexit.png")}
-                />
-              </TouchableOpacity>
-            </View>
-
-            <View className="inset-x-0 mt-[20%] items-center">
-              <Image
-                source={require("../../assets/images/group/modalicon.png")}
-              />
-            </View>
-            <View className="inset-x-0 items-center">
-              <Text
-                className="mt-4 w-3/5 flex-wrap space-y-1 text-center text-lg text-[#5A2D22]"
-                style={styles().textFontSemiBold}
-              >
-                Chào mừng bạn đã là thành viên mới của nhóm ^^
-              </Text>
-            </View>
-            <View className="inset-x-0 mt-[15%] items-center">
-              <TouchableOpacity className=" h-14 w-2/3 items-center justify-center rounded-full bg-[#7A9861]">
-                <View className="flex flex-row items-center justify-between space-x-4">
-                  <Text
-                    className="ml-3 text-lg text-white"
-                    style={styles().textFontSemiBold}
-                  >
-                    Khám phá thôi nào
-                  </Text>
-
-                  <Image
-                    source={require("../../assets/images/emotion/arrow.png")}
-                  />
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </Modal>
+      </ScrollView> */}
     </SafeAreaView>
   );
 };

@@ -17,15 +17,15 @@ function classNames(...classes: string[]) {
 
 const data = [1, 2, 3, 4, 5];
 
-export const GroupList = () => {
+export const GroupChat = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
-      <View className="relative top-0">
+      <View className="relative top-0 -mt-14 h-1/2">
         <Image
           className=" top-0"
-          source={require("../../assets/images/group/groupList/top.png")}
+          source={require("../../assets/images/group/top.png")}
         />
       </View>
 
