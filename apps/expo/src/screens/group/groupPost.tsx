@@ -1,7 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import Heart from "../../assets/svgs/things/heart";
 import Message from "../../assets/svgs/things/message";
 import { styles } from "../../root";
@@ -19,9 +18,10 @@ export const GroupPost = ({ setVisible }: any) => {
   const [modalVisible, setModalVisible] = useState(false);
   let offset = 0;
   return (
-    <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
+    // <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
+    <View>
       <FlatList
-        className="relative top-0 -mt-4"
+        className="relative top-0"
         data={data}
         onScroll={(e) => {
           const currentOffset = e.nativeEvent.contentOffset.y;
@@ -195,6 +195,7 @@ export const GroupPost = ({ setVisible }: any) => {
           })}
         </View>
       </ScrollView> */}
-    </SafeAreaView>
+      {/* </SafeAreaView> */}
+    </View>
   );
 };

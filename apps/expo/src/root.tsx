@@ -5,14 +5,14 @@ import {
   HomeIcon,
   MindIcon,
   ProfileIcon,
-  SocialIcon,
+  SocialIcon
 } from "./assets/svgs";
 import {
   BodyScreen,
   HomeScreen,
   MindScreen,
   ProfileScreen,
-  SocialScreen,
+  SocialScreen
 } from "./screens";
 import { RootStackParamList } from "./types/navigation";
 
@@ -34,11 +34,9 @@ export const styles = (props?: any) =>
     },
     textFontBold: {
       fontFamily: "Quicksand_700Bold",
-      fontWeight: "bold",
     },
     textFontSemiBold: {
       fontFamily: "Quicksand_600SemiBold",
-      fontWeight: "bold",
     },
 
     itemsWrap: {

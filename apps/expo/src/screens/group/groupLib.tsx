@@ -54,28 +54,24 @@ export const GroupLib = () => {
           {data.map((item) => {
             if (item === 5) {
               return (
-                <>
-                  <View
-                    key={item}
-                    className="h-9 w-9 items-center justify-center rounded-full bg-slate-50"
-                  >
-                    <Text>5+</Text>
-                  </View>
-                </>
+                <View
+                  key={item}
+                  className="h-9 w-9 items-center justify-center rounded-full bg-slate-50"
+                >
+                  <Text>5+</Text>
+                </View>
               );
             } else
               return (
-                <>
-                  <View
-                    key={item}
-                    className="box-content h-9 w-9 items-center justify-center rounded-full bg-slate-50"
-                  >
-                    <Image
-                      className="relative max-h-full max-w-full rounded-full"
-                      source={require("../../assets/images/group/avatarTest.png")}
-                    />
-                  </View>
-                </>
+                <View
+                  key={item}
+                  className="box-content h-9 w-9 items-center justify-center rounded-full bg-slate-50"
+                >
+                  <Image
+                    className="relative max-h-full max-w-full rounded-full"
+                    source={require("../../assets/images/group/avatarTest.png")}
+                  />
+                </View>
               );
           })}
         </View>

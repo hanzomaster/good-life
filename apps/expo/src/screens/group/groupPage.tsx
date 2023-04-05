@@ -4,8 +4,8 @@ import {
   Image,
   Text,
   TouchableOpacity,
-  View,
   useWindowDimensions,
+  View,
 } from "react-native";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../../root";
@@ -22,7 +22,7 @@ const renderTabBar = (props: any) => {
   return (
     <TabBar
       {...props}
-      renderLabel={({ route, focused, color }) => (
+      renderLabel={({ route, focused }) => (
         <Text
           className={classNames(focused ? "text-[#5A2D22]" : "text-[#9B9B9B]")}
           style={styles().textFontSemiBold}
@@ -32,7 +32,7 @@ const renderTabBar = (props: any) => {
       )}
       indicatorStyle={{
         backgroundColor: "#FF835C",
-        maxWidth: "75%",
+        maxWidth: "100%",
         alignSelf: "center",
         justifyContent: "center",
         alignItems: "center",
@@ -43,9 +43,10 @@ const renderTabBar = (props: any) => {
         width: (layout.width * 6) / 7,
         justifyContent: "space-between",
         alignSelf: "center",
-        borderBottomColor: "#C4C4C4",
+        borderBottomColor: "white",
         borderBottomWidth: 1,
         height: 45,
+        shadowColor: "white",
       }}
       labelStyle={Object.assign(
         { color: "#5A2D22" },
