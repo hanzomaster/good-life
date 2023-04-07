@@ -15,6 +15,7 @@ import {
   SocialScreen
 } from "./screens";
 import { RootStackParamList } from "./types/navigation";
+import { Information } from "./screens/profile/information";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -163,7 +164,7 @@ const Root = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={Information}
         options={{
           tabBarAccessibilityLabel: "Profile",
           tabBarLabel: "Hồ sơ",
