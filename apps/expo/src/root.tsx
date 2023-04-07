@@ -5,17 +5,16 @@ import {
   HomeIcon,
   MindIcon,
   ProfileIcon,
-  SocialIcon
+  SocialIcon,
 } from "./assets/svgs";
 import {
   BodyScreen,
   HomeScreen,
   MindScreen,
   ProfileScreen,
-  SocialScreen
+  SocialScreen,
 } from "./screens";
 import { RootStackParamList } from "./types/navigation";
-import { Information } from "./screens/profile/information";
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
 
@@ -164,7 +163,7 @@ const Root = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Information}
+        component={ProfileScreen}
         options={{
           tabBarAccessibilityLabel: "Profile",
           tabBarLabel: "Hồ sơ",
