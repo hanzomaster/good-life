@@ -1,3 +1,4 @@
+import { useAuth } from "@clerk/clerk-expo";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../root";
@@ -38,6 +39,7 @@ const data = [
   },
 ];
 export const ProfileScreen = (props: ScreenProps<"Profile">) => {
+  const { signOut } = useAuth();
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className=" absolute" style={{ alignItems: "center" }}>
@@ -85,26 +87,29 @@ export const ProfileScreen = (props: ScreenProps<"Profile">) => {
         <View className="relative mt-60" style={styles().itemsWrap}>
           {data.map((item) => {
             return (
-              <>
-                <View
-                  className="mt-5 justify-center"
-                  style={styles(1).singleItem}
+              <View
+                className="mt-5 justify-center"
+                style={styles(1).singleItem}
+                key={item.name}
+              >
+                <TouchableOpacity
+                  className="flex flex-row items-baseline space-x-6"
+                  onPress={() => {
+                    if (item.name === "Đăng xuất") {
+                      signOut();
+                    }
+                  }}
                 >
-                  <TouchableOpacity className="flex flex-row items-baseline space-x-6">
-                    <Image
-                      className="h-auto object-cover"
-                      source={item.image}
-                    />
-                    <Text
-                      className=" font-quicksand ml-10 text-lg text-[#5A2D22] "
-                      style={styles().textFontBold}
-                    >
-                      {item.name}
-                    </Text>
-                  </TouchableOpacity>
-                  <View className="h-0.5 bg-[#CACACA]"></View>
-                </View>
-              </>
+                  <Image className="h-auto object-cover" source={item.image} />
+                  <Text
+                    className=" font-quicksand ml-10 text-lg text-[#5A2D22] "
+                    style={styles().textFontBold}
+                  >
+                    {item.name}
+                  </Text>
+                </TouchableOpacity>
+                <View className="h-0.5 bg-[#CACACA]"></View>
+              </View>
             );
           })}
         </View>
