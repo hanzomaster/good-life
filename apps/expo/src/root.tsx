@@ -5,14 +5,14 @@ import {
   HomeIcon,
   MindIcon,
   ProfileIcon,
-  SocialIcon
+  SocialIcon,
 } from "./assets/svgs";
 import {
   BodyScreen,
   HomeScreen,
   MindScreen,
   ProfileScreen,
-  SocialScreen
+  SocialScreen,
 } from "./screens";
 import { RootStackParamList } from "./types/navigation";
 

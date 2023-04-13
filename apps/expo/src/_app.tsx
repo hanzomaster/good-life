@@ -16,7 +16,7 @@ import Constants from "expo-constants";
 import { NavigationContainer } from "@react-navigation/native";
 import { DefaultTheme, Provider } from "react-native-paper";
 import Root from "./root";
-import SignInSignUpScreen from "./screens/signin";
+import MusicScreen from "./screens/music";
 import { tokenCache } from "./utils/cache";
 
 // Remove background color from the bottom navigation bar when focus
@@ -59,7 +59,7 @@ export const App = () => {
         <SafeAreaProvider>
           <Provider theme={theme}>
             <NavigationContainer>
-              <SignInSignUpScreen />
+              <MusicScreen />
             </NavigationContainer>
           </Provider>
           <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
