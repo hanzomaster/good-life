@@ -1,6 +1,13 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useState } from "react";
-import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import Heart from "../../assets/svgs/things/heart";
 import Message from "../../assets/svgs/things/message";
 import { styles } from "../../root";
@@ -19,24 +26,27 @@ export const GroupPost = ({ setVisible }: any) => {
   let offset = 0;
   return (
     // <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
-    <View>
+    <ScrollView className="border-t border-t-[#C4C4C4]/50">
       <FlatList
-        className="relative top-0"
+        className="relative top-0 max-h-fit bg-[#FFF4ED]"
         data={data}
         onScroll={(e) => {
           const currentOffset = e.nativeEvent.contentOffset.y;
           const direction = currentOffset > offset ? "down" : "up";
           offset = currentOffset;
+          console.log("current: " + offset + "SS" + currentOffset);
+          console.log(direction);
           direction === "down" ? setVisible(false) : null;
-          currentOffset < 0 || currentOffset === 0 ? setVisible(true) : null;
+          (currentOffset < 0 || currentOffset === 0) && direction === "down"
+            ? setVisible(true)
+            : null;
           //   // console.log(direction);
-          // console.log("current: " + offset);
         }}
         renderItem={(item) => {
           return (
             <>
-              <View className="mb-3 flex flex-col rounded-xl bg-white p-4 ">
-                <View className="ml-4 flex h-fit flex-row space-x-2 ">
+              <View className="mb-3 flex flex-col rounded-xl bg-[#FFFFFF] p-4 ">
+                <View className="ml-4 flex h-14 flex-row space-x-2 ">
                   <View className="box-content h-12 w-12 overflow-hidden rounded-full bg-slate-50">
                     <Image
                       className="relative max-h-full max-w-full rounded-full"
@@ -101,6 +111,7 @@ export const GroupPost = ({ setVisible }: any) => {
           );
         }}
       ></FlatList>
+      <View className="h-10 w-full bg-[#000000]"></View>
       {/* <ScrollView
         className="top-0 -mt-4"
         // onScrollBeginDrag={() => {
@@ -196,6 +207,6 @@ export const GroupPost = ({ setVisible }: any) => {
         </View>
       </ScrollView> */}
       {/* </SafeAreaView> */}
-    </View>
+    </ScrollView>
   );
 };

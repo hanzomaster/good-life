@@ -49,6 +49,7 @@ export const App = () => {
               <NavigationContainer>
                 <Root />
               </NavigationContainer>
+              {/* <GroupPage /> */}
             </Provider>
             <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
           </SafeAreaProvider>
