@@ -18,6 +18,10 @@ import { DefaultTheme, Provider } from "react-native-paper";
 import Root from "./root";
 import SignInSignUpScreen from "./screens/signin";
 import { tokenCache } from "./utils/cache";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { MusicScreen } from "./screens/music";
+import { ScreenStackProps } from "react-native-screens";
+import { RootStackParamList } from "./types/navigation";
 
 // Remove background color from the bottom navigation bar when focus
 const theme = {
@@ -37,6 +41,9 @@ export const App = () => {
   if (!loaded) {
     return null;
   }
+
+  const Stack = createNativeStackNavigator();
+
   return (
     <ClerkProvider
       publishableKey={Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY}
@@ -47,7 +54,14 @@ export const App = () => {
           <SafeAreaProvider>
             <Provider theme={theme}>
               <NavigationContainer>
-                <Root />
+                <Stack.Navigator
+                  screenOptions={{
+                    headerShown: false,
+                  }}
+                >
+                  <Stack.Screen name="Root" component={Root} />
+                  <Stack.Screen name="Music" component={MusicScreen} />
+                </Stack.Navigator>
               </NavigationContainer>
             </Provider>
             <StatusBar hidden={false} networkActivityIndicatorVisible={true} />

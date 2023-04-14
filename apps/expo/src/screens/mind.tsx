@@ -8,8 +8,10 @@ import {
   ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScreenProps } from "../types/navigation";
+import { RootStackParamList, ScreenProps } from "../types/navigation";
 import { styles } from "../root";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { MusicScreen } from "./music";
 
 export const MindScreen = (props: ScreenProps<"Mind">) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -87,6 +89,9 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
   ];
   const [isActive, setIsActive] = useState("Gợi ý");
 
+  const handleOpenMusic = () => {
+    props.navigation.navigate("Music");
+  };
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className="absolute top-0 left-0">
@@ -107,7 +112,7 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
 
       <View className="absolute mt-40 h-full px-5">
         <View className="flex flex-row gap-10">
-          <TouchableOpacity onPress={() => setIsPressed(!isPressed)}>
+          <TouchableOpacity onPress={() => {}}>
             <Text
               className={`${
                 !isPressed ? "text-[#FF8669]" : "text-[#9B9B9BE0]/80"
@@ -117,14 +122,17 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
             >
               Tâm trí
             </Text>
-            {!isPressed && (
-              <Image
-                source={require("../assets/images/mind/Rectangle_1315.png")}
-              />
-            )}
+
+            <Image
+              source={require("../assets/images/mind/Rectangle_1315.png")}
+            />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => setIsPressed(!isPressed)}>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate("Music");
+            }}
+          >
             <Text
               className={`${
                 isPressed ? "text-[#FF8669]" : "text-[#9B9B9BE0]/80"
@@ -134,11 +142,6 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
             >
               Âm nhạc
             </Text>
-            {isPressed && (
-              <Image
-                source={require("../assets/images/mind/Rectangle_1315.png")}
-              />
-            )}
           </TouchableOpacity>
         </View>
 

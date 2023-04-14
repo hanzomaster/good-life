@@ -5,6 +5,7 @@ export type RootStackParamList = {
   Home: undefined;
   Body: undefined;
   Mind: undefined;
+  Music: undefined;
   Social: undefined;
   Profile: undefined;
   LandingPage1: undefined;
