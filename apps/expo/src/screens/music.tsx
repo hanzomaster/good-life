@@ -11,8 +11,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { ScreenProps } from "../types/navigation";
 import { styles } from "../root";
 
-import TrackPlayer from "react-native-track-player";
-
 export const MusicScreen = (props: ScreenProps<"Music">) => {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -110,18 +108,6 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
 
   const [isPlaying, setIsPlaying] = useState(true);
 
-  useEffect(() => {
-    TrackPlayer.setupPlayer().then(async () => {
-      // The player is ready to be used
-      console.log("Player is ready");
-      // add track from lists to player
-      await TrackPlayer.add(lists);
-    });
-  }, []);
-
-  async function playTrack() {
-    await TrackPlayer.play();
-  }
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className="absolute top-0 left-0">
@@ -189,7 +175,7 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
             <View className="flex flex-row gap-3">
               {suggest.map((item) => (
                 <TouchableOpacity
-                  key={item.id}
+                  key={item.name}
                   onPress={() => setIsActive(item.name)}
                   className={`${
                     isActive === item.name ? "bg-[#7A9861]" : "bg-white "
@@ -214,11 +200,11 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View className="flex w-full flex-col">
               {lists.map((item) => (
-                <View className="mb-5 flex flex-row items-center justify-between ">
-                  <TouchableOpacity
-                    className="flex flex-row items-center gap-10"
-                    onPress={() => playTrack()}
-                  >
+                <View
+                  className="mb-5 flex flex-row items-center justify-between "
+                  key={item.id}
+                >
+                  <TouchableOpacity className="flex flex-row items-center gap-10">
                     <Image
                       source={item.image}
                       className="h-12 w-12 rounded-full"
@@ -276,7 +262,7 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
           <TouchableOpacity className="">
             <Image source={require("../assets/images/music/Vector.png")} />
           </TouchableOpacity>
-          <TouchableOpacity className="" onPress={() => playTrack()}>
+          <TouchableOpacity className="">
             {isPlaying ? (
               <Image source={require("../assets/images/music/Group.png")} />
             ) : (
