@@ -34,11 +34,9 @@ export const styles = (props?: any) =>
     },
     textFontBold: {
       fontFamily: "Quicksand_700Bold",
-      fontWeight: "bold",
     },
     textFontSemiBold: {
       fontFamily: "Quicksand_600SemiBold",
-      fontWeight: "bold",
     },
 
     itemsWrap: {

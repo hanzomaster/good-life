@@ -16,7 +16,7 @@ import Constants from "expo-constants";
 import { NavigationContainer } from "@react-navigation/native";
 import { DefaultTheme, Provider } from "react-native-paper";
 import Root from "./root";
-import SignInSignUpScreen from "./screens/signin";
+import MusicScreen from "./screens/music";
 import { tokenCache } from "./utils/cache";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MusicScreen } from "./screens/music";
@@ -63,6 +63,7 @@ export const App = () => {
                   <Stack.Screen name="Music" component={MusicScreen} />
                 </Stack.Navigator>
               </NavigationContainer>
+              {/* <GroupPage /> */}
             </Provider>
             <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
           </SafeAreaProvider>
@@ -72,7 +73,7 @@ export const App = () => {
         <SafeAreaProvider>
           <Provider theme={theme}>
             <NavigationContainer>
-              <SignInSignUpScreen />
+              <MusicScreen />
             </NavigationContainer>
           </Provider>
           <StatusBar hidden={false} networkActivityIndicatorVisible={true} />

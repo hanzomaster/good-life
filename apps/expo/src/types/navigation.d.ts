@@ -15,6 +15,10 @@ export type RootStackParamList = {
   EmotionChoosing: undefined;
   EmotionChoosing1: undefined;
   EmotionChoosing2: undefined;
+  GroupLib: undefined;
+  GroupChat: undefined;
+  GroupDesc: undefined;
+  GroupPost: undefined;
 };
 
 export type AuthStackParamList = {

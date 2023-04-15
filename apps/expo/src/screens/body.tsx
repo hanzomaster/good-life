@@ -93,20 +93,15 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
             />
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}}>
-          <Text className=" font-quicksand ml-10  text-2xl text-[#9B9B9BE0] ">
+        <TouchableOpacity className="ml-10" onPress={() => {}}>
+          <Text className=" font-quicksand text-2xl text-[#9B9B9BE0] ">
             Dinh dưỡng
           </Text>
         </TouchableOpacity>
       </View>
 
       <View className="mt-10">
-        <View
-          className="ml-5 mr-5 mt-40 flex flex-row items-center border-2  border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1"
-          style={{
-            borderRadius: 10,
-          }}
-        >
+        <View className=" ml-5 mr-5 mt-40 flex flex-row items-center rounded-lg  border-2 border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1">
           <Image source={require("../assets/images/physique/Icon.png")} />
           <TextInput
             placeholder="Tìm kiếm"
@@ -114,13 +109,7 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
           />
         </View>
       </View>
-      <View
-        className=" mt-2"
-        style={{
-          alignItems: "center",
-          justifyContent: "flex-start",
-        }}
-      >
+      <View className=" mt-2 justify-center align-middle">
         <ScrollView
           className=""
           alwaysBounceHorizontal
@@ -218,7 +207,7 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
                         source={require("../assets/images/home/heart.png")}
                       />
                       <Text className="text-xs text-[#DED5C6]">
-                        {item.heart} &#8226; {item.date}{" "}
+                        {item.heart} &#8226; {item.date}
                       </Text>
                     </View>
                   </View>

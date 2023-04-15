@@ -12,13 +12,9 @@ It uses [Turborepo](https://turborepo.org/) and contains:
 
 ## Lưu ý
 
-Đây là project cho bên UI. Cần chạy thì phải có file `.env` với format như file `.env.example` ở root folder. Các biến môi trường cần thiết để chạy project thì hỏi Thịnh (Hanzo).
+Đây là project cho bên database. Cần chạy thì phải có file `.env` với format như file `.env.example` ở root folder. Các biến môi trường cần thiết để chạy project thì hỏi Thịnh (Hanzo).
 
 - Nếu gặp lỗi ở trong folder [nextjs](apps/nextjs/) thì cần xóa [node_modules](apps/nextjs/node_modules/) trong folder đó đi và chạy `pnpm i` lại
-
-## Trang đăng nhập
-
-- Có 2 trường email và password có thể dùng cho cả đăng ký và đăng nhập (có xác thực email bằng code)
 
 ## Code Layout
 
