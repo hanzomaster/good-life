@@ -5,7 +5,7 @@ const songs = [
     album: "Em và Trịnh",
     year: "2022",
     url: require("./tinh-sau.mp3"),
-    imageUrl: require("./tinh-sau.jpg"),
+    // imageUrl: require("./tinh-sau.jpg"),
   },
   {
     id: "2",
@@ -13,7 +13,7 @@ const songs = [
     album: "Songs for the Drunk and Broken Hearted",
     year: "2021",
     url: require("./the-way-that-i-love-you.mp3"),
-    imageUrl: require("./tinh-sau.jpg"),
+    // imageUrl: require("./tinh-sau.jpg"),
   },
   {
     id: "3",
@@ -21,7 +21,7 @@ const songs = [
     album: "Tâm 9",
     year: "2017",
     url: require("./nguoi-hay-quen-em-di.mp3"),
-    imageUrl: require("./tinh-sau.jpg"),
+    // imageUrl: require("./tinh-sau.jpg"),
   },
   {
     id: "4",
@@ -29,7 +29,7 @@ const songs = [
     album: null,
     year: "2021",
     url: require("./giua-dai-lo-Dong-Tay.mp3"),
-    imageUrl: require("./tinh-sau.jpg"),
+    // imageUrl: require("./tinh-sau.jpg"),
   },
   {
     id: "5",
@@ -37,7 +37,7 @@ const songs = [
     album: "Your Name",
     year: "2016",
     url: require("./Date-2.mp3"),
-    imageUrl: require("./tinh-sau.jpg"),
+    // imageUrl: require("./tinh-sau.jpg"),
   },
   {
     id: "6",
@@ -45,7 +45,7 @@ const songs = [
     album: "SQUARE TWO",
     year: "2016",
     url: require("./STAY.mp3"),
-    imageUrl: require("./tinh-sau.jpg"),
+    // imageUrl: require("./tinh-sau.jpg"),
   },
 ];
 export default songs;

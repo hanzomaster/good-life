@@ -8,11 +8,12 @@ import {
   ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { AntDesign } from "@expo/vector-icons";
+// import { AntDesign } from "@expo/vector-icons";
 import { Audio, InterruptionModeAndroid, InterruptionModeIOS } from "expo-av";
-import { Button } from "react-native";
+// import { Button } from "react-native";
 import { ScreenProps } from "../types/navigation";
 import { styles } from "../root";
+// import songs from "../assets/music/music";
 
 export const MusicScreen = (props: ScreenProps<"Music">) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -38,69 +39,69 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
     },
   ];
 
-  const lists = [
+  const list = [
     {
       id: 1,
-      name: "Nhạc thư thái",
+      name: "Tình sầu",
       image: require("../assets/images/music/Avatar.png"),
       time: 21,
       description: "Rule meditation like lion",
       like: true,
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      url: require("../assets/music/tinh-sau.mp3"),
     },
     {
       id: 2,
-      name: "Thiền về tình yêu",
+      name: "Matilda",
       image: require("../assets/images/music/Avatar.png"),
       time: 21,
       description: "Rule meditation like lion",
       like: false,
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+      url: require("../assets/music/Matilda.mp3"),
     },
     {
       id: 3,
-      name: "Thiền về tình yêu",
+      name: "Giữa đại lộ Đông Tây",
       image: require("../assets/images/music/Avatar.png"),
       time: 21,
       description: "Rule meditation like lion",
       like: false,
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      url: require("../assets/music/giua-dai-lo-Dong-Tay.mp3"),
     },
     {
       id: 4,
-      name: "Thiền về tình yêu",
+      name: "The way that I love you",
       image: require("../assets/images/music/Avatar.png"),
       time: 21,
       description: "Rule meditation like lion",
       like: false,
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      url: require("../assets/music/the-way-that-i-love-you.mp3"),
     },
     {
       id: 5,
-      name: "Thiền về tình yêu",
+      name: "Tháng Tư là lời nói dối của em",
       image: require("../assets/images/music/Avatar.png"),
       time: 21,
       description: "Rule meditation like lion",
       like: false,
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      url: require("../assets/music/thang-tu-la-loi-noi-doi-cua-em.mp3"),
     },
     {
       id: 6,
-      name: "Thiền về tình yêu",
+      name: "Người hãy quên em đi",
       image: require("../assets/images/music/Avatar.png"),
       time: 21,
       description: "Rule meditation like lion",
       like: false,
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      url: require("../assets/music/nguoi-hay-quen-em-di.mp3"),
     },
     {
       id: 7,
-      name: "Thiền về tình yêu",
+      name: "Stay",
       image: require("../assets/images/music/Avatar.png"),
       time: 21,
       description: "Rule meditation like lion",
       like: false,
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+      url: require("../assets/music/STAY.mp3"),
     },
   ];
   const [isActive, setIsActive] = useState("Gợi ý");
@@ -109,14 +110,25 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
     props.navigation.navigate("Music");
   };
 
-    const [song, setSong] = useState<Audio.Sound>();
+  const [song, setSong] = useState<Audio.Sound>();
+
+  const [selectedIndexSong, setSelectedIndexSong] = useState<any>(0);
+  const [selectedSong, setSelectedSong] = useState<any>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const playSong = async () => {
     const { sound } = await Audio.Sound.createAsync(
       // NOTE - Tên nhạc không được có dấu nhé
-      require("../assets/music/Matilda.mp3"),
+      // require("../assets/music/Matilda.mp3"),
+      // songs[0].url,
+      list[selectedIndexSong]?.url,
     );
+    // setSelectedIndexSong(index);
+    // setSelectedSong(list[index]);
+    alert(list[selectedIndexSong]?.url);
+
     setSong(sound);
+    // setIsPlaying(true);
 
     console.log("Playing Sound");
     await sound.playAsync();
@@ -130,20 +142,47 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
   const pauseSong = async () => {
     console.log("Paused Sound");
     await song?.pauseAsync();
+    // setSelectedSong(null);
+    setIsPlaying(false);
   };
 
   const changeSong = async () => {
     console.log("Changing Sound");
     await song?.unloadAsync();
-    const { sound } = await Audio.Sound.createAsync(
-      require("../assets/music/tinh-sau.mp3"),
-    );
-    setSong(sound);
-    await sound.playAsync();
+    // const { sound } = await Audio.Sound.createAsync(
+    //   require("../assets/music/tinh-sau.mp3"),
+    // );
+    // setSong(sound);
+    // await sound.playAsync();
   };
-  const [isPlaying, setIsPlaying] = useState(true);
+  // const [isPlaying, setIsPlaying] = useState(false);
 
-   useEffect(() => {
+  // const nextSong = async () => {
+  //   console.log("Next Sound");
+  //   console.log(selectedIndexSong);
+  //   await song?.unloadAsync();
+  //   setIsPlaying(false);
+  //   setSelectedIndexSong(selectedIndexSong + 1);
+  //   setSelectedSong(list[selectedIndexSong + 1]);
+  //   // alert(selectedSong?.url);
+  //   const { sound } = await Audio.Sound.createAsync(selectedSong?.url);
+  //   setSong(sound);
+  //   setIsPlaying(true);
+  //   await sound.playAsync();
+  // };
+  // const previousSong = async () => {
+  //   console.log("Previous Sound");
+  //   await song?.unloadAsync();
+  //   setIsPlaying(false);
+  //   setSelectedIndexSong(selectedIndexSong - 1);
+  //   setSelectedSong(list[selectedIndexSong - 1]);
+  //   const { sound } = await Audio.Sound.createAsync(selectedSong?.url);
+  //   setSong(sound);
+  //   setIsPlaying(true);
+  //   await sound.playAsync();
+  // };
+
+  useEffect(() => {
     Audio.setAudioModeAsync({
       allowsRecordingIOS: false,
       staysActiveInBackground: true,
@@ -165,178 +204,209 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
   }, [song]);
 
   return (
-    // <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-    //   <View className="absolute top-0 left-0">
-    //     <Image
-    //       source={require("../assets/images/mind/Group_36924.png")}
-    //       className=""
-    //     />
-    //   </View>
-    //   <View className="absolute inset-x-0 mt-16 items-center">
-    //     <Text className=" text-2xl font-semibold text-white">Mind</Text>
-    //   </View>
-    //   <TouchableOpacity
-    //     onPress={() => {}}
-    //     className="absolute right-0 mt-20 mr-5"
-    //   >
-    //     <Image source={require("../assets/images/mind/Vector.png")} />
-    //   </TouchableOpacity>
+    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
+      <View className="absolute top-0 left-0">
+        <Image
+          source={require("../assets/images/mind/Group_36924.png")}
+          className=""
+        />
+      </View>
+      <View className="absolute inset-x-0 mt-16 items-center">
+        <Text className=" text-2xl font-semibold text-white">Mind</Text>
+      </View>
+      <TouchableOpacity
+        onPress={() => {}}
+        className="absolute right-0 mt-20 mr-5"
+      >
+        <Image source={require("../assets/images/mind/Vector.png")} />
+      </TouchableOpacity>
 
-    //   <View className="absolute mt-40 h-full px-5">
-    //     <View className="flex flex-row gap-10">
-    //       <TouchableOpacity onPress={() => props.navigation.navigate("Mind")}>
-    //         <Text
-    //           className="mb-2 text-xl font-semibold text-[#9B9B9BE0]/80"
-    //           style={styles().textFont}
-    //         >
-    //           Tâm trí
-    //         </Text>
-    //       </TouchableOpacity>
+      <View className="absolute mt-40 h-full px-5">
+        <View className="flex flex-row gap-10">
+          <TouchableOpacity onPress={() => props.navigation.navigate("Mind")}>
+            <Text
+              className="mb-2 text-xl font-semibold text-[#9B9B9BE0]/80"
+              style={styles().textFont}
+            >
+              Tâm trí
+            </Text>
+          </TouchableOpacity>
 
-    //       <TouchableOpacity onPress={() => {}}>
-    //         <Text
-    //           className="mb-2 text-xl font-semibold text-[#FF8669]"
-    //           style={styles().textFont}
-    //         >
-    //           Âm nhạc
-    //         </Text>
+          <TouchableOpacity onPress={() => {}}>
+            <Text
+              className="mb-2 text-xl font-semibold text-[#FF8669]"
+              style={styles().textFont}
+            >
+              Âm nhạc
+            </Text>
 
-    //         <Image
-    //           source={require("../assets/images/mind/Rectangle_1315.png")}
-    //         />
-    //       </TouchableOpacity>
-    //     </View>
+            <Image
+              source={require("../assets/images/mind/Rectangle_1315.png")}
+            />
+          </TouchableOpacity>
+        </View>
 
-    //     <View className="mt-5">
-    //       <View
-    //         className="flex w-full flex-row items-center border-2  border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1"
-    //         style={{
-    //           borderRadius: 10,
-    //         }}
-    //       >
-    //         <Image source={require("../assets/images/mind/Icon.png")} />
-    //         <TextInput
-    //           placeholder="Tìm kiếm"
-    //           className="w-11/12 px-2 py-1 text-sm text-[#9B9B9B]"
-    //         />
-    //       </View>
-    //     </View>
+        <View className="mt-5">
+          <View
+            className="flex w-full flex-row items-center border-2  border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1"
+            style={{
+              borderRadius: 10,
+            }}
+          >
+            <Image source={require("../assets/images/mind/Icon.png")} />
+            <TextInput
+              placeholder="Tìm kiếm"
+              className="w-11/12 px-2 py-1 text-sm text-[#9B9B9B]"
+            />
+          </View>
+        </View>
 
-    //     <View className="mt-8 h-12">
-    //       <ScrollView
-    //         horizontal={true}
-    //         className=""
-    //         showsHorizontalScrollIndicator={false}
-    //       >
-    //         <View className="flex flex-row gap-3">
-    //           {suggest.map((item) => (
-    //             <TouchableOpacity
-    //               key={item.name}
-    //               onPress={() => setIsActive(item.name)}
-    //               className={`${
-    //                 isActive === item.name ? "bg-[#7A9861]" : "bg-white "
-    //               }
-    //         flex flex-row items-center rounded-lg px-4 text-sm font-semibold`}
-    //             >
-    //               <Text
-    //                 className={`${
-    //                   isActive === item.name ? "text-white" : "text-[#9b9b9b]"
-    //                 }`}
-    //                 style={styles().textFont}
-    //               >
-    //                 {item.name}
-    //               </Text>
-    //             </TouchableOpacity>
-    //           ))}
-    //         </View>
-    //       </ScrollView>
-    //     </View>
+        <View className="mt-8 h-12">
+          <ScrollView
+            horizontal={true}
+            className=""
+            showsHorizontalScrollIndicator={false}
+          >
+            <View className="flex flex-row gap-3">
+              {suggest.map((item) => (
+                <TouchableOpacity
+                  key={item.name}
+                  onPress={() => setIsActive(item.name)}
+                  className={`${
+                    isActive === item.name ? "bg-[#7A9861]" : "bg-white "
+                  }
+            flex flex-row items-center rounded-lg px-4 text-sm font-semibold`}
+                >
+                  <Text
+                    className={`${
+                      isActive === item.name ? "text-white" : "text-[#9b9b9b]"
+                    }`}
+                    style={styles().textFont}
+                  >
+                    {item.name}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </ScrollView>
+        </View>
 
-    //     <View className="mt-8 h-96">
-    //       <ScrollView showsVerticalScrollIndicator={false}>
-    //         <View className="flex w-full flex-col">
-    //           {lists.map((item) => (
-    //             <View
-    //               className="mb-5 flex flex-row items-center justify-between "
-    //               key={item.id}
-    //             >
-    //               <TouchableOpacity className="flex flex-row items-center gap-10">
-    //                 <Image
-    //                   source={item.image}
-    //                   className="h-12 w-12 rounded-full"
-    //                 />
-    //                 <View>
-    //                   <Text
-    //                     className="text-sm text-[#5A2D22]"
-    //                     style={styles().textFontSemiBold}
-    //                   >
-    //                     {item.name}
-    //                   </Text>
-    //                   <Text
-    //                     className="text-sm text-[#9B9B9B]"
-    //                     style={styles().textFont}
-    //                   >
-    //                     {item.description}
-    //                   </Text>
-    //                 </View>
-    //               </TouchableOpacity>
+        <View className="mt-8 h-80">
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View className="flex w-full flex-col">
+              {list.map((song, index) => (
+                <View
+                  key={song.id}
+                  className="mb-5 flex flex-row items-center justify-between "
+                >
+                  <TouchableOpacity
+                    className="flex flex-row items-center gap-10"
+                    onPress={() => {
+                      setSelectedIndexSong(index);
+                      setSelectedSong(list[index]);
+                      setIsPlaying(true);
+                      playSong();
+                    }}
+                  >
+                    <View className="relative">
+                      <View>
+                        <Image
+                          source={song.image}
+                          className=" h-12 w-12 rounded-full "
+                        />
+                      </View>
+                      {/* {isPlaying && ( */}
+                      {/* <View className=" absolute h-12 w-12 items-center justify-center rounded-full backdrop-blur-lg">
+                        <Image
+                          source={require("../assets/images/music/Group.png")}
+                          className="absolute"
+                        />
+                      </View> */}
 
-    //               <TouchableOpacity className="mr-2">
-    //                 {item.like ? (
-    //                   <Image
-    //                     source={require("../assets/images/music/Heart_2.png")}
-    //                   />
-    //                 ) : (
-    //                   <Image
-    //                     source={require("../assets/images/music/Heart_1.png")}
-    //                   />
-    //                 )}
-    //               </TouchableOpacity>
-    //             </View>
-    //           ))}
-    //         </View>
-    //       </ScrollView>
-    //     </View>
-    //   </View>
+                      {/* )} */}
+                    </View>
 
-    //   <View className="absolute inset-x-0 bottom-16 flex flex-row items-center justify-between bg-[#232C15]">
-    //     <TouchableOpacity className="flex flex-row items-center ">
-    //       <Image source={require("../assets/images/music/Avatar.png")} />
-    //       <View className="ml-5">
-    //         <Text
-    //           className="text-sm text-white"
-    //           style={styles().textFontSemiBold}
-    //         >
-    //           Lion mind
-    //         </Text>
-    //         <Text className="text-sm text-[#9b9b9b]" style={styles().textFont}>
-    //           Rule meditation like lion
-    //         </Text>
-    //       </View>
-    //     </TouchableOpacity>
-    //     <View className="mr-8 flex flex-row items-center gap-10">
-    //       <TouchableOpacity className="">
-    //         <Image source={require("../assets/images/music/Vector.png")} />
-    //       </TouchableOpacity>
-    //       <TouchableOpacity className="">
-    //         {isPlaying ? (
-    //           <Image source={require("../assets/images/music/Group.png")} />
-    //         ) : (
-    //           <Image source={require("../assets/images/music/Pause.png")} />
-    //         )}
-    //       </TouchableOpacity>
-    //     </View>
-    //   </View>
-    // </SafeAreaView>
-     <SafeAreaView className="flex-1 items-center justify-center">
-      <Button title="Play" onPress={playSong} />
-      <Button title="Pause" onPress={pauseSong} />
-      <Button title="Resume" onPress={resumeSong} />
-      <Button title="Change Song" onPress={changeSong} />
-      <AntDesign name="stepforward" size={24} color="black" />
+                    <View>
+                      <Text
+                        className="text-sm text-[#5A2D22]"
+                        style={styles().textFontSemiBold}
+                      >
+                        {song.name}
+                      </Text>
+                      <Text
+                        className="text-sm text-[#9B9B9B]"
+                        style={styles().textFont}
+                      >
+                        {song.description}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity className="mr-2">
+                    {song.like ? (
+                      <Image
+                        source={require("../assets/images/music/Heart_2.png")}
+                      />
+                    ) : (
+                      <Image
+                        source={require("../assets/images/music/Heart_1.png")}
+                      />
+                    )}
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
+        </View>
+      </View>
+      {selectedSong && (
+        <View className="absolute inset-x-0 bottom-16 flex flex-row items-center justify-between bg-[#232C15]">
+          <TouchableOpacity className="flex flex-row items-center ">
+            <Image source={require("../assets/images/music/Avatar.png")} />
+            <View className="ml-5">
+              <Text
+                className="text-sm text-white"
+                style={styles().textFontSemiBold}
+              >
+                {selectedSong.name}
+              </Text>
+              <Text
+                className="text-sm text-[#9b9b9b]"
+                style={styles().textFont}
+              >
+                {selectedSong.description}
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <View className="mr-8 flex flex-row items-center gap-6">
+            {/* <TouchableOpacity className="" onPress={previousSong}>
+              <Image source={require("../assets/images/music/Vector.png")} />
+            </TouchableOpacity> */}
+
+            {isPlaying ? (
+              <TouchableOpacity onPress={pauseSong}>
+                <Image source={require("../assets/images/music/Group.png")} />
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={playSong}>
+                <Image source={require("../assets/images/music/Pause.png")} />
+              </TouchableOpacity>
+            )}
+            {/* <TouchableOpacity onPress={nextSong}>
+              <Image source={require("../assets/images/music/Next.png")} />
+            </TouchableOpacity> */}
+          </View>
+        </View>
+      )}
     </SafeAreaView>
+    // <SafeAreaView className="flex-1 items-center justify-center">
+    //   <Button title="Play" onPress={playSong} />
+    //   <Button title="Pause" onPress={pauseSong} />
+    //   <Button title="Resume" onPress={resumeSong} />
+    //   <Button title="Change Song" onPress={changeSong} />
+    //   <AntDesign name="stepforward" size={24} color="black" />
+    // </SafeAreaView>
   );
 };
-
 
 export default MusicScreen;

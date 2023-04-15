@@ -16,7 +16,6 @@ import Constants from "expo-constants";
 import { NavigationContainer } from "@react-navigation/native";
 import { DefaultTheme, Provider } from "react-native-paper";
 import Root from "./root";
-import MusicScreen from "./screens/music";
 import { tokenCache } from "./utils/cache";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MusicScreen } from "./screens/music";
