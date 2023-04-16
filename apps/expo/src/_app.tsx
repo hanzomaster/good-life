@@ -19,8 +19,8 @@ import Root from "./root";
 import { tokenCache } from "./utils/cache";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MusicScreen } from "./screens/music";
-import { ScreenStackProps } from "react-native-screens";
-import { RootStackParamList } from "./types/navigation";
+import SignInSignUpScreen from "./screens/signin";
+import { MusicPlayerScreen } from "./screens/musicPlayer";
 
 // Remove background color from the bottom navigation bar when focus
 const theme = {
@@ -60,6 +60,10 @@ export const App = () => {
                 >
                   <Stack.Screen name="Root" component={Root} />
                   <Stack.Screen name="Music" component={MusicScreen} />
+                  <Stack.Screen
+                    name="MusicPlayer"
+                    component={MusicPlayerScreen}
+                  />
                 </Stack.Navigator>
               </NavigationContainer>
               {/* <GroupPage /> */}
@@ -72,7 +76,7 @@ export const App = () => {
         <SafeAreaProvider>
           <Provider theme={theme}>
             <NavigationContainer>
-              <MusicScreen />
+              <SignInSignUpScreen />
             </NavigationContainer>
           </Provider>
           <StatusBar hidden={false} networkActivityIndicatorVisible={true} />

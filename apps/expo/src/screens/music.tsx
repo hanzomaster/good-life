@@ -12,33 +12,27 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
 
-const suggest = [
-  {
-    name: "Gợi ý",
-  },
-  {
-    name: "Thiên nhiên",
-  },
-  {
-    name: "Tươi mới",
-  },
-  {
-    name: "Thư giãn",
-  },
-  {
-    name: "Tâm trí",
-  },
-  {
-    name: "Healing",
-  },
-];
-
-const list = [
+export type Song = {
+  id: number;
+  name: string;
+  image: any;
+  time: number;
+  singer: string;
+  description: string;
+  like: boolean;
+  url: any;
+};
+type Suggest = {
+  name: string;
+  list: Array<Song>;
+};
+const suggestSongs = [
   {
     id: 0,
     name: "Tình sầu",
     image: require("../assets/images/music/Avatar.png"),
     time: 21,
+    singer: "Bùi Lan Hương",
     description: "Rule meditation like lion",
     like: true,
     url: require("../assets/music/tinh-sau.mp3"),
@@ -48,6 +42,7 @@ const list = [
     name: "Matilda",
     image: require("../assets/images/music/Avatar.png"),
     time: 21,
+    singer: "Harry Styles",
     description: "Rule meditation like lion",
     like: false,
     url: require("../assets/music/Matilda.mp3"),
@@ -57,6 +52,7 @@ const list = [
     name: "Giữa đại lộ Đông Tây",
     image: require("../assets/images/music/Avatar.png"),
     time: 21,
+    singer: "Uyên Linh",
     description: "Rule meditation like lion",
     like: false,
     url: require("../assets/music/giua-dai-lo-Dong-Tay.mp3"),
@@ -66,6 +62,7 @@ const list = [
     name: "The way that I love you",
     image: require("../assets/images/music/Avatar.png"),
     time: 21,
+    singer: "Passenger",
     description: "Rule meditation like lion",
     like: false,
     url: require("../assets/music/the-way-that-i-love-you.mp3"),
@@ -75,6 +72,7 @@ const list = [
     name: "Tháng Tư là lời nói dối của em",
     image: require("../assets/images/music/Avatar.png"),
     time: 21,
+    singer: "Hà Anh Tuấn",
     description: "Rule meditation like lion",
     like: false,
     url: require("../assets/music/thang-tu-la-loi-noi-doi-cua-em.mp3"),
@@ -82,8 +80,10 @@ const list = [
   {
     id: 5,
     name: "Người hãy quên em đi",
+
     image: require("../assets/images/music/Avatar.png"),
     time: 21,
+    singer: "Mỹ Tâm",
     description: "Rule meditation like lion",
     like: false,
     url: require("../assets/music/nguoi-hay-quen-em-di.mp3"),
@@ -91,6 +91,7 @@ const list = [
   {
     id: 6,
     name: "Stay",
+    singer: "BLACKPINK",
     image: require("../assets/images/music/Avatar.png"),
     time: 21,
     description: "Rule meditation like lion",
@@ -98,17 +99,132 @@ const list = [
     url: require("../assets/music/STAY.mp3"),
   },
 ];
+
+const naturalSongs: Array<Song> = [
+  {
+    id: 2,
+    name: "Giữa đại lộ Đông Tây",
+    image: require("../assets/images/music/Avatar.png"),
+    time: 21,
+    singer: "Uyên Linh",
+    description: "Rule meditation like lion",
+    like: false,
+    url: require("../assets/music/giua-dai-lo-Dong-Tay.mp3"),
+  },
+  {
+    id: 0,
+    name: "Tình sầu",
+    image: require("../assets/images/music/Avatar.png"),
+    time: 21,
+    singer: "Bùi Lan Hương",
+    description: "Rule meditation like lion",
+    like: true,
+    url: require("../assets/music/tinh-sau.mp3"),
+  },
+  {
+    id: 3,
+    name: "The way that I love you",
+    image: require("../assets/images/music/Avatar.png"),
+    time: 21,
+    singer: "Passenger",
+    description: "Rule meditation like lion",
+    like: false,
+    url: require("../assets/music/the-way-that-i-love-you.mp3"),
+  },
+  {
+    id: 1,
+    name: "Matilda",
+    image: require("../assets/images/music/Avatar.png"),
+    time: 21,
+    singer: "Harry Styles",
+    description: "Rule meditation like lion",
+    like: false,
+    url: require("../assets/music/Matilda.mp3"),
+  },
+
+  {
+    id: 4,
+    name: "Tháng Tư là lời nói dối của em",
+    image: require("../assets/images/music/Avatar.png"),
+    time: 21,
+    singer: "Hà Anh Tuấn",
+    description: "Rule meditation like lion",
+    like: false,
+    url: require("../assets/music/thang-tu-la-loi-noi-doi-cua-em.mp3"),
+  },
+  {
+    id: 5,
+    name: "Người hãy quên em đi",
+
+    image: require("../assets/images/music/Avatar.png"),
+    time: 21,
+    singer: "Mỹ Tâm",
+    description: "Rule meditation like lion",
+    like: false,
+    url: require("../assets/music/nguoi-hay-quen-em-di.mp3"),
+  },
+  {
+    id: 6,
+    name: "Stay",
+    singer: "BLACKPINK",
+    image: require("../assets/images/music/Avatar.png"),
+    time: 21,
+    description: "Rule meditation like lion",
+    like: false,
+    url: require("../assets/music/STAY.mp3"),
+  },
+];
+
+const suggest: Array<Suggest> = [
+  {
+    name: "Gợi ý",
+    list: suggestSongs,
+  },
+  {
+    name: "Thiên nhiên",
+    list: naturalSongs,
+  },
+  {
+    name: "Tươi mới",
+    list: [],
+  },
+  {
+    name: "Thư giãn",
+    list: [],
+  },
+  {
+    name: "Tâm trí",
+    list: [],
+  },
+  {
+    name: "Healing",
+    list: [],
+  },
+];
+
 export const MusicScreen = (props: ScreenProps<"Music">) => {
   const [isActive, setIsActive] = useState("Gợi ý");
+  const [list, setList] = useState<Array<Song>>(suggestSongs);
+
+  useEffect(() => {
+    const index = suggest.findIndex((item) => item.name === isActive);
+    setList(suggest[index].list);
+  }, [isActive]);
 
   const handleOpenMusic = () => {
     props.navigation.navigate("Music");
   };
 
   const [song, setSong] = useState<Audio.Sound>();
-  const [selectedSong, setSelectedSong] = useState<(typeof list)[number]>();
+  const [selectedSong, setSelectedSong] = useState<Song>();
   const [isPlaying, setIsPlaying] = useState(false);
+  const [index, setIndex] = useState(0);
 
+  const resumeSong = async () => {
+    console.log("Resuming Sound");
+    setIsPlaying(true);
+    await song?.playAsync();
+  };
   const playSong = async (index: number) => {
     await song?.unloadAsync();
     const { sound } = await Audio.Sound.createAsync(
@@ -122,18 +238,14 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
     await sound.playAsync();
     setIsPlaying(true);
   };
-
-  const resumeSong = async () => {
-    console.log("Resuming Sound");
-    setIsPlaying(true);
-    await song?.playAsync();
-  };
-
   const pauseSong = async () => {
     console.log("Paused Sound");
     await song?.pauseAsync();
     setIsPlaying(false);
+    console.log(isPlaying);
+    console.log("hello");
   };
+  console.log("isPlaying: " + isPlaying);
 
   // const changeSong = async () => {
   //   console.log("Changing Sound");
@@ -291,8 +403,8 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
                   <TouchableOpacity
                     className="flex flex-row items-center gap-10"
                     onPress={() => {
-                      setSelectedIndexSong(index);
                       setSelectedSong(list[index]);
+                      setIndex(index);
                       playSong(index);
                     }}
                   >
@@ -349,9 +461,25 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
       </View>
       {selectedSong && (
         <View className="absolute inset-x-0 bottom-16 flex flex-row items-center justify-between bg-[#232C15]">
-          <TouchableOpacity className="flex flex-row items-center ">
+          <TouchableOpacity
+            className="flex flex-row items-center "
+            onPress={() =>
+              props.navigation.navigate("MusicPlayer", {
+                song: selectedSong,
+                list: list,
+                isPlaying: isPlaying,
+                index: index,
+                setIsPlaying: setIsPlaying,
+                resumeSong: resumeSong,
+                pauseSong: pauseSong,
+
+                nextSong: nextSong,
+                previousSong: previousSong,
+              })
+            }
+          >
             <Image source={require("../assets/images/music/Avatar.png")} />
-            <View className="ml-5">
+            <View className="ml-2">
               <Text
                 className="text-sm text-white"
                 style={styles().textFontSemiBold}
@@ -362,11 +490,11 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
                 className="text-sm text-[#9b9b9b]"
                 style={styles().textFont}
               >
-                {selectedSong.description}
+                {selectedSong.singer}
               </Text>
             </View>
           </TouchableOpacity>
-          <View className="mr-8 flex flex-row items-center gap-6">
+          <View className="mr-8 flex flex-row items-center gap-8">
             <TouchableOpacity
               className=""
               onPress={() => previousSong(selectedSong.id)}
@@ -375,7 +503,12 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
             </TouchableOpacity>
 
             {isPlaying ? (
-              <TouchableOpacity onPress={pauseSong}>
+              <TouchableOpacity
+                onPress={() => {
+                  pauseSong();
+                  // setIsPlaying(false);
+                }}
+              >
                 <Image source={require("../assets/images/music/Group.png")} />
               </TouchableOpacity>
             ) : (
@@ -390,13 +523,6 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
         </View>
       )}
     </SafeAreaView>
-    // <SafeAreaView className="flex-1 items-center justify-center">
-    //   <Button title="Play" onPress={playSong} />
-    //   <Button title="Pause" onPress={pauseSong} />
-    //   <Button title="Resume" onPress={resumeSong} />
-    //   <Button title="Change Song" onPress={changeSong} />
-    //   <AntDesign name="stepforward" size={24} color="black" />
-    // </SafeAreaView>
   );
 };
 

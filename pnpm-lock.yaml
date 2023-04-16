@@ -37,6 +37,7 @@ importers:
       '@clerk/clerk-expo': 0.11.3
       '@expo-google-fonts/quicksand': ^0.2.3
       '@expo/ngrok': 4.1.0
+      '@react-native-community/slider': 4.2.4
       '@react-navigation/bottom-tabs': ^6.5.7
       '@react-navigation/material-bottom-tabs': ^6.2.15
       '@react-navigation/material-top-tabs': ^6.6.2
@@ -85,6 +86,7 @@ importers:
       '@clerk/clerk-expo': 0.11.3_xkg5elew5es2gyjfasazkug3tu
       '@expo-google-fonts/quicksand': 0.2.3
       '@expo/ngrok': 4.1.0
+      '@react-native-community/slider': 4.2.4_rou7e4tzf7wt6gfzzwzm2xjc4q
       '@react-navigation/bottom-tabs': 6.5.7_2f7r4kmrhqiw2uzpdqmubjthh4
       '@react-navigation/material-bottom-tabs': 6.2.15_zk3xc2ptg3aqfeazppxmjtlncy
       '@react-navigation/material-top-tabs': 6.6.2_ceiyj677tswseozfvcbn3vhy5u
@@ -2897,6 +2899,16 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
+
+  /@react-native-community/slider/4.2.4_rou7e4tzf7wt6gfzzwzm2xjc4q:
+    resolution: {integrity: sha512-uY51UoipQW4ELnFWMU6rTHRc4EUYaW+Z1O9Teijej6NYVYdUcUKq+t7WeBGjMAEc1ipyooMeBqRXToWO5zAU2Q==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+    dependencies:
+      react: 18.1.0
+      react-native: 0.70.8_2hkxedd44to6uuf252s62q5boq
+    dev: false
 
   /@react-native/assets/1.0.0:
     resolution: {integrity: sha512-KrwSpS1tKI70wuKl68DwJZYEvXktDHdZMG0k2AXD/rJVSlB23/X2CB2cutVR0HwNMJIal9HOUOBB2rVfa6UGtQ==}
