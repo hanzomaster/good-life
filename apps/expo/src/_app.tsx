@@ -21,7 +21,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MusicScreen } from "./screens/music";
 import SignInSignUpScreen from "./screens/signin";
 import { MusicPlayerScreen } from "./screens/musicPlayer";
-import { AudioProvider } from "./context/AudioProvider";
+import { MindDetailScreen } from "./screens/mindDetail";
 
 // Remove background color from the bottom navigation bar when focus
 const theme = {
@@ -65,6 +65,10 @@ export const App = () => {
                   <Stack.Screen
                     name="MusicPlayer"
                     component={MusicPlayerScreen}
+                  />
+                  <Stack.Screen
+                    name="MindDetail"
+                    component={MindDetailScreen}
                   />
                 </Stack.Navigator>
               </NavigationContainer>

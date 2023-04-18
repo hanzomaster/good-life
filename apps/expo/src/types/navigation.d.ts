@@ -1,6 +1,7 @@
 import { RouteProp } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Song } from "../screens/music";
+import { Mind } from "../screens/mind";
 
 export type RootStackParamList = {
   Home: undefined;
@@ -17,6 +18,9 @@ export type RootStackParamList = {
     pauseSong: () => void;
     nextSong: (index: number) => void;
     previousSong: (index: number) => void;
+  };
+  MindDetail: {
+    mind: Mind;
   };
   Social: undefined;
   Profile: undefined;

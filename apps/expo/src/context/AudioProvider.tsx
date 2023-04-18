@@ -26,7 +26,7 @@ type AudioContextType = {
   handleSeek: (value: number) => Promise<void>;
 };
 
-const AudioContext = createContext(null);
+const AudioContext = createContext({} as AudioContextType);
 
 const AudioProvider = ({ children }: { children: ReactNode }) => {
   const [audioState, setAudioState] = useState<AudioState>({

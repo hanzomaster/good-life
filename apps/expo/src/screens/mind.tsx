@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Image,
   Text,
@@ -8,36 +8,22 @@ import {
   ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { RootStackParamList, ScreenProps } from "../types/navigation";
+import { ScreenProps } from "../types/navigation";
 import { styles } from "../root";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { MusicScreen } from "./music";
 
+export type Mind = {
+  id: number;
+  name: string;
+  image: any;
+  time: number;
+  heart: number;
+  date: string;
+  description: string;
+};
 export const MindScreen = (props: ScreenProps<"Mind">) => {
   const [isPressed, setIsPressed] = useState(false);
 
-  const suggest = [
-    {
-      name: "Gợi ý",
-    },
-    {
-      name: "Thiền",
-    },
-    {
-      name: "Mind lessons",
-    },
-    {
-      name: "Q & A",
-    },
-    {
-      name: "Tâm trí",
-    },
-    {
-      name: "Healing",
-    },
-  ];
-
-  const lists = [
+  const suggestList: Array<Mind> = [
     {
       id: 1,
       name: "Thiền về tình yêu",
@@ -45,22 +31,28 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
       time: 21,
       heart: 22,
       date: "11.02.2023",
+      description:
+        " Bài thiền sẽ giúp bạn mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần, giúp bạn giải tỏa căng thẳng, làm dịu cơn đau, cải thiện các vấn đề về tim và huyết áp bạn sẽ biết cách xoa dịu, điều tiết nguồn khí trong cơ thể nhằm giảm bớt nhiều vấn đề sức khỏe, từ đó giúp bạn giải tỏa căng thẳng, lo lắng, mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần. Ngoài ra, còn giúp bạn giữ trạng thái cân bằng trong cơ thể, giúp bạn làm chủ bản thân trong các tình huống.",
     },
     {
       id: 2,
-      name: "Thiền về tình yêu",
+      name: "Thiền về tâm hồn",
       image: require("../assets/images/mind/Rectangle_1245.png"),
       time: 21,
       heart: 2,
       date: "11.02.2023",
+      description:
+        " Bài thiền sẽ giúp bạn mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần, giúp bạn giải tỏa căng thẳng, làm dịu cơn đau, cải thiện các vấn đề về tim và huyết áp bạn sẽ biết cách xoa dịu, điều tiết nguồn khí trong cơ thể nhằm giảm bớt nhiều vấn đề sức khỏe, từ đó giúp bạn giải tỏa căng thẳng, lo lắng, mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần. Ngoài ra, còn giúp bạn giữ trạng thái cân bằng trong cơ thể, giúp bạn làm chủ bản thân trong các tình huống.",
     },
     {
       id: 3,
-      name: "Thiền về tình yêu",
+      name: "Thiền về cuộc sống",
       image: require("../assets/images/mind/Rectangle_1245.png"),
       time: 21,
       heart: 2,
       date: "11.02.2023",
+      description:
+        " Bài thiền sẽ giúp bạn mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần, giúp bạn giải tỏa căng thẳng, làm dịu cơn đau, cải thiện các vấn đề về tim và huyết áp bạn sẽ biết cách xoa dịu, điều tiết nguồn khí trong cơ thể nhằm giảm bớt nhiều vấn đề sức khỏe, từ đó giúp bạn giải tỏa căng thẳng, lo lắng, mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần. Ngoài ra, còn giúp bạn giữ trạng thái cân bằng trong cơ thể, giúp bạn làm chủ bản thân trong các tình huống.",
     },
     {
       id: 4,
@@ -69,6 +61,8 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
       time: 21,
       heart: 2,
       date: "11.02.2023",
+      description:
+        " Bài thiền sẽ giúp bạn mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần, giúp bạn giải tỏa căng thẳng, làm dịu cơn đau, cải thiện các vấn đề về tim và huyết áp bạn sẽ biết cách xoa dịu, điều tiết nguồn khí trong cơ thể nhằm giảm bớt nhiều vấn đề sức khỏe, từ đó giúp bạn giải tỏa căng thẳng, lo lắng, mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần. Ngoài ra, còn giúp bạn giữ trạng thái cân bằng trong cơ thể, giúp bạn làm chủ bản thân trong các tình huống.",
     },
     {
       id: 5,
@@ -77,6 +71,8 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
       time: 21,
       heart: 2,
       date: "11.02.2023",
+      description:
+        " Bài thiền sẽ giúp bạn mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần, giúp bạn giải tỏa căng thẳng, làm dịu cơn đau, cải thiện các vấn đề về tim và huyết áp bạn sẽ biết cách xoa dịu, điều tiết nguồn khí trong cơ thể nhằm giảm bớt nhiều vấn đề sức khỏe, từ đó giúp bạn giải tỏa căng thẳng, lo lắng, mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần. Ngoài ra, còn giúp bạn giữ trạng thái cân bằng trong cơ thể, giúp bạn làm chủ bản thân trong các tình huống.",
     },
     {
       id: 6,
@@ -85,9 +81,45 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
       time: 21,
       heart: 2,
       date: "11.02.2023",
+      description:
+        " Bài thiền sẽ giúp bạn mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần, giúp bạn giải tỏa căng thẳng, làm dịu cơn đau, cải thiện các vấn đề về tim và huyết áp bạn sẽ biết cách xoa dịu, điều tiết nguồn khí trong cơ thể nhằm giảm bớt nhiều vấn đề sức khỏe, từ đó giúp bạn giải tỏa căng thẳng, lo lắng, mang lại lợi ích tuyệt vời cho sức khỏe thể chất lẫn tinh thần. Ngoài ra, còn giúp bạn giữ trạng thái cân bằng trong cơ thể, giúp bạn làm chủ bản thân trong các tình huống.",
     },
   ];
+
+  const suggests = [
+    {
+      name: "Gợi ý",
+      list: suggestList,
+    },
+    {
+      name: "Thiền",
+      list: suggestList,
+    },
+    {
+      name: "Mind lessons",
+      list: suggestList,
+    },
+    {
+      name: "Q & A",
+      list: suggestList,
+    },
+    {
+      name: "Tâm trí",
+      list: suggestList,
+    },
+    {
+      name: "Healing",
+      list: suggestList,
+    },
+  ];
+
   const [isActive, setIsActive] = useState("Gợi ý");
+  const [list, setList] = useState<Array<Mind>>(suggestList);
+
+  useEffect(() => {
+    const suggest = suggests.find((item) => item.name === isActive);
+    setList(suggest?.list || []);
+  }, [isActive]);
 
   const handleOpenMusic = () => {
     props.navigation.navigate("Music");
@@ -167,7 +199,7 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
             showsHorizontalScrollIndicator={false}
           >
             <View className="flex flex-row gap-3">
-              {suggest.map((item) => (
+              {suggests.map((item) => (
                 <TouchableOpacity
                   key={item.name}
                   onPress={() => setIsActive(item.name)}
@@ -193,9 +225,13 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
         <View className="mt-8 h-96">
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles().itemsWrap}>
-              {lists.map((item) => (
+              {list.map((item) => (
                 <View key={item.id} style={styles(2).singleItem}>
-                  <TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() =>
+                      props.navigation.navigate("MindDetail", { mind: item })
+                    }
+                  >
                     <View className="">
                       <Image
                         source={item.image}
