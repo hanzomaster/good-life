@@ -21,6 +21,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { MusicScreen } from "./screens/music";
 import SignInSignUpScreen from "./screens/signin";
 import { MusicPlayerScreen } from "./screens/musicPlayer";
+import { AudioProvider } from "./context/AudioProvider";
 
 // Remove background color from the bottom navigation bar when focus
 const theme = {
@@ -48,6 +49,7 @@ export const App = () => {
       publishableKey={Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY}
       tokenCache={tokenCache}
     >
+      {/* <AudioProvider> */}
       <SignedIn>
         <TRPCProvider>
           <SafeAreaProvider>
@@ -82,6 +84,7 @@ export const App = () => {
           <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
         </SafeAreaProvider>
       </SignedOut>
+      {/* </AudioProvider> */}
     </ClerkProvider>
   );
 };
