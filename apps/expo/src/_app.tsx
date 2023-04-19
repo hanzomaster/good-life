@@ -14,14 +14,15 @@ import {
 import Constants from "expo-constants";
 
 import { NavigationContainer } from "@react-navigation/native";
-import { DefaultTheme, Provider } from "react-native-paper";
-import Root from "./root";
-import { tokenCache } from "./utils/cache";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { MusicScreen } from "./screens/music";
-import SignInSignUpScreen from "./screens/signin";
-import { MusicPlayerScreen } from "./screens/musicPlayer";
+import { DefaultTheme, Provider } from "react-native-paper";
+import { AudioStatusProvider } from "./context/audio";
+import Root from "./root";
 import { MindDetailScreen } from "./screens/mindDetail";
+import { MusicScreen } from "./screens/music";
+import { MusicPlayerScreen } from "./screens/musicPlayer";
+import { RootStackParamList } from "./types/navigation";
+import { tokenCache } from "./utils/cache";
 
 // Remove background color from the bottom navigation bar when focus
 const theme = {
@@ -42,7 +43,7 @@ export const App = () => {
     return null;
   }
 
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
     <ClerkProvider
@@ -81,9 +82,26 @@ export const App = () => {
       <SignedOut>
         <SafeAreaProvider>
           <Provider theme={theme}>
-            <NavigationContainer>
-              <SignInSignUpScreen />
-            </NavigationContainer>
+            <AudioStatusProvider>
+              <NavigationContainer>
+                <Stack.Navigator
+                  screenOptions={{
+                    headerShown: false,
+                  }}
+                >
+                  <Stack.Screen name="Root" component={Root} />
+                  <Stack.Screen name="Music" component={MusicScreen} />
+                  <Stack.Screen
+                    name="MusicPlayer"
+                    component={MusicPlayerScreen}
+                  />
+                  <Stack.Screen
+                    name="MindDetail"
+                    component={MindDetailScreen}
+                  />
+                </Stack.Navigator>
+              </NavigationContainer>
+            </AudioStatusProvider>
           </Provider>
           <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
         </SafeAreaProvider>

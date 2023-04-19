@@ -2,20 +2,20 @@ import { useSignIn, useSignUp } from "@clerk/clerk-expo";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 
+import { Controller, useForm } from "react-hook-form";
 import {
+  Image,
   SafeAreaView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  Image,
 } from "react-native";
 import SignInWithOAuth from "../components/SignInWithOAuth";
-import { AuthScreenProps, AuthStackParamList } from "../types/navigation";
-import { Controller, useForm } from "react-hook-form";
 import { styles } from "../root";
-import { ForgotPasswordScreen } from "./forgotPassword";
+import { AuthScreenProps, AuthStackParamList } from "../types/navigation";
 import { ChangePasswordScreen } from "./changePassword";
+import { ForgotPasswordScreen } from "./forgotPassword";
 import { VerifyEmailScreen } from "./verifyEmail";
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
@@ -361,6 +361,8 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
             )}
             {errors.password && errors.password?.type === "pattern" && (
               <Text className="mt-2 text-[#A5A5A5]" style={styles().textFont}>
+                {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+                {/* @ts-expect-error */}
                 {errors.password?.message}
               </Text>
             )}

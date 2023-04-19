@@ -1,101 +1,102 @@
 import React from "react";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScreenProps } from "../types/navigation";
-import { Text, Image, View, ScrollView, TouchableOpacity } from "react-native";
 import { styles } from "../root";
+import { ScreenProps } from "../types/navigation";
+
+const options = [
+  {
+    name: "Yêu thích",
+    image: require("../assets/images/mindDetail/Heart.png"),
+  },
+  {
+    name: "Bình luận",
+    image: require("../assets/images/mindDetail/Chat.png"),
+  },
+  {
+    name: "Lưu",
+    image: require("../assets/images/mindDetail/bookmark.png"),
+  },
+  {
+    name: "Chia sẻ",
+    image: require("../assets/images/mindDetail/Share.png"),
+  },
+];
+const comments = [
+  {
+    username: "Julie Nguyen",
+    avatar: require("../assets/images/music/Avatar.png"),
+    content: "Cảm ơn bạn đã chia sẻ",
+  },
+  {
+    username: "Julie Nguyen",
+    avatar: require("../assets/images/music/Avatar.png"),
+    content: "Thật tuyệt vời",
+  },
+  {
+    username: "Julie Nguyen",
+    avatar: require("../assets/images/music/Avatar.png"),
+    content: "Thật tuyệt vời",
+  },
+  {
+    username: "Julie Nguyen",
+    avatar: require("../assets/images/music/Avatar.png"),
+    content: "Thật tuyệt vời",
+  },
+];
+
+const list = [
+  {
+    id: 1,
+    name: "Thiền về tình yêu",
+    image: require("../assets/images/mind/Rectangle_1245.png"),
+    time: 21,
+    heart: 22,
+    date: "11.02.2023",
+  },
+  {
+    id: 2,
+    name: "Thiền về tình yêu",
+    image: require("../assets/images/mind/Rectangle_1245.png"),
+    time: 21,
+    heart: 2,
+    date: "11.02.2023",
+  },
+  {
+    id: 3,
+    name: "Thiền về tình yêu",
+    image: require("../assets/images/mind/Rectangle_1245.png"),
+    time: 21,
+    heart: 2,
+    date: "11.02.2023",
+  },
+  {
+    id: 4,
+    name: "Thiền về tình yêu",
+    image: require("../assets/images/mind/Rectangle_1245.png"),
+    time: 21,
+    heart: 2,
+    date: "11.02.2023",
+  },
+  {
+    id: 5,
+    name: "Thiền về tình yêu",
+    image: require("../assets/images/mind/Rectangle_1245.png"),
+    time: 21,
+    heart: 2,
+    date: "11.02.2023",
+  },
+  {
+    id: 6,
+    name: "Thiền về tình yêu",
+    image: require("../assets/images/mind/Rectangle_1245.png"),
+    time: 21,
+    heart: 2,
+    date: "11.02.2023",
+  },
+];
+
 export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
-  const options = [
-    {
-      name: "Yêu thích",
-      image: require("../assets/images/mindDetail/Heart.png"),
-    },
-    {
-      name: "Bình luận",
-      image: require("../assets/images/mindDetail/Chat.png"),
-    },
-    {
-      name: "Lưu",
-      image: require("../assets/images/mindDetail/bookmark.png"),
-    },
-    {
-      name: "Chia sẻ",
-      image: require("../assets/images/mindDetail/Share.png"),
-    },
-  ];
-  const comments = [
-    {
-      username: "Julie Nguyen",
-      avatar: require("../assets/images/music/Avatar.png"),
-      content: "Cảm ơn bạn đã chia sẻ",
-    },
-    {
-      username: "Julie Nguyen",
-      avatar: require("../assets/images/music/Avatar.png"),
-      content: "Thật tuyệt vời",
-    },
-    {
-      username: "Julie Nguyen",
-      avatar: require("../assets/images/music/Avatar.png"),
-      content: "Thật tuyệt vời",
-    },
-    {
-      username: "Julie Nguyen",
-      avatar: require("../assets/images/music/Avatar.png"),
-      content: "Thật tuyệt vời",
-    },
-  ];
-
-  const list = [
-    {
-      id: 1,
-      name: "Thiền về tình yêu",
-      image: require("../assets/images/mind/Rectangle_1245.png"),
-      time: 21,
-      heart: 22,
-      date: "11.02.2023",
-    },
-    {
-      id: 2,
-      name: "Thiền về tình yêu",
-      image: require("../assets/images/mind/Rectangle_1245.png"),
-      time: 21,
-      heart: 2,
-      date: "11.02.2023",
-    },
-    {
-      id: 3,
-      name: "Thiền về tình yêu",
-      image: require("../assets/images/mind/Rectangle_1245.png"),
-      time: 21,
-      heart: 2,
-      date: "11.02.2023",
-    },
-    {
-      id: 4,
-      name: "Thiền về tình yêu",
-      image: require("../assets/images/mind/Rectangle_1245.png"),
-      time: 21,
-      heart: 2,
-      date: "11.02.2023",
-    },
-    {
-      id: 5,
-      name: "Thiền về tình yêu",
-      image: require("../assets/images/mind/Rectangle_1245.png"),
-      time: 21,
-      heart: 2,
-      date: "11.02.2023",
-    },
-    {
-      id: 6,
-      name: "Thiền về tình yêu",
-      image: require("../assets/images/mind/Rectangle_1245.png"),
-      time: 21,
-      heart: 2,
-      date: "11.02.2023",
-    },
-  ];
-
   const mind = props.route.params.mind;
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
@@ -273,7 +274,11 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                   {list.map((item) => (
                     <View key={item.id}>
                       <TouchableOpacity
-                        onPress={() => props.navigation.navigate("MindDetail")}
+                        onPress={() =>
+                          props.navigation.navigate("MindDetail", {
+                            mind: item,
+                          })
+                        }
                       >
                         <View className="">
                           <Image

@@ -1,9 +1,21 @@
 import { RouteProp } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { Song } from "../screens/music";
 import { Mind } from "../screens/mind";
+import { Song } from "../screens/music";
 
 export type RootStackParamList = {
+  MindDetail: {
+    mind: {
+      id: number;
+      name: string;
+      description?: string;
+      image: any;
+      heart: number;
+      date: string;
+      time: number;
+    };
+  };
+  Root: undefined;
   Home: undefined;
   Body: undefined;
   Mind: undefined;
@@ -11,9 +23,7 @@ export type RootStackParamList = {
   MusicPlayer: {
     song: Song;
     list: Array<Song>;
-    isPlaying: boolean;
     index: number;
-    setIsPlaying: Dispatch<SetStateAction<boolean>>;
     resumeSong: () => void;
     pauseSong: () => void;
     nextSong: (index: number) => void;

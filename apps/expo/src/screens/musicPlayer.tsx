@@ -1,12 +1,13 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import { ScreenProps } from "../types/navigation";
-import React, { useState } from "react";
-import { Text, Image, View, Touchable, TouchableOpacity } from "react-native";
 import Slider from "@react-native-community/slider";
+import React from "react";
+import { Image, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { useAudioStatus } from '../context/audio';
 import { styles } from "../root";
+import { ScreenProps } from "../types/navigation";
 
 export const MusicPlayerScreen = (props: ScreenProps<"MusicPlayer">) => {
-  console.log(props.route.params?.index);
+  const audio = useAudioStatus();
   return (
     <SafeAreaView className="absolute inset-0 content-end">
       <View className="absolute inset-0">
@@ -60,11 +61,10 @@ export const MusicPlayerScreen = (props: ScreenProps<"MusicPlayer">) => {
               className="mx-auto"
             />
           </TouchableOpacity>
-          {props.route.params?.isPlaying ? (
+          {audio.status ?(
             <TouchableOpacity
               onPress={() => {
                 props.route.params?.pauseSong();
-                props.route.params?.setIsPlaying(false);
               }}
             >
               <Image
@@ -76,7 +76,6 @@ export const MusicPlayerScreen = (props: ScreenProps<"MusicPlayer">) => {
             <TouchableOpacity
               onPress={() => {
                 props.route.params?.resumeSong();
-                props.route.params?.setIsPlaying(true);
               }}
             >
               <Image
