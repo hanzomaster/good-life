@@ -23,6 +23,9 @@ import { MusicScreen } from "./screens/music";
 import { MusicPlayerScreen } from "./screens/musicPlayer";
 import { RootStackParamList } from "./types/navigation";
 import { tokenCache } from "./utils/cache";
+import { GroupLib } from "./screens/group/groupLib";
+import SignInSignUpScreen from "./screens/signin";
+import { GroupChat } from "./screens/group/groupChat";
 
 // Remove background color from the bottom navigation bar when focus
 const theme = {
@@ -55,25 +58,29 @@ export const App = () => {
         <TRPCProvider>
           <SafeAreaProvider>
             <Provider theme={theme}>
-              <NavigationContainer>
-                <Stack.Navigator
-                  screenOptions={{
-                    headerShown: false,
-                  }}
-                >
-                  <Stack.Screen name="Root" component={Root} />
-                  <Stack.Screen name="Music" component={MusicScreen} />
-                  <Stack.Screen
-                    name="MusicPlayer"
-                    component={MusicPlayerScreen}
-                  />
-                  <Stack.Screen
-                    name="MindDetail"
-                    component={MindDetailScreen}
-                  />
-                </Stack.Navigator>
-              </NavigationContainer>
-              {/* <GroupPage /> */}
+              <AudioStatusProvider>
+                <NavigationContainer>
+                  <Stack.Navigator
+                    screenOptions={{
+                      headerShown: false,
+                    }}
+                  >
+                    <Stack.Screen name="Root" component={Root} />
+                    {/* <Stack.Screen name="GroupChat" component={GroupChat} /> */}
+                    <Stack.Screen name="Music" component={MusicScreen} />
+
+                    <Stack.Screen
+                      name="MusicPlayer"
+                      component={MusicPlayerScreen}
+                    />
+                    <Stack.Screen
+                      name="MindDetail"
+                      component={MindDetailScreen}
+                    />
+                  </Stack.Navigator>
+                </NavigationContainer>
+                {/* <GroupPage /> */}
+              </AudioStatusProvider>
             </Provider>
             <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
           </SafeAreaProvider>
@@ -84,22 +91,14 @@ export const App = () => {
           <Provider theme={theme}>
             <AudioStatusProvider>
               <NavigationContainer>
-                <Stack.Navigator
+                {/* <Stack.Navigator
                   screenOptions={{
                     headerShown: false,
                   }}
                 >
-                  <Stack.Screen name="Root" component={Root} />
-                  <Stack.Screen name="Music" component={MusicScreen} />
-                  <Stack.Screen
-                    name="MusicPlayer"
-                    component={MusicPlayerScreen}
-                  />
-                  <Stack.Screen
-                    name="MindDetail"
-                    component={MindDetailScreen}
-                  />
-                </Stack.Navigator>
+                  <SignInSignUpScreen />
+                </Stack.Navigator> */}
+                <SignInSignUpScreen />
               </NavigationContainer>
             </AudioStatusProvider>
           </Provider>

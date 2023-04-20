@@ -55,9 +55,12 @@ importers:
       expo: ~47.0.12
       expo-auth-session: ^3.8.0
       expo-av: ~13.0.3
+      expo-file-system: ~15.1.1
       expo-font: ~11.0.1
+      expo-mail-composer: ~12.0.0
       expo-random: ^13.0.0
       expo-secure-store: ^12.0.0
+      expo-sharing: ~11.0.1
       expo-status-bar: ~1.4.2
       nativewind: ^2.0.11
       postcss: ^8.4.19
@@ -100,9 +103,12 @@ importers:
       expo: 47.0.13_@babel+core@7.20.5
       expo-auth-session: 3.8.0_3cfklri74rc5w5ngxowx7ovxta
       expo-av: 13.0.3_expo@47.0.13
+      expo-file-system: 15.1.1_expo@47.0.13
       expo-font: 11.0.1_expo@47.0.13
+      expo-mail-composer: 12.0.0_expo@47.0.13
       expo-random: 13.0.0_expo@47.0.13
       expo-secure-store: 12.0.0_expo@47.0.13
+      expo-sharing: 11.0.1_expo@47.0.13
       expo-status-bar: 1.4.2
       nativewind: 2.0.11_f3xea42f6zrwqyr5c6mbkdauxa
       react: 18.1.0
@@ -5927,6 +5933,15 @@ packages:
       - supports-color
     dev: false
 
+  /expo-mail-composer/12.0.0_expo@47.0.13:
+    resolution: {integrity: sha512-Q1ko7D+knF1nOF2VKPc9AESowQaG7ta435PWjP0tKu33rmG4EzIzjHfDsCxMoQ9uiqJEwc1mdx/MOQpJlGEtLg==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 47.0.13_@babel+core@7.20.5
+      query-string: 6.14.1
+    dev: false
+
   /expo-modules-autolinking/1.0.2:
     resolution: {integrity: sha512-skAUXERKw1gtSw8xsvft9DE0KVhBvw4dujAtgCZoG2l513fN7ds+B5+30ZVgZATMC+EjtlmjKXzhp5QS44DCFA==}
     hasBin: true
@@ -5956,6 +5971,14 @@ packages:
 
   /expo-secure-store/12.0.0_expo@47.0.13:
     resolution: {integrity: sha512-Rz5lYr2NxrnFvIPwuWcseUSbdUjFxNZG0oVulqM9puuK7t5lDG3/SAy+J22ELBhaltuci2VVO6hCdFwRoRiG/Q==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 47.0.13_@babel+core@7.20.5
+    dev: false
+
+  /expo-sharing/11.0.1_expo@47.0.13:
+    resolution: {integrity: sha512-GlI2+fRxfdCNUftFPfqhbCSd6OQaVf/WNAADWZnRanRQRbQdQjM6L0oMmUTwQStc36cmzl+vGgNlouwdmTDseA==}
     peerDependencies:
       expo: '*'
     dependencies:
@@ -8854,6 +8877,16 @@ packages:
       decode-uri-component: 0.2.2
       object-assign: 4.1.1
       strict-uri-encode: 1.1.0
+    dev: false
+
+  /query-string/6.14.1:
+    resolution: {integrity: sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==}
+    engines: {node: '>=6'}
+    dependencies:
+      decode-uri-component: 0.2.2
+      filter-obj: 1.1.0
+      split-on-first: 1.1.0
+      strict-uri-encode: 2.0.0
     dev: false
 
   /query-string/7.1.3:

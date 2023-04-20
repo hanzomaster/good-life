@@ -21,9 +21,7 @@ export type RootStackParamList = {
   Mind: undefined;
   Music: undefined;
   MusicPlayer: {
-    song: Song;
     list: Array<Song>;
-    index: number;
     resumeSong: () => void;
     pauseSong: () => void;
     nextSong: (index: number) => void;

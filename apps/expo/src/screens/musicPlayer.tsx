@@ -2,12 +2,13 @@ import Slider from "@react-native-community/slider";
 import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useAudioStatus } from '../context/audio';
+import { useAudioStatus } from "../context/audio";
 import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
 
 export const MusicPlayerScreen = (props: ScreenProps<"MusicPlayer">) => {
   const audio = useAudioStatus();
+
   return (
     <SafeAreaView className="absolute inset-0 content-end">
       <View className="absolute inset-0">
@@ -31,7 +32,7 @@ export const MusicPlayerScreen = (props: ScreenProps<"MusicPlayer">) => {
           className="text-base text-white"
           style={styles().textFontSemiBold}
         >
-          Lion mind
+          {props.route.params?.list[audio.index].name}
         </Text>
         <View className="flex flex-row gap-5">
           <TouchableOpacity>
@@ -44,9 +45,9 @@ export const MusicPlayerScreen = (props: ScreenProps<"MusicPlayer">) => {
           </TouchableOpacity>
         </View>
       </View>
-      <View className="absolute bottom-48 flex w-full flex-row items-center justify-between px-6">
+      <View className="absolute bottom-52 flex w-full flex-row items-center justify-between px-6">
         <Slider
-          style={{ width: 200, height: 40 }}
+          style={{ width: 380, height: 40 }}
           minimumValue={0}
           maximumValue={1}
           minimumTrackTintColor="#FFFFFF"
@@ -55,13 +56,15 @@ export const MusicPlayerScreen = (props: ScreenProps<"MusicPlayer">) => {
       </View>
       <View className="absolute bottom-24 flex w-full flex-row items-center justify-center">
         <View className=" flex flex-row gap-14">
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => props.route.params?.previousSong(audio.index)}
+          >
             <Image
               source={require("../assets/images/musicPlayer/Previous.png")}
               className="mx-auto"
             />
           </TouchableOpacity>
-          {audio.status ?(
+          {audio.status ? (
             <TouchableOpacity
               onPress={() => {
                 props.route.params?.pauseSong();
@@ -79,13 +82,15 @@ export const MusicPlayerScreen = (props: ScreenProps<"MusicPlayer">) => {
               }}
             >
               <Image
-                source={require("../assets/images/music/Pause.png")}
+                source={require("../assets/images/musicPlayer/Pause.png")}
                 className="mx-auto"
               />
             </TouchableOpacity>
           )}
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => props.route.params?.nextSong(audio.index)}
+          >
             <Image
               source={require("../assets/images/musicPlayer/Next.png")}
               className="mx-auto"

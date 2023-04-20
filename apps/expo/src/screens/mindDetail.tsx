@@ -1,103 +1,24 @@
-import React from "react";
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import {
+  Alert,
+  Image,
+  Modal,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
-
-const options = [
-  {
-    name: "Yêu thích",
-    image: require("../assets/images/mindDetail/Heart.png"),
-  },
-  {
-    name: "Bình luận",
-    image: require("../assets/images/mindDetail/Chat.png"),
-  },
-  {
-    name: "Lưu",
-    image: require("../assets/images/mindDetail/bookmark.png"),
-  },
-  {
-    name: "Chia sẻ",
-    image: require("../assets/images/mindDetail/Share.png"),
-  },
-];
-const comments = [
-  {
-    username: "Julie Nguyen",
-    avatar: require("../assets/images/music/Avatar.png"),
-    content: "Cảm ơn bạn đã chia sẻ",
-  },
-  {
-    username: "Julie Nguyen",
-    avatar: require("../assets/images/music/Avatar.png"),
-    content: "Thật tuyệt vời",
-  },
-  {
-    username: "Julie Nguyen",
-    avatar: require("../assets/images/music/Avatar.png"),
-    content: "Thật tuyệt vời",
-  },
-  {
-    username: "Julie Nguyen",
-    avatar: require("../assets/images/music/Avatar.png"),
-    content: "Thật tuyệt vời",
-  },
-];
-
-const list = [
-  {
-    id: 1,
-    name: "Thiền về tình yêu",
-    image: require("../assets/images/mind/Rectangle_1245.png"),
-    time: 21,
-    heart: 22,
-    date: "11.02.2023",
-  },
-  {
-    id: 2,
-    name: "Thiền về tình yêu",
-    image: require("../assets/images/mind/Rectangle_1245.png"),
-    time: 21,
-    heart: 2,
-    date: "11.02.2023",
-  },
-  {
-    id: 3,
-    name: "Thiền về tình yêu",
-    image: require("../assets/images/mind/Rectangle_1245.png"),
-    time: 21,
-    heart: 2,
-    date: "11.02.2023",
-  },
-  {
-    id: 4,
-    name: "Thiền về tình yêu",
-    image: require("../assets/images/mind/Rectangle_1245.png"),
-    time: 21,
-    heart: 2,
-    date: "11.02.2023",
-  },
-  {
-    id: 5,
-    name: "Thiền về tình yêu",
-    image: require("../assets/images/mind/Rectangle_1245.png"),
-    time: 21,
-    heart: 2,
-    date: "11.02.2023",
-  },
-  {
-    id: 6,
-    name: "Thiền về tình yêu",
-    image: require("../assets/images/mind/Rectangle_1245.png"),
-    time: 21,
-    heart: 2,
-    date: "11.02.2023",
-  },
-];
+import { comments, list, sharingOptions } from "../assets/data/mind";
 
 export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
   const mind = props.route.params.mind;
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalComment, setModalComment] = useState(false);
+  const [modalSuggest, setModalSuggest] = useState(false);
+
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <Text>Mind Detail</Text>
@@ -164,20 +85,97 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
             </TouchableOpacity>
 
             <View className="mt-5 flex flex-row justify-around">
-              {options.map((option) => (
-                <TouchableOpacity
-                  key={option.name}
-                  className="flex h-20 w-20 flex-col items-center justify-center rounded-lg bg-white p-2"
+              <TouchableOpacity className="flex h-20 w-20 flex-col items-center justify-center rounded-lg bg-white p-2">
+                <Image
+                  source={require("../assets/images/mindDetail/Heart.png")}
+                />
+                <Text
+                  className="text-xs text-[#97776D]"
+                  style={styles().textFontSemiBold}
                 >
-                  <Image source={option.image} />
-                  <Text
-                    className="text-xs text-[#97776D]"
-                    style={styles().textFontSemiBold}
-                  >
-                    {option.name}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+                  Yêu thích
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity className="flex h-20 w-20 flex-col items-center justify-center rounded-lg bg-white p-2">
+                <Image
+                  source={require("../assets/images/mindDetail/Chat.png")}
+                />
+                <Text
+                  className="text-xs text-[#97776D]"
+                  style={styles().textFontSemiBold}
+                >
+                  Bình luận
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity className="flex h-20 w-20 flex-col items-center justify-center rounded-lg bg-white p-2">
+                <Image
+                  source={require("../assets/images/mindDetail/bookmark.png")}
+                />
+                <Text
+                  className="text-xs text-[#97776D]"
+                  style={styles().textFontSemiBold}
+                >
+                  Lưu
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => setModalVisible(true)}
+                className="flex h-20 w-20 flex-col items-center justify-center rounded-lg bg-white p-2"
+              >
+                <Image
+                  source={require("../assets/images/mindDetail/Share.png")}
+                />
+                <Text
+                  className="text-xs text-[#97776D]"
+                  style={styles().textFontSemiBold}
+                >
+                  Chia sẻ
+                </Text>
+              </TouchableOpacity>
+
+              <Modal
+                className=" rounded-xl bg-white"
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                  Alert.alert("Modal has been closed.");
+                  setModalVisible(!modalVisible);
+                }}
+              >
+                <View className="bg-black/75">
+                  <View className="mt-[50%] h-full rounded-2xl bg-white">
+                    <View className="inset-x-0 items-end">
+                      <TouchableOpacity
+                        className="mt-6 mr-6"
+                        onPress={() => {
+                          setModalVisible(false);
+                        }}
+                      >
+                        <Image
+                          source={require("../assets/images/group/blackexit.png")}
+                        />
+                      </TouchableOpacity>
+                    </View>
+
+                    <View className="px-3">
+                      <View className="" style={styles().itemsWrap}>
+                        {sharingOptions.map((option) => (
+                          <TouchableOpacity style={styles(4).singleItem}>
+                            <Image source={option.image} />
+                            <Text
+                              className="text-xs text-[#5A2D22]"
+                              style={styles().textFont}
+                            >
+                              {option.name}
+                            </Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </Modal>
             </View>
 
             <Text
@@ -196,6 +194,7 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                 </Text>
                 <TouchableOpacity>
                   <Text
+                    onPress={() => setModalComment(true)}
                     className="text-sm text-[#FF835C]"
                     style={styles().textFontSemiBold}
                   >
@@ -203,6 +202,73 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                   </Text>
                 </TouchableOpacity>
               </View>
+              <Modal
+                className=" rounded-xl bg-white"
+                animationType="slide"
+                transparent={true}
+                visible={modalComment}
+                onRequestClose={() => {
+                  Alert.alert("Modal has been closed.");
+                  setModalComment(!modalComment);
+                }}
+              >
+                <View className="bg-black/75">
+                  <View className="mt-[50%] h-full rounded-2xl bg-white">
+                    <View className="inset-x-0 items-end">
+                      <TouchableOpacity
+                        className="mt-6 mr-6"
+                        onPress={() => {
+                          setModalComment(false);
+                        }}
+                      >
+                        <Image
+                          source={require("../assets/images/group/blackexit.png")}
+                        />
+                      </TouchableOpacity>
+                    </View>
+
+                    <View className="mt-10 h-1/2 px-5">
+                      <ScrollView showsVerticalScrollIndicator={false}>
+                        <View className="flex flex-col gap-3">
+                          {comments.map((comment, index) => (
+                            <View
+                              key={index}
+                              className=" rounded-md bg-[#FFF4ED] p-2"
+                            >
+                              <View className="flex flex-row items-center gap-2 ">
+                                <Image
+                                  source={comment.avatar}
+                                  className="h-10 w-10 rounded-full"
+                                />
+                                <View>
+                                  <Text
+                                    className="text-sm text-[#5a2d22]"
+                                    style={styles().textFontSemiBold}
+                                  >
+                                    {comment.username}
+                                  </Text>
+                                  <Text
+                                    className="text-sm text-[#3C3C43]"
+                                    style={styles().textFont}
+                                  >
+                                    2 giờ trước
+                                  </Text>
+                                </View>
+                              </View>
+                              <Text
+                                className="mt-2 text-sm text-[#5a2d22]"
+                                style={styles().textFont}
+                              >
+                                {comment.content}
+                              </Text>
+                            </View>
+                          ))}
+                        </View>
+                      </ScrollView>
+                    </View>
+                  </View>
+                </View>
+              </Modal>
               <View className="mt-5 h-24">
                 <ScrollView
                   horizontal={true}
@@ -254,7 +320,7 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
               >
                 Liên quan
               </Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => setModalSuggest(true)}>
                 <Text
                   className="text-sm text-[#FF835C]"
                   style={styles().textFontSemiBold}
@@ -263,6 +329,97 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                 </Text>
               </TouchableOpacity>
             </View>
+
+            <Modal
+              className=" rounded-xl bg-white"
+              animationType="slide"
+              transparent={true}
+              visible={modalSuggest}
+              onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setModalSuggest(!modalSuggest);
+              }}
+            >
+              <View className="bg-black/75">
+                <View className="mt-[50%] h-full rounded-2xl bg-white">
+                  <View className="inset-x-0 items-end">
+                    <TouchableOpacity
+                      className="mt-6 mr-6"
+                      onPress={() => {
+                        setModalSuggest(false);
+                      }}
+                    >
+                      <Image
+                        source={require("../assets/images/group/blackexit.png")}
+                      />
+                    </TouchableOpacity>
+                  </View>
+
+                  <View className="mt-10 h-1/2 px-5">
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                      <View className="flex flex-col gap-3">
+                        {list.map((item, index) => (
+                          <View
+                            key={index}
+                            className="mb-5 flex flex-row items-center justify-between rounded-lg bg-[#fff4ed] p-3 "
+                          >
+                            <TouchableOpacity
+                              className="flex flex-row items-center gap-10"
+                              onPress={() => {}}
+                            >
+                              <View className="relative">
+                                <View>
+                                  <Image
+                                    source={item.image}
+                                    className=" h-12 w-12 rounded-full "
+                                  />
+                                </View>
+                              </View>
+
+                              <View>
+                                <Text
+                                  className="text-sm text-[#5A2D22]"
+                                  style={styles().textFontSemiBold}
+                                >
+                                  {item.name}
+                                </Text>
+                                <View className="flex flex-row items-center gap-2">
+                                  <Image
+                                    source={require("../assets/images/mind/Heart.png")}
+                                  />
+                                  <Text
+                                    className="text-xs text-[#B2B2B2]"
+                                    style={styles().textFont}
+                                  >{`${item.heart}`}</Text>
+                                  <Image
+                                    source={require("../assets/images/mind/Ellipse_206.png")}
+                                  />
+                                  <Text
+                                    className="text-xs text-[#B2B2B2]"
+                                    style={styles().textFont}
+                                  >
+                                    {item.date}
+                                  </Text>
+                                  <Image
+                                    source={require("../assets/images/mind/Ellipse_206.png")}
+                                  />
+                                  <Text
+                                    className="text-xs text-[#B2B2B2]"
+                                    style={styles().textFont}
+                                  >
+                                    {`${item.time} phút`}
+                                  </Text>
+                                </View>
+                              </View>
+                            </TouchableOpacity>
+                          </View>
+                        ))}
+                      </View>
+                    </ScrollView>
+                  </View>
+                </View>
+              </View>
+            </Modal>
 
             <View className="mt-5 h-52">
               <ScrollView

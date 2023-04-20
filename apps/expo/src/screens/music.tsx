@@ -19,7 +19,7 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
   const [song, setSong] = useState<Audio.Sound>();
   const [selectedSong, setSelectedSong] = useState<Song>();
   const audioStatus = useAudioStatus();
-  const [index, setIndex] = useState(0);
+  // const [index, setIndex] = useState(0);
   const [list, setList] = useState<Array<Song>>(suggestSongs);
 
   useEffect(() => {
@@ -27,14 +27,13 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
     setList(suggest[index]?.list ?? []);
   }, [isActive]);
 
-  const handleOpenMusic = () => {
-    props.navigation.navigate("Music");
-  };
-
   const resumeSong = async () => {
     console.log("Resuming Sound");
     audioStatus.setStatus(true);
     await song?.playAsync();
+    song?.getStatusAsync().then((status) => {
+      console.log(status.durationMillis);
+    });
   };
   const playSong = async (index: number) => {
     const { sound } = await Audio.Sound.createAsync(
@@ -47,6 +46,7 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
     console.log("Playing Sound");
     sound.playAsync();
     audioStatus.setStatus(true);
+    audioStatus.setIndex(index);
   };
   const pauseSong = async () => {
     console.log("Paused Sound");
@@ -108,6 +108,7 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
       : undefined;
   }, [song]);
 
+  console.log(audioStatus.status);
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className="absolute top-0 left-0">
@@ -207,8 +208,10 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
                   <TouchableOpacity
                     className="flex flex-row items-center gap-10"
                     onPress={() => {
-                      setSelectedSong(list[index]);
-                      setIndex(index);
+                      setSelectedSong(song);
+                      // setIndex(index);
+                      audioStatus.setIndex(index);
+                      audioStatus.setStatus(true);
                       playSong(index);
                     }}
                   >
@@ -219,15 +222,6 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
                           className=" h-12 w-12 rounded-full "
                         />
                       </View>
-                      {/* {isPlaying && ( */}
-                      {/* <View className=" absolute h-12 w-12 items-center justify-center rounded-full backdrop-blur-lg">
-                        <Image
-                          source={require("../assets/images/music/Group.png")}
-                          className="absolute"
-                        />
-                      </View> */}
-
-                      {/* )} */}
                     </View>
 
                     <View>
@@ -269,9 +263,8 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
             className="flex flex-row items-center "
             onPress={() =>
               props.navigation.navigate("MusicPlayer", {
-                song: selectedSong,
+                // song: selectedSong,
                 list: list,
-                index: index,
                 resumeSong: resumeSong,
                 pauseSong: pauseSong,
                 nextSong: nextSong,
@@ -298,7 +291,7 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
           <View className="mr-8 flex flex-row items-center gap-8">
             <TouchableOpacity
               className=""
-              onPress={() => previousSong(selectedSong.id)}
+              onPress={() => previousSong(audioStatus.index)}
             >
               <Image source={require("../assets/images/music/Vector.png")} />
             </TouchableOpacity>
@@ -307,17 +300,22 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
               <TouchableOpacity
                 onPress={() => {
                   pauseSong();
-                  // setIsPlaying(false);
+                  audioStatus.setStatus(false);
                 }}
               >
                 <Image source={require("../assets/images/music/Group.png")} />
               </TouchableOpacity>
             ) : (
-              <TouchableOpacity onPress={resumeSong}>
+              <TouchableOpacity
+                onPress={() => {
+                  resumeSong();
+                  audioStatus.setStatus(true);
+                }}
+              >
                 <Image source={require("../assets/images/music/Pause.png")} />
               </TouchableOpacity>
             )}
-            <TouchableOpacity onPress={() => nextSong(selectedSong.id)}>
+            <TouchableOpacity onPress={() => nextSong(audioStatus.index)}>
               <Image source={require("../assets/images/music/Next.png")} />
             </TouchableOpacity>
           </View>
