@@ -55,7 +55,7 @@ const renderTabBar = (props: any) => {
     />
   );
 };
-
+const data = [1, 2, 3, 4, 5];
 export const GroupPage = () => {
   const layout = useWindowDimensions();
 
@@ -64,9 +64,13 @@ export const GroupPage = () => {
   const duration = 100;
 
   let vis = true;
+  let checkFirstTime = true;
 
   const setAnimate = (visi: boolean) => {
-    if (visi !== null) vis = visi;
+    if (visi !== null) {
+      vis = visi;
+      checkFirstTime = false;
+    }
     if (vis) {
       Animated.timing(animated, {
         toValue: 0,
@@ -74,18 +78,18 @@ export const GroupPage = () => {
         useNativeDriver: true,
       }).start();
       Animated.timing(animatedDown, {
-        toValue: -50,
+        toValue: 0,
         duration: duration,
         useNativeDriver: true,
       }).start();
     } else {
       Animated.timing(animated, {
-        toValue: -255,
+        toValue: -400,
         duration: duration,
         useNativeDriver: true,
       }).start();
       Animated.timing(animatedDown, {
-        toValue: -190,
+        toValue: -320,
         duration: duration,
         useNativeDriver: true,
       }).start();
@@ -93,9 +97,9 @@ export const GroupPage = () => {
   };
 
   const FirstRoute = () => <GroupPost setVisible={setAnimate} />;
-  const SecondRoute = () => <GroupLib />;
+  const SecondRoute = () => <GroupLib setVisible={setAnimate} />;
   const ThirdRoute = () => <GroupChat />;
-  const ForthRoute = () => <GroupDesc />;
+  const ForthRoute = () => <GroupDesc setVisible={setAnimate} />;
 
   const renderScene = SceneMap({
     first: FirstRoute,
@@ -131,42 +135,63 @@ export const GroupPage = () => {
         className="h-fit"
         style={{ transform: [{ translateY: animated }] }}
       >
-        <View className="">
+        <View className="relative top-0 -mt-14 h-1/2">
           <Image
-            className=" top-0 "
-            source={require("../../assets/images/group/groupPost/top.png")}
+            className=" top-0"
+            source={require("../../assets/images/group/top.png")}
           />
-          <View className="absolute inset-x-0 mt-10 flex flex-row items-center justify-center space-x-4">
-            <View className="box-content h-10 w-10 overflow-hidden rounded-xl bg-slate-50">
-              <Image
-                className="relative max-h-full max-w-full rounded-lg"
-                source={require("../../assets/images/group/avatarTest.png")}
-              />
-            </View>
-            <Text
-              className=" text-center text-xl text-white"
-              style={styles().textFontSemiBold}
-            >
-              Self-love
-            </Text>
-          </View>
+        </View>
 
-          <View className="absolute inset-x-4 mt-14 flex flex-row justify-between ">
-            <TouchableOpacity className="h-9 w-9 items-center justify-center rounded-xl bg-[#000]/25">
-              <Image
-                source={require("../../assets/images/group/arrowleft.png")}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity className="h-10 w-10 items-center justify-center">
-              <Image
-                source={require("../../assets/images/group/groupPost/other.png")}
-              />
-            </TouchableOpacity>
+        <TouchableOpacity className="absolute mt-12 ml-5 h-10 w-10 items-center justify-center rounded-xl bg-[#000]/25">
+          <Image source={require("../../assets/images/group/arrowleft.png")} />
+        </TouchableOpacity>
+
+        <View className="absolute inset-x-0 mt-20 items-center">
+          <Image
+            className=" h-24 w-24 object-cover"
+            source={require("../../assets/images/group/avatarTest.png")}
+          />
+          <Text
+            className="mt-4 text-center text-xl text-white"
+            style={styles().textFontSemiBold}
+          >
+            Self-love
+          </Text>
+          <Text
+            className="mt-1 text-center text-base text-white"
+            style={styles().textFont}
+          >
+            Nhóm kín &#8226; 111 thành viên
+          </Text>
+          <View className="mt-2 flex w-3/5 flex-row justify-around space-x-1 ">
+            {data.map((item) => {
+              if (item === 5) {
+                return (
+                  <View
+                    key={item}
+                    className="h-9 w-9 items-center justify-center rounded-full bg-slate-50"
+                  >
+                    <Text>5+</Text>
+                  </View>
+                );
+              } else
+                return (
+                  <View
+                    key={item}
+                    className="box-content h-9 w-9 items-center justify-center rounded-full bg-slate-50"
+                  >
+                    <Image
+                      className="relative max-h-full max-w-full rounded-full"
+                      source={require("../../assets/images/group/avatarTest.png")}
+                    />
+                  </View>
+                );
+            })}
           </View>
         </View>
       </Animated.View>
       <Animated.View
-        className=""
+        className={checkFirstTime ? "mt-[50]" : ""}
         style={[
           { minHeight: "95%" },
           { flex: 1 },
@@ -186,3 +211,38 @@ export const GroupPage = () => {
     </>
   );
 };
+{
+  /* <View className="">
+<Image
+  className=" top-0 "
+  source={require("../../assets/images/group/groupPost/top.png")}
+/>
+<View className="absolute inset-x-0 mt-10 flex flex-row items-center justify-center space-x-4">
+  <View className="box-content h-10 w-10 overflow-hidden rounded-xl bg-slate-50">
+    <Image
+      className="relative max-h-full max-w-full rounded-lg"
+      source={require("../../assets/images/group/avatarTest.png")}
+    />
+  </View>
+  <Text
+    className=" text-center text-xl text-white"
+    style={styles().textFontSemiBold}
+  >
+    Self-love
+  </Text>
+</View>
+
+<View className="absolute inset-x-4 mt-14 flex flex-row justify-between ">
+  <TouchableOpacity className="h-9 w-9 items-center justify-center rounded-xl bg-[#000]/25">
+    <Image
+      source={require("../../assets/images/group/arrowleft.png")}
+    />
+  </TouchableOpacity>
+  <TouchableOpacity className="h-10 w-10 items-center justify-center">
+    <Image
+      source={require("../../assets/images/group/groupPost/other.png")}
+    />
+  </TouchableOpacity>
+</View>
+</View> */
+}

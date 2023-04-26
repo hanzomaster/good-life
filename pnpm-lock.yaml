@@ -53,6 +53,7 @@ importers:
       eslint: ^8.28.0
       expo: ~47.0.12
       expo-auth-session: ^3.8.0
+      expo-av: ~13.0.3
       expo-font: ~11.0.1
       expo-random: ^13.0.0
       expo-secure-store: ^12.0.0
@@ -62,6 +63,7 @@ importers:
       react: 18.1.0
       react-dom: 18.1.0
       react-native: 0.70.5
+      react-native-get-music-files: ^2.1.0
       react-native-keyboard-aware-scroll-view: ^0.9.5
       react-native-pager-view: 6.0.1
       react-native-paper: ^5.5.0
@@ -92,6 +94,7 @@ importers:
       '@trpc/server': 10.5.0
       expo: 47.0.13_@babel+core@7.20.5
       expo-auth-session: 3.8.0_3cfklri74rc5w5ngxowx7ovxta
+      expo-av: 13.0.3_expo@47.0.13
       expo-font: 11.0.1_expo@47.0.13
       expo-random: 13.0.0_expo@47.0.13
       expo-secure-store: 12.0.0_expo@47.0.13
@@ -100,6 +103,7 @@ importers:
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0
       react-native: 0.70.5_rnbco5eodjkfp6ucueusre3z4i_2hkxedd44to6uuf252s62q5boq
+      react-native-get-music-files: 2.1.0_react-native@0.70.5
       react-native-keyboard-aware-scroll-view: 0.9.5_react-native@0.70.5
       react-native-pager-view: 6.0.1_tj3nonr5gneraukzjkxpsiy7yu
       react-native-paper: 5.5.0_574jn7b75qaijls27alli4kpmi
@@ -5869,6 +5873,14 @@ packages:
       - supports-color
     dev: false
 
+  /expo-av/13.0.3_expo@47.0.13:
+    resolution: {integrity: sha512-9SpXOjY2MUK+jCIL68EUro/aHBlbZ3B4cY1nRr2aTPfv/dLD3bXRZNTTtSwOgsHbuKO6XwjHgCoYbd9T0GcE4A==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 47.0.13_@babel+core@7.20.5
+    dev: false
+
   /expo-constants/14.0.2_expo@47.0.13:
     resolution: {integrity: sha512-wzV3nrzTXTI8yG0tfas3fnqCfKV6YE+1GphEREyVDAShEB6mBInX1b6HgtpHFy2wOtnml+lPVmTCeGtjjLnZhA==}
     peerDependencies:
@@ -8982,6 +8994,15 @@ packages:
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
+
+  /react-native-get-music-files/2.1.0_react-native@0.70.5:
+    resolution: {integrity: sha512-wNAhTAzzga55itaJx59RWRsPRNp8AkvFWs04gE2TzV3/z1Jbje3hB590JVjGlD6uNtVwstHcOAZwct35ZjURHg==}
+    peerDependencies:
+      react-native: ^0.41.2
+      react-native-windows: 0.41.0-rc.1
+    dependencies:
+      react-native: 0.70.5_rnbco5eodjkfp6ucueusre3z4i_2hkxedd44to6uuf252s62q5boq
+    dev: false
 
   /react-native-gradle-plugin/0.70.3:
     resolution: {integrity: sha512-oOanj84fJEXUg9FoEAQomA8ISG+DVIrTZ3qF7m69VQUJyOGYyDZmPqKcjvRku4KXlEH6hWO9i4ACLzNBh8gC0A==}
