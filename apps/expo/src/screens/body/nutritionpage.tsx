@@ -129,6 +129,24 @@ export const NutritionPage = () => {
               />
             </TouchableOpacity>
           </View>
+
+          <View className="absolute right-5 mt-14 flex flex-col justify-between">
+            <TouchableOpacity className="h-9 w-9 items-center justify-center rounded-xl bg-[#000]/25">
+              <Image
+                source={require("../../assets/images/nutrition/lovefood.png")}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity className="mt-3 h-9 w-9 items-center justify-center rounded-xl bg-[#000]/25">
+              <Image
+                source={require("../../assets/images/nutrition/highlight.png")}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity className="mt-3 h-9 w-9 items-center justify-center rounded-xl bg-[#000]/25">
+              <Image
+                source={require("../../assets/images/nutrition/sharefood.png")}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
         <View className="absolute left-[5%] mt-80 h-[45%] w-[90%] justify-center rounded-xl bg-white">
           <View className="ml-5">

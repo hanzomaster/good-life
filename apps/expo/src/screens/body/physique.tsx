@@ -2,42 +2,45 @@ import {
   Image,
   ScrollView,
   Text,
-  View,
-  TouchableOpacity,
   TextInput,
-  Button,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
-import { ScreenProps } from "../../types/navigation";
+
 import React, { useState } from "react";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const food = [
+const video = [
   {
-    name: "Súp bí đỏ",
-    image: require("../../assets/images/nutrition/img1.png"),
+    name: "Pilates xx",
+    image: require("../../assets/images/physique/img1.png"),
+    time: 21,
     heart: 2,
     date: "11.02.2023",
   },
   {
-    name: "Sinh tố dâu",
-    image: require("../../assets/images/nutrition/img2.png"),
+    name: "Giãn cơ 20 phút",
+    image: require("../../assets/images/physique/img2.png"),
+    time: 21,
     heart: 20,
     date: "11.02.2023",
   },
   {
-    name: "Bánh plan",
-    image: require("../../assets/images/nutrition/img4.png"),
+    name: "Chạy",
+    image: require("../../assets/images/physique/img3.png"),
+    time: 21,
     heart: 10,
     date: "11.02.2023",
   },
   {
-    name: "Cốm",
-    image: require("../../assets/images/nutrition/img3.png"),
+    name: "Tập cơ tay",
+    image: require("../../assets/images/physique/img4.png"),
+    time: 20,
     heart: 52,
     date: "11.02.2023",
   },
@@ -48,17 +51,21 @@ const suggest = [
     name: "Gợi ý",
   },
   {
-    name: "Món chính",
+    name: "Yoga",
   },
   {
-    name: "Bữa sáng",
+    name: "Cadio",
   },
   {
-    name: "Ăn nhẹ",
+    name: "Pilates",
+  },
+  {
+    name: "Giãn cơ",
   },
 ];
 
-export const Nutrition = () => {
+const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+export const Physique = () => {
   const [selectedSuggest, setSelectedSuggest] = useState<string[]>([]);
   const updateSelectedSuggest = (item: string) => {
     const copyArray = [...selectedSuggest];
@@ -69,7 +76,7 @@ export const Nutrition = () => {
     <SafeAreaView className="absolute inset-0 h-[80%] content-end bg-[#FFF4ED]">
       <View className="mt-0">
         <View className=" ml-5 mr-5 mt-0 flex flex-row items-center rounded-lg  border-2 border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1">
-          <Image source={require("../../assets/images/nutrition/Icon.png")} />
+          <Image source={require("../../assets/images/physique/Icon.png")} />
           <TextInput
             placeholder="Tìm kiếm"
             className="px-2 py-1 text-sm text-[#9B9B9B]"
@@ -137,7 +144,7 @@ export const Nutrition = () => {
             className=" relative ml-1 items-center"
             style={styles().itemsWrap}
           >
-            {food.map((item) => {
+            {video.map((item) => {
               return (
                 <TouchableOpacity
                   key={item.name}
@@ -149,6 +156,17 @@ export const Nutrition = () => {
                       className="h-40 w-40 rounded-lg object-fill"
                       source={item.image}
                     />
+                    <View className="absolute bottom-2 left-2 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
+                      <Text className="text-white" style={styles().textFont}>
+                        {item.time} phút
+                      </Text>
+                    </View>
+                    <View className="absolute bottom-2 right-2 rounded-2xl">
+                      <Image
+                        className="h-6 w-6 object-fill"
+                        source={require("../../assets/images/physique/play.png")}
+                      />
+                    </View>
                   </View>
 
                   <View className="mt-2">
