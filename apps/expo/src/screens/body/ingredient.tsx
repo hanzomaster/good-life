@@ -12,7 +12,7 @@ const data = [
 
 export const IngredientPage = () => {
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
+    <SafeAreaView className="absolute inset-0 h-48 content-end bg-[#FFF4ED]">
       <ScrollView className="">
         <View className="ml-5 flex flex-col">
           {data.map((item) => {
