@@ -1,11 +1,14 @@
 import * as React from "react";
+import { useState } from "react";
 import {
+  Alert,
   Animated,
   Image,
+  Modal,
   Text,
   TouchableOpacity,
-  useWindowDimensions,
   View,
+  useWindowDimensions,
 } from "react-native";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../../root";
@@ -57,10 +60,11 @@ const renderTabBar = (props: any) => {
 };
 const data = [1, 2, 3, 4, 5];
 export const GroupPage = () => {
+  const [modalVisible, setModalVisible] = useState(false);
   const layout = useWindowDimensions();
 
   const animated = new Animated.Value(-10);
-  const animatedDown = new Animated.Value(-50);
+  const animatedDown = new Animated.Value(0);
   const duration = 100;
 
   let vis = true;
@@ -96,7 +100,9 @@ export const GroupPage = () => {
     }
   };
 
-  const FirstRoute = () => <GroupPost setVisible={setAnimate} />;
+  const FirstRoute = () => (
+    <GroupPost setVisible={setAnimate} setOpenModal={setModalVisible} />
+  );
   const SecondRoute = () => <GroupLib setVisible={setAnimate} />;
   const ThirdRoute = () => <GroupChat />;
   const ForthRoute = () => <GroupDesc setVisible={setAnimate} />;
@@ -208,6 +214,63 @@ export const GroupPage = () => {
           lazy={true}
         />
       </Animated.View>
+      <Modal
+        className=" rounded-xl bg-white"
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View className="bg-black/75">
+          <View className="mt-[50%] h-full rounded-2xl bg-white">
+            <View className="inset-x-0 items-end">
+              <TouchableOpacity
+                className="mt-6 mr-6"
+                onPress={() => {
+                  setModalVisible(false);
+                }}
+              >
+                <Image
+                  source={require("../../assets/images/group/blackexit.png")}
+                />
+              </TouchableOpacity>
+            </View>
+
+            <View className="inset-x-0 mt-[20%] items-center">
+              <Image
+                source={require("../../assets/images/group/modalicon.png")}
+              />
+            </View>
+            <View className="inset-x-0 items-center">
+              <Text
+                className="mt-4 w-3/5 flex-wrap space-y-1 text-center text-lg text-[#5A2D22]"
+                style={styles().textFontSemiBold}
+              >
+                Chào mừng bạn đã là thành viên mới của nhóm ^^
+              </Text>
+            </View>
+            <View className="inset-x-0 mt-[15%] items-center">
+              <TouchableOpacity className=" h-14 w-2/3 items-center justify-center rounded-full bg-[#7A9861]">
+                <View className="flex flex-row items-center justify-between space-x-4">
+                  <Text
+                    className="ml-3 text-lg text-white"
+                    style={styles().textFontSemiBold}
+                  >
+                    Khám phá thôi nào
+                  </Text>
+
+                  <Image
+                    source={require("../../assets/images/emotion/arrow.png")}
+                  />
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </>
   );
 };

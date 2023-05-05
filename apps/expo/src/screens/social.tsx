@@ -80,11 +80,26 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
               className=" relative ml-5 flex h-72 flex-col flex-wrap "
               style={{ marginHorizontal: 12 / 2, marginVertical: 12 / 2 }}
             >
+              <View className="mr-5 mb-5 h-[1/9] w-72">
+                <TouchableOpacity className="flex flex-row justify-start space-x-3">
+                  <View className="h-[74] w-[74] items-center justify-center overflow-hidden rounded-xl bg-slate-400 ">
+                    <Text className="text-3xl">+</Text>
+                  </View>
+                  <View className="flex flex-col items-start justify-center">
+                    <Text
+                      className="text-[#5A2D22]"
+                      style={styles().textFontBold}
+                    >
+                      Tạo nhóm mới
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
               {data.map((item) => {
                 return (
                   <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
                     <TouchableOpacity className="flex flex-row justify-start space-x-3">
-                      <View className="rounded-3xl">
+                      <View className="overflow-hidden rounded-xl">
                         <Image
                           source={require("../assets/images/group/groupList/avatar.png")}
                         />

@@ -1,15 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useState } from "react";
-import {
-  FlatList,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import Heart from "../../assets/svgs/things/heart";
-import Message from "../../assets/svgs/things/message";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
+import Comment from "../../assets/svgs/things/comment";
+import ReactHeart from "../../assets/svgs/things/reactHeart";
 import { styles } from "../../root";
 import { RootStackParamList } from "../../types/navigation";
 
@@ -21,12 +14,12 @@ const Tab = createBottomTabNavigator<RootStackParamList>();
 
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export const GroupPost = ({ setVisible }: any) => {
+export const GroupPost = ({ setVisible, setOpenModal }: any) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [showPostButton, setShowPostButton] = useState(true);
   let offset = 0;
   return (
-    // <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
-    <ScrollView className="border-t border-t-[#C4C4C4]/50">
+    <>
       <FlatList
         className="relative top-0 max-h-fit bg-[#FFF4ED]"
         data={data}
@@ -34,13 +27,15 @@ export const GroupPost = ({ setVisible }: any) => {
           const currentOffset = e.nativeEvent.contentOffset.y;
           const direction = currentOffset > offset ? "down" : "up";
           offset = currentOffset;
-          console.log("current: " + offset + "SS" + currentOffset);
-          console.log(direction);
+          if (direction === "down") {
+            setShowPostButton(false);
+          }
+          if (currentOffset < 0 || currentOffset === 0) {
+            setShowPostButton(true);
+          }
           direction === "down" ? setVisible(false) : null;
-          (currentOffset < 0 || currentOffset === 0) && direction === "down"
-            ? setVisible(true)
-            : null;
-          //   // console.log(direction);
+          currentOffset < 0 || currentOffset === 0 ? setVisible(true) : null;
+          console.log(direction);
         }}
         renderItem={(item) => {
           return (
@@ -88,7 +83,7 @@ export const GroupPost = ({ setVisible }: any) => {
 
                 <View className="ml-4 mt-4 flex flex-row space-x-5">
                   <TouchableOpacity className="flex flex-row items-center space-x-1">
-                    <Heart color="#5A2D22" />
+                    <ReactHeart color="#5A2D22" />
                     <Text
                       className="text-lg text-[#5A2D22]"
                       style={styles().textFont}
@@ -97,7 +92,7 @@ export const GroupPost = ({ setVisible }: any) => {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity className="flex flex-row items-center space-x-1">
-                    <Message color="#5A2D22" />
+                    <Comment color="#5A2D22" />
                     <Text
                       className="text-lg text-[#5A2D22]"
                       style={styles().textFont}
@@ -111,8 +106,29 @@ export const GroupPost = ({ setVisible }: any) => {
           );
         }}
       ></FlatList>
-      <View className="h-10 w-full bg-[#000000]"></View>
-      {/* <ScrollView
+
+      <View
+        className={
+          showPostButton
+            ? "absolute inset-x-0 z-10 mt-60 h-16 items-center   "
+            : "hidden"
+        }
+      >
+        <TouchableOpacity
+          className="h-full w-2/3 items-center justify-center rounded-full bg-[#7A9861]"
+          disabled={!showPostButton}
+          onPress={() => {
+            setOpenModal(true);
+          }}
+        >
+          <Text className="text-[#FFFFFF]" style={styles().textFontSemiBold}>
+            Đăng bài lên nhóm
+          </Text>
+        </TouchableOpacity>
+      </View>
+    </>
+    // <View className="h-10 w-full bg-[#000000]"></View>
+    /* <ScrollView
         className="top-0 -mt-4"
         // onScrollBeginDrag={() => {
         //   setVisible(false);
@@ -205,8 +221,7 @@ export const GroupPost = ({ setVisible }: any) => {
             );
           })}
         </View>
-      </ScrollView> */}
-      {/* </SafeAreaView> */}
-    </ScrollView>
+      </ScrollView> */
+    /* </SafeAreaView> */
   );
 };
