@@ -59,7 +59,7 @@ export const App = () => {
         <SafeAreaProvider>
           <Provider theme={theme}>
             <NavigationContainer>
-              <MusicScreen />
+              <Root />
             </NavigationContainer>
           </Provider>
           <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
