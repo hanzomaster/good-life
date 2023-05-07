@@ -22,9 +22,29 @@ const noti = [
     notification: "Phuong đã đăng vào nhóm Self-love.",
     time: "1 giờ",
   },
+  {
+    notification: "Kaylin đã đăng vào nhóm Self-love.",
+    time: "3 giờ",
+  },
+  {
+    notification: "An đã đăng vào nhóm Self-love.",
+    time: "5 giờ",
+  },
+  {
+    notification: "Phuong đã đăng vào nhóm Self-love.",
+    time: "8 giờ",
+  },
+  {
+    notification: "Kaylin đã đăng vào nhóm Self-love.",
+    time: "1 ngày",
+  },
+  {
+    notification: "An đã đăng vào nhóm Self-love.",
+    time: "2 ngày",
+  },
 ];
 
-export const Notification = () => {
+export const NotificationPage = () => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className="absolute top-0 left-0">
@@ -48,7 +68,7 @@ export const Notification = () => {
         </View>
       </View>
 
-      <ScrollView className="absolute left-[5%] mt-40 w-[90%]">
+      <ScrollView className="relative left-[5%] mt-32 w-[90%]">
         {noti.map((item) => {
           return (
             <TouchableOpacity className="mt-5">
