@@ -5,8 +5,9 @@ import {
   Button,
   Image,
   ScrollView,
-  Text, TouchableOpacity,
-  View
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -159,6 +160,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
           style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
           <ScrollView
+            horizontal
             className="flex h-fit pb-2"
             alwaysBounceHorizontal
             alwaysBounceVertical={false}
@@ -282,6 +284,7 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
           }}
         >
           <ScrollView
+            horizontal
             className="flex h-fit pb-2"
             alwaysBounceHorizontal
             alwaysBounceVertical={false}

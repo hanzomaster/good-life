@@ -1,19 +1,19 @@
 import {
+  Animated,
   Image,
   Text,
   TouchableOpacity,
   View,
-  Animated,
   useWindowDimensions,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
-import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 
 import React from "react";
-import { Physique } from "./body/physique";
 import { Nutrition } from "./body/nutrition";
+import { Physique } from "./body/physique";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -27,7 +27,7 @@ const renderTabBar = (props: any) => {
       renderLabel={({ route, focused }) => (
         <Text
           className={classNames(focused ? "text-[#FF835C]" : "text-[#9B9B9B]")}
-          style={[styles().textFontSemiBold, { fontSize: 25 }]}
+          style={[styles().textFontSemiBold, { fontSize: 15 }]}
         >
           {route.title}
         </Text>
@@ -37,16 +37,17 @@ const renderTabBar = (props: any) => {
         maxWidth: "100%",
         justifyContent: "center",
         alignItems: "center",
-        height: 3,
+        height: 1,
       }}
       style={{
+        marginTop: 2,
         backgroundColor: "#FFF4ED",
-        width: layout.width,
+        width: layout.width * 0.85,
         justifyContent: "space-between",
         alignSelf: "center",
         borderBottomColor: "#FFF4ED",
         borderBottomWidth: 1,
-        height: 55,
+        height: 40,
         shadowColor: "white",
       }}
       labelStyle={Object.assign(

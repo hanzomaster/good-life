@@ -85,6 +85,7 @@ export const Physique = () => {
       </View>
       <View className=" mt-2 justify-center align-middle">
         <ScrollView
+          horizontal
           className=""
           alwaysBounceHorizontal
           alwaysBounceVertical={false}

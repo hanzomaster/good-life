@@ -69,6 +69,7 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
           }}
         >
           <ScrollView
+            horizontal
             className=""
             alwaysBounceHorizontal
             alwaysBounceVertical={false}
@@ -148,6 +149,7 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
           }}
         >
           <ScrollView
+            horizontal
             className=""
             alwaysBounceHorizontal
             alwaysBounceVertical={false}

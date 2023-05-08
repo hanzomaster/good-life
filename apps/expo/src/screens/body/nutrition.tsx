@@ -1,16 +1,14 @@
+import React, { useState } from "react";
 import {
   Image,
   ScrollView,
   Text,
-  View,
-  TouchableOpacity,
   TextInput,
-  Button,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
-import { ScreenProps } from "../../types/navigation";
-import React, { useState } from "react";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -78,6 +76,7 @@ export const Nutrition = () => {
       </View>
       <View className=" mt-2 justify-center align-middle">
         <ScrollView
+          horizontal
           className=""
           alwaysBounceHorizontal
           alwaysBounceVertical={false}
