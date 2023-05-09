@@ -6,7 +6,7 @@ import React, {
   ReactNode,
 } from "react";
 import { Audio } from "expo-av";
-import { Song, suggestSongs } from "../screens/music";
+import { Song, suggestSongs } from "../assets/music/music";
 interface AudioState {
   sound: Audio.Sound | null;
   isPlaying: boolean;

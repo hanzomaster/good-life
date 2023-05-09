@@ -89,9 +89,6 @@ export const App = () => {
       <SignedOut>
         <SafeAreaProvider>
           <Provider theme={theme}>
-            <NavigationContainer>
-              <Root />
-            </NavigationContainer>
             <AudioStatusProvider>
               <NavigationContainer>
                 {/* <Stack.Navigator
@@ -101,7 +98,8 @@ export const App = () => {
                 >
                   <SignInSignUpScreen />
                 </Stack.Navigator> */}
-                <SignInSignUpScreen />
+                {/* <SignInSignUpScreen /> */}
+                <Root />
               </NavigationContainer>
             </AudioStatusProvider>
           </Provider>
