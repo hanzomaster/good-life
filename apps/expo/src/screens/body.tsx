@@ -1,15 +1,15 @@
+import { SafeAreaView } from "react-native-safe-area-context";
+import { SceneMap, TabBar, TabView } from "react-native-tab-view";
+import { ScreenProps } from "../types/navigation";
 import {
-  Animated,
   Image,
   Text,
   TouchableOpacity,
   View,
+  Animated,
   useWindowDimensions,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../root";
-import { ScreenProps } from "../types/navigation";
 
 import React from "react";
 import { Nutrition } from "./body/nutrition";

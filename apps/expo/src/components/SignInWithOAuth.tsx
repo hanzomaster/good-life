@@ -1,6 +1,6 @@
 import { useSignIn, useSignUp } from "@clerk/clerk-expo";
 import React from "react";
-import { Button, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 
 import * as AuthSession from "expo-auth-session";
 
@@ -140,15 +140,22 @@ const SignInWithOAuth = () => {
   };
 
   return (
-    <View className="rounded-lg border-2 border-gray-500 p-4">
-      <Button
+    <View className="flex flex-col gap-5">
+      {/* <Button
         title="Sign in with Google"
         onPress={handleSignInWithGooglePress}
       />
       <Button
         title="Sign in with Github"
         onPress={handleSignInWithGithubPress}
-      />
+      /> */}
+
+      <TouchableOpacity onPress={handleSignInWithGooglePress}>
+        <Image source={require("../assets/images/signin/Google.png")} />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={handleSignInWithGithubPress}>
+        <Image source={require("../assets/images/signin/Facebook.png")} />
+      </TouchableOpacity>
     </View>
   );
 };

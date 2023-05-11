@@ -14,9 +14,14 @@ import {
 import Constants from "expo-constants";
 
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DefaultTheme, Provider } from "react-native-paper";
+import { AudioStatusProvider } from "./context/audio";
 import Root from "./root";
-import { GroupPage } from "./screens/group/groupPage";
+import { MindDetailScreen } from "./screens/mindDetail";
+import { MusicScreen } from "./screens/music";
+import { MusicPlayerScreen } from "./screens/musicPlayer";
+import { RootStackParamList } from "./types/navigation";
 import { tokenCache } from "./utils/cache";
 
 // Remove background color from the bottom navigation bar when focus
@@ -37,19 +42,42 @@ export const App = () => {
   if (!loaded) {
     return null;
   }
+
+  const Stack = createNativeStackNavigator<RootStackParamList>();
+
   return (
     <ClerkProvider
       publishableKey={Constants.expoConfig?.extra?.CLERK_PUBLISHABLE_KEY}
       tokenCache={tokenCache}
     >
+      {/* <AudioProvider> */}
       <SignedIn>
         <TRPCProvider>
           <SafeAreaProvider>
             <Provider theme={theme}>
-              <NavigationContainer>
-                <Root />
-              </NavigationContainer>
-              {/* <GroupPage /> */}
+              <AudioStatusProvider>
+                <NavigationContainer>
+                  <Stack.Navigator
+                    screenOptions={{
+                      headerShown: false,
+                    }}
+                  >
+                    <Stack.Screen name="Root" component={Root} />
+                    {/* <Stack.Screen name="GroupChat" component={GroupChat} /> */}
+                    <Stack.Screen name="Music" component={MusicScreen} />
+
+                    <Stack.Screen
+                      name="MusicPlayer"
+                      component={MusicPlayerScreen}
+                    />
+                    <Stack.Screen
+                      name="MindDetail"
+                      component={MindDetailScreen}
+                    />
+                  </Stack.Navigator>
+                </NavigationContainer>
+                {/* <GroupPage /> */}
+              </AudioStatusProvider>
             </Provider>
             <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
           </SafeAreaProvider>
@@ -58,13 +86,24 @@ export const App = () => {
       <SignedOut>
         <SafeAreaProvider>
           <Provider theme={theme}>
-            <NavigationContainer>
-              <GroupPage />
-            </NavigationContainer>
+            <AudioStatusProvider>
+              <NavigationContainer>
+                {/* <Stack.Navigator
+                  screenOptions={{
+                    headerShown: false,
+                  }}
+                >
+                  <SignInSignUpScreen />
+                </Stack.Navigator> */}
+                {/* <SignInSignUpScreen /> */}
+                <Root />
+              </NavigationContainer>
+            </AudioStatusProvider>
           </Provider>
           <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
         </SafeAreaProvider>
       </SignedOut>
+      {/* </AudioProvider> */}
     </ClerkProvider>
   );
 };
