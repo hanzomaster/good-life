@@ -6,10 +6,12 @@ import {
   Image,
   Modal,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
   useWindowDimensions,
 } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../../root";
 import { GroupChat } from "./groupChat";
@@ -62,6 +64,7 @@ const data = [1, 2, 3, 4, 5];
 export const GroupPage = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const layout = useWindowDimensions();
+  const [value, onChangeText] = useState("");
 
   const animated = new Animated.Value(-10);
   const animatedDown = new Animated.Value(0);
@@ -226,32 +229,48 @@ export const GroupPage = () => {
       >
         <View className="bg-black/75">
           <View className="mt-[50%] h-full rounded-2xl bg-white">
-            <View className="inset-x-0 items-end">
+            <View className="inset-x-0 mx-4 mt-3 flex flex-row items-center justify-between">
+              <TouchableOpacity onPress={() => setModalVisible(false)}>
+                <Text className="text-[#9B9B9B]" style={styles().textFont}>
+                  Hủy
+                </Text>
+              </TouchableOpacity>
               <TouchableOpacity
-                className="mt-6 mr-6"
-                onPress={() => {
-                  setModalVisible(false);
-                }}
+                disabled={value === ""}
+                className={classNames(
+                  value === "" ? "bg-[#C4C4C4]" : "bg-[#FF835C]",
+                  "rounded-2xl p-3",
+                )}
               >
-                <Image
-                  source={require("../../assets/images/group/blackexit.png")}
-                />
+                <Text className="text-white" style={styles().textFont}>
+                  Đăng
+                </Text>
               </TouchableOpacity>
             </View>
+            <KeyboardAwareScrollView>
+              <View className="ml-4 mt-4 box-border h-10 w-10 items-baseline overflow-hidden rounded-full bg-slate-600">
+                <Image
+                  className="relative max-h-full max-w-full items-center justify-center rounded-full"
+                  source={require("../../assets/images/group/avatarTest.png")}
+                />
+              </View>
 
-            <View className="inset-x-0 mt-[20%] items-center">
-              <Image
-                source={require("../../assets/images/group/modalicon.png")}
-              />
-            </View>
-            <View className="inset-x-0 items-center">
-              <Text
-                className="mt-4 w-3/5 flex-wrap space-y-1 text-center text-lg text-[#5A2D22]"
-                style={styles().textFontSemiBold}
-              >
-                Chào mừng bạn đã là thành viên mới của nhóm ^^
-              </Text>
-            </View>
+              <View className="inset-x-0 mx-4 mt-4 h-24 rounded-lg">
+                <View>
+                  <TextInput
+                    className="overflow-y-scroll p-2 text-base text-[#5A2D22]"
+                    editable
+                    multiline
+                    numberOfLines={5}
+                    onChangeText={(text) => onChangeText(text)}
+                    value={value}
+                    placeholder="Bạn đang nghĩ gì ?"
+                    style={Object.assign({ maxHeight: 100 }, styles().textFont)}
+                  />
+                </View>
+              </View>
+            </KeyboardAwareScrollView>
+
             <View className="inset-x-0 mt-[15%] items-center">
               <TouchableOpacity className=" h-14 w-2/3 items-center justify-center rounded-full bg-[#7A9861]">
                 <View className="flex flex-row items-center justify-between space-x-4">
