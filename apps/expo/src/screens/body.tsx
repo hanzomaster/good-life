@@ -1,15 +1,15 @@
-import { SafeAreaView } from "react-native-safe-area-context";
-import { SceneMap, TabBar, TabView } from "react-native-tab-view";
-import { ScreenProps } from "../types/navigation";
 import {
+  Animated,
   Image,
   Text,
   TouchableOpacity,
   View,
-  Animated,
   useWindowDimensions,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../root";
+import { ScreenProps } from "../types/navigation";
 
 import React from "react";
 import { Nutrition } from "./body/nutrition";
@@ -42,9 +42,9 @@ const renderTabBar = (props: any) => {
       style={{
         marginTop: 2,
         backgroundColor: "#FFF4ED",
-        width: layout.width * 0.85,
+        width: layout.width * 0.6,
         justifyContent: "space-between",
-        alignSelf: "center",
+        alignSelf: "flex-start",
         borderBottomColor: "#FFF4ED",
         borderBottomWidth: 1,
         height: 40,
