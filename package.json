@@ -28,5 +28,10 @@
     "patchedDependencies": {
       "react-native@0.70.5": "patches/react-native@0.70.5.patch"
     }
+  },
+  "engines": {
+    "npm": "please use pnpm instead of npm",
+    "pnpm": "^7.13.0",
+    "node": ">=14.17.0"
   }
 }
