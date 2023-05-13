@@ -11,9 +11,9 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   icon: "./assets/icon.png",
   userInterfaceStyle: "light",
   splash: {
-    image: "./assets/icon.png",
+    image: "./assets/landing.png",
     resizeMode: "contain",
-    backgroundColor: "#2e026d",
+    backgroundColor: "#fff4ed",
   },
   updates: {
     fallbackToCacheTimeout: 0,
