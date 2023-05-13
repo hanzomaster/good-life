@@ -9,7 +9,7 @@ import {
   Quicksand_500Medium,
   Quicksand_600SemiBold,
   Quicksand_700Bold,
-  useFonts,
+  useFonts
 } from "@expo-google-fonts/quicksand";
 import Constants from "expo-constants";
 
@@ -21,6 +21,7 @@ import Root from "./root";
 import { MindDetailScreen } from "./screens/mindDetail";
 import { MusicScreen } from "./screens/music";
 import { MusicPlayerScreen } from "./screens/musicPlayer";
+import SignInSignUpScreen from './screens/signin';
 import { RootStackParamList } from "./types/navigation";
 import { tokenCache } from "./utils/cache";
 
@@ -86,19 +87,7 @@ export const App = () => {
       <SignedOut>
         <SafeAreaProvider>
           <Provider theme={theme}>
-            <AudioStatusProvider>
-              <NavigationContainer>
-                {/* <Stack.Navigator
-                  screenOptions={{
-                    headerShown: false,
-                  }}
-                >
-                  <SignInSignUpScreen />
-                </Stack.Navigator> */}
-                {/* <SignInSignUpScreen /> */}
-                <Root />
-              </NavigationContainer>
-            </AudioStatusProvider>
+          <SignInSignUpScreen />
           </Provider>
           <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
         </SafeAreaProvider>
