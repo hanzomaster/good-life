@@ -1,14 +1,7 @@
-import {
-  Image,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
-import { ScreenProps } from "../../types/navigation";
+import { ProfileScreenProps } from "../../types/navigation";
 
 import React, { useState } from "react";
 
@@ -76,7 +69,7 @@ const suggest = [
   },
 ];
 
-export const Love = () => {
+export const Love = (props: ProfileScreenProps<"Love">) => {
   const [selectedSuggest, setSelectedSuggest] = useState<string[]>([]);
   const updateSelectedSuggest = (item: string) => {
     const copyArray = [...selectedSuggest];
@@ -90,7 +83,10 @@ export const Love = () => {
           className="h-auto object-cover"
           source={require("../../assets/images/profile/love/header.png")}
         />
-        <TouchableOpacity className="absolute top-14 left-5 p-1">
+        <TouchableOpacity
+          className="absolute top-14 left-5 p-1"
+          onPress={() => props.navigation.pop()}
+        >
           <Image
             className=""
             source={require("../../assets/images/profile/love/back.png")}

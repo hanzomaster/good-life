@@ -1,15 +1,9 @@
-import {
-  Image,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
 
 import React from "react";
+import { ProfileScreenProps } from "../../types/navigation";
 
 const day = [
   { name: "T2" },
@@ -150,7 +144,7 @@ const comment = [
   },
 ];
 
-export const CheckIn = () => {
+export const CheckIn = (props: ProfileScreenProps<"CheckIn">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className="absolute top-0 left-0">
@@ -159,7 +153,7 @@ export const CheckIn = () => {
           source={require("../../assets/images/profile/checkin/header.png")}
         />
         <View className="absolute top-10 flex flex-row p-1 align-baseline">
-          <TouchableOpacity className=" ">
+          <TouchableOpacity className="" onPress={() => props.navigation.pop()}>
             <Image
               className="ml-5"
               source={require("../../assets/images/profile/checkin/back.png")}

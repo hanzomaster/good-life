@@ -18,11 +18,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DefaultTheme, Provider } from "react-native-paper";
 import { AudioStatusProvider } from "./context/audio";
 import Root from "./root";
+import { LandingPage2, LandingPage3, LandingPage4 } from "./screens";
+import { GroupIntroduce } from "./screens/group/groupIntro";
+import { GroupPage } from "./screens/group/groupPage";
 import { MindDetailScreen } from "./screens/mindDetail";
-import { MusicScreen } from "./screens/music";
+import MusicScreen from "./screens/music";
 import { MusicPlayerScreen } from "./screens/musicPlayer";
 import SignInSignUpScreen from "./screens/signin";
-import { RootStackParamList } from "./types/navigation";
+import { RootStackParamList, SignOutStackParamList } from "./types/navigation";
 import { tokenCache } from "./utils/cache";
 import { BodyPage } from "./screens/body/bodyinf";
 import { NutritionPage } from "./screens/body/nutritionpage";
@@ -47,6 +50,7 @@ export const App = () => {
   }
 
   const Stack = createNativeStackNavigator<RootStackParamList>();
+  const SignOutStack = createNativeStackNavigator<SignOutStackParamList>();
 
   return (
     <ClerkProvider
@@ -84,6 +88,11 @@ export const App = () => {
                       name="MindDetail"
                       component={MindDetailScreen}
                     />
+                    <Stack.Screen
+                      name="GroupIntro"
+                      component={GroupIntroduce}
+                    />
+                    <Stack.Screen name="GroupPage" component={GroupPage} />
                   </Stack.Navigator>
                 </NavigationContainer>
                 {/* <GroupPage /> */}
@@ -97,7 +106,30 @@ export const App = () => {
         <SafeAreaProvider>
           <Provider theme={theme}>
             <NavigationContainer>
-              <SignInSignUpScreen />
+              <SignOutStack.Navigator
+                screenOptions={{
+                  headerShown: false,
+                  animation: "slide_from_right",
+                }}
+                initialRouteName="LandingPage2"
+              >
+                <SignOutStack.Screen
+                  name="SignIn"
+                  component={SignInSignUpScreen}
+                />
+                <SignOutStack.Screen
+                  name="LandingPage2"
+                  component={LandingPage2}
+                />
+                <SignOutStack.Screen
+                  name="LandingPage3"
+                  component={LandingPage3}
+                />
+                <SignOutStack.Screen
+                  name="LandingPage4"
+                  component={LandingPage4}
+                />
+              </SignOutStack.Navigator>
             </NavigationContainer>
           </Provider>
           <StatusBar hidden={false} networkActivityIndicatorVisible={true} />

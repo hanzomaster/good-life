@@ -1,8 +1,15 @@
 import { useAuth } from "@clerk/clerk-expo";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../root";
-import { ScreenProps } from "../types/navigation";
+import { ProfileScreenProps, ProfileStackParamList } from "../types/navigation";
+import { CheckIn } from "./profile/checkin";
+import { Information } from "./profile/information";
+import { Love } from "./profile/love";
+import { Recent } from "./profile/recent";
+import { Save } from "./profile/save";
+import { Security } from "./profile/security";
 
 const data = [
   {
@@ -38,11 +45,32 @@ const data = [
     image: require("../assets/images/profile/logout.png"),
   },
 ];
-export const ProfileScreen = (props: ScreenProps<"Profile">) => {
+
+const ProfileStack = createNativeStackNavigator<ProfileStackParamList>();
+export const ProfileStackNavigator = () => {
+  return (
+    <ProfileStack.Navigator
+      initialRouteName="Profile"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <ProfileStack.Screen name="Profile" component={ProfileScreen} />
+      <ProfileStack.Screen name="CheckIn" component={CheckIn} />
+      <ProfileStack.Screen name="Infomation" component={Information} />
+      <ProfileStack.Screen name="Love" component={Love} />
+      <ProfileStack.Screen name="Recent" component={Recent} />
+      <ProfileStack.Screen name="Security" component={Security} />
+      <ProfileStack.Screen name="Save" component={Save} />
+    </ProfileStack.Navigator>
+  );
+};
+
+const ProfileScreen = (props: ProfileScreenProps<"Profile">) => {
   const { signOut } = useAuth();
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className=" absolute" style={{ alignItems: "center" }}>
+      <View className="absolute" style={{ alignItems: "center" }}>
         <Image
           className="h-auto object-cover"
           source={require("../assets/images/profile/header.png")}
@@ -50,7 +78,7 @@ export const ProfileScreen = (props: ScreenProps<"Profile">) => {
         <View className="absolute flex flex-row" style={{ marginTop: "25%" }}>
           <View className="box-content h-32 w-32 items-center justify-center overflow-hidden rounded-full bg-slate-50">
             <Image
-              className="relative  object-cover"
+              className="relative object-cover"
               source={require("../assets/images/profile/avatar.png")}
             />
           </View>
@@ -63,12 +91,15 @@ export const ProfileScreen = (props: ScreenProps<"Profile">) => {
 
           <View style={{ justifyContent: "center" }} className="ml-5">
             <Text
-              className=" text-2xl text-[#FFFFFF] "
+              className="text-2xl text-[#FFFFFF]"
               style={styles().textFontSemiBold}
             >
               Kaylin
             </Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("Infomation")}
+              className=""
+            >
               <Text
                 className="text-sm text-[#FFFFFF]"
                 style={styles().textFont}
@@ -85,18 +116,41 @@ export const ProfileScreen = (props: ScreenProps<"Profile">) => {
         showsVerticalScrollIndicator={false}
       >
         <View className="relative mt-60" style={styles().itemsWrap}>
-          {data.map((item) => {
+          {data.map((item, index) => {
             return (
               <View
                 className="mt-5 justify-center"
                 style={styles(1).singleItem}
-                key={item.name}
+                key={index}
               >
                 <TouchableOpacity
                   className="flex flex-row items-baseline space-x-6"
                   onPress={() => {
-                    if (item.name === "Đăng xuất") {
-                      signOut();
+                    switch (item.name) {
+                      case "Gần đây":
+                        props.navigation.navigate("Recent");
+                        break;
+                      case "Yêu thích":
+                        props.navigation.navigate("Love");
+                        break;
+                      case "Đã lưu":
+                        props.navigation.navigate("Save");
+                        break;
+                      case "Nhóm":
+                        break;
+                      case "Checkin":
+                        props.navigation.navigate("CheckIn");
+                        break;
+                      case "Chặn":
+                        break;
+                      case "Chính sách bảo mật":
+                        props.navigation.navigate("Security");
+                        break;
+                      case "Đăng xuất":
+                        signOut();
+                        break;
+                      default:
+                        break;
                     }
                   }}
                 >

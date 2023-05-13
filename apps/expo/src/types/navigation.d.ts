@@ -35,10 +35,6 @@ export type RootStackParamList = {
   };
   Social: undefined;
   Profile: undefined;
-  LandingPage1: undefined;
-  LandingPage2: undefined;
-  LandingPage3: undefined;
-  LandingPage4: undefined;
   EmotionChoosing: undefined;
   EmotionChoosing1: undefined;
   EmotionChoosing2: undefined;
@@ -46,6 +42,8 @@ export type RootStackParamList = {
   GroupChat: undefined;
   GroupDesc: undefined;
   GroupPost: undefined;
+  GroupIntro: undefined;
+  GroupPage: undefined;
 };
 
 export type AuthStackParamList = {
@@ -58,6 +56,33 @@ export type AuthStackParamList = {
   VerifyEmail: {
     email: string;
   };
+};
+
+export type ProfileStackParamList = {
+  Profile: undefined;
+  CheckIn: undefined;
+  Infomation: undefined;
+  Love: undefined;
+  Recent: undefined;
+  Save: undefined;
+  Security: undefined;
+};
+
+export type SignOutStackParamList = {
+  SignIn: undefined;
+  LandingPage2: undefined;
+  LandingPage3: undefined;
+  LandingPage4: undefined;
+};
+
+export type SignOutScreenProps<T extends keyof SignOutStackParamList> = {
+  navigation: NativeStackNavigationProp<SignOutStackParamList, T>;
+  route: RouteProp<SignOutStackParamList, T>;
+};
+
+export type ProfileScreenProps<T extends keyof ProfileStackParamList> = {
+  navigation: NativeStackNavigationProp<ProfileStackParamList, T>;
+  route: RouteProp<ProfileStackParamList, T>;
 };
 
 export type AuthScreenProps<T extends keyof AuthStackParamList> = {

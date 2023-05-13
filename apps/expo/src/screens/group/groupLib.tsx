@@ -50,6 +50,7 @@ export const GroupLib = ({ setVisible }: any) => {
                         className="text-xs text-[#B2B2B2]"
                         style={styles().textFont}
                       >
+                        {" "}
                         65 &#8226; 11.02.2023
                       </Text>
                     </View>

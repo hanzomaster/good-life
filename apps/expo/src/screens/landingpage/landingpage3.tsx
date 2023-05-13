@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import {
   Image,
   SafeAreaView,
@@ -7,9 +6,9 @@ import {
   View,
 } from "react-native";
 import { styles } from "../../root";
+import { SignOutScreenProps } from "../../types/navigation";
 
-export const LandingPage3 = () => {
-  const navigation = useNavigation();
+export const LandingPage3 = (props: SignOutScreenProps<"LandingPage3">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#7A9861]">
       <View className=" relative top-0 left-auto p-0">
@@ -58,7 +57,7 @@ export const LandingPage3 = () => {
         <TouchableOpacity
           className="absolute z-10 mt-44 h-14 w-14 items-center justify-center rounded-full bg-[#FF835C]"
           onPress={() => {
-            navigation.navigate("LandingPage4" as never);
+            props.navigation.navigate("LandingPage4" as never);
           }}
         >
           <Image

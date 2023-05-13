@@ -3,8 +3,8 @@ import * as React from "react";
 import { EmotionChoosing } from "./screens/chooseEmotion/chooseEmotion";
 import { EmotionChoosing1 } from "./screens/chooseEmotion/chooseEmotion1";
 import { EmotionChoosing2 } from "./screens/chooseEmotion/chooseEmotion2";
-import { RootStackParamList } from "./types/navigation";
 import { MusicScreen } from "./screens/music";
+import { RootStackParamList } from "./types/navigation";
 
 const HomeStack = createNativeStackNavigator<RootStackParamList>();
 

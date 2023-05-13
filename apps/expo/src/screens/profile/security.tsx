@@ -1,22 +1,19 @@
-import {
-  Image,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
 
 import React from "react";
+import { ProfileScreenProps } from "../../types/navigation";
 
-export const Security = () => {
+export const Security = (props: ProfileScreenProps<"Security">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <ScrollView>
         <View className=" absolute top-5 left-0 flex flex-row">
-          <TouchableOpacity className="absolute left-5 p-1">
+          <TouchableOpacity
+            className="absolute left-5 p-1"
+            onPress={() => props.navigation.pop()}
+          >
             <Image
               className=""
               source={require("../../assets/images/profile/security/back.png")}

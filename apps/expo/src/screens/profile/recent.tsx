@@ -1,16 +1,9 @@
-import {
-  Image,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
-import { ScreenProps } from "../../types/navigation";
+import { ProfileScreenProps } from "../../types/navigation";
 
-import React, { useState } from "react";
+import React from "react";
 
 const video = [
   {
@@ -57,7 +50,7 @@ const video = [
   },
 ];
 
-export const Recent = () => {
+export const Recent = (props: ProfileScreenProps<"Recent">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className=" absolute top-0 left-0">
@@ -65,7 +58,10 @@ export const Recent = () => {
           className="h-auto object-cover"
           source={require("../../assets/images/profile/recent/header.png")}
         />
-        <TouchableOpacity className="absolute top-10 left-5 p-1">
+        <TouchableOpacity
+          className="absolute top-10 left-5 p-1"
+          onPress={() => props.navigation.pop()}
+        >
           <Image
             className="top-5"
             source={require("../../assets/images/profile/recent/back.png")}
