@@ -18,6 +18,9 @@ export type RootStackParamList = {
   Root: undefined;
   Home: undefined;
   Body: undefined;
+  BodyInf: undefined;
+  Nutrition: undefined;
+  NutritionPage: undefined;
   Mind: undefined;
   Music: undefined;
   MusicPlayer: {

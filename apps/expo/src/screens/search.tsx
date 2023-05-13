@@ -111,6 +111,7 @@ export const Search = () => {
         style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
       >
         <ScrollView
+          horizontal
           className="flex h-fit"
           alwaysBounceHorizontal
           alwaysBounceVertical={false}
@@ -185,6 +186,7 @@ export const Search = () => {
         }}
       >
         <ScrollView
+          horizontal
           className="flex h-fit"
           alwaysBounceHorizontal
           alwaysBounceVertical={false}

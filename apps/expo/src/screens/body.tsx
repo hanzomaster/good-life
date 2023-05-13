@@ -86,7 +86,9 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
         />
         <TouchableOpacity
           className="absolute top-20 right-10 p-1"
-          onPress={() => {}}
+          onPress={() => {
+            props.navigation.navigate("BodyInf");
+          }}
         >
           <Image source={require("../assets/images/physique/expand.png")} />
         </TouchableOpacity>

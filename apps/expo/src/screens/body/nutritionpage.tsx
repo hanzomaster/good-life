@@ -13,6 +13,7 @@ import { IngredientPage } from "./ingredient";
 import { InstructionPage } from "./instruction";
 import { ReviewsPage } from "./reviews";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { ScreenProps } from "../../types/navigation";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -56,7 +57,7 @@ const renderTabBar = (props: any) => {
   );
 };
 
-export const NutritionPage = () => {
+export const NutritionPage = (props: ScreenProps<"NutritionPage">) => {
   const layout = useWindowDimensions();
 
   const animated = new Animated.Value(0);

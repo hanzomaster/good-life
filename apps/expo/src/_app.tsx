@@ -24,6 +24,8 @@ import { MusicPlayerScreen } from "./screens/musicPlayer";
 import SignInSignUpScreen from "./screens/signin";
 import { RootStackParamList } from "./types/navigation";
 import { tokenCache } from "./utils/cache";
+import { BodyPage } from "./screens/body/bodyinf";
+import { NutritionPage } from "./screens/body/nutritionpage";
 
 // Remove background color from the bottom navigation bar when focus
 const theme = {
@@ -65,6 +67,13 @@ export const App = () => {
                   >
                     <Stack.Screen name="Root" component={Root} />
                     {/* <Stack.Screen name="GroupChat" component={GroupChat} /> */}
+                    <Stack.Screen name="BodyInf" component={BodyPage} />
+
+                    <Stack.Screen
+                      name="NutritionPage"
+                      component={NutritionPage}
+                    />
+
                     <Stack.Screen name="Music" component={MusicScreen} />
 
                     <Stack.Screen

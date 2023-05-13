@@ -5,8 +5,9 @@ import {
   View,
   TouchableOpacity,
 } from "react-native";
+import { ScreenProps } from "../../types/navigation";
 
-export const BodyPage = () => {
+export const BodyPage = (props: ScreenProps<"BodyInf">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#7A9861]">
       <View className=" absolute top-0 left-0">
@@ -14,7 +15,12 @@ export const BodyPage = () => {
           className="h-auto object-contain"
           source={require("../../assets/images/body/body_page_header.png")}
         />
-        <TouchableOpacity className="absolute top-20 left-5 p-1">
+        <TouchableOpacity
+          className="absolute top-20 left-5 p-1"
+          onPress={() => {
+            props.navigation.navigate("Body");
+          }}
+        >
           <Image source={require("../../assets/images/body/back.png")} />
         </TouchableOpacity>
       </View>
