@@ -14,7 +14,7 @@ const data = [
   },
   {
     name: "Tên",
-    data: "Kaylin",
+    data: "Trang",
   },
   {
     name: "Điện thoại",

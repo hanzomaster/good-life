@@ -75,7 +75,7 @@ export const styles = (props?: any) =>
 const Root = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Body"
+      initialRouteName="Home"
       screenOptions={() => ({
         headerShown: false,
         tabBarActiveTintColor: "#FF835C",

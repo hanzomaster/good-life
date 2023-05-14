@@ -89,7 +89,7 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
             className="font-quicksand text-2xl text-white"
             style={styles().textFontSemiBold}
           >
-            Body
+            Hình thể
           </Text>
         </View>
         <TouchableOpacity

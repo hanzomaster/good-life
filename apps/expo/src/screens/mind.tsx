@@ -128,12 +128,17 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className="absolute top-0 left-0">
         <Image
-          source={require("../assets/images/mind/Group_36924.png")}
+          source={require("../assets/images/mind/header.png")}
           className=""
         />
       </View>
       <View className="absolute inset-x-0 mt-16 items-center">
-        <Text className=" text-2xl font-semibold text-white">Mind</Text>
+        <Text
+          className=" font-quicksand text-2xl text-white"
+          style={styles().textFontSemiBold}
+        >
+          Tâm trí
+        </Text>
       </View>
       <TouchableOpacity
         onPress={() => {}}

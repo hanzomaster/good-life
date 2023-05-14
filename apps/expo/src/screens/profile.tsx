@@ -90,7 +90,7 @@ const ProfileScreen = (props: ProfileScreenProps<"Profile">) => {
               className="text-2xl text-[#FFFFFF]"
               style={styles().textFontSemiBold}
             >
-              Kaylin
+              Trang
             </Text>
             <TouchableOpacity
               onPress={() => props.navigation.navigate("Infomation")}
