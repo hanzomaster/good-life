@@ -100,6 +100,7 @@ export const Love = () => {
 
       <View className=" mt-32 justify-center align-middle">
         <ScrollView
+          horizontal
           className=""
           alwaysBounceHorizontal
           alwaysBounceVertical={false}
