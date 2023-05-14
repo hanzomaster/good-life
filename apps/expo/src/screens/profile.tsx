@@ -33,10 +33,6 @@ const data = [
     image: require("../assets/images/profile/checkin.png"),
   },
   {
-    name: "Chặn",
-    image: require("../assets/images/profile/block.png"),
-  },
-  {
     name: "Chính sách bảo mật",
     image: require("../assets/images/profile/security.png"),
   },
@@ -112,10 +108,10 @@ const ProfileScreen = (props: ProfileScreenProps<"Profile">) => {
       </View>
 
       <ScrollView
-        className="inset-x-0 -z-10"
+        className="inset-x-0 mt-60"
         showsVerticalScrollIndicator={false}
       >
-        <View className="relative mt-60" style={styles().itemsWrap}>
+        <View className="relative" style={styles().itemsWrap}>
           {data.map((item, index) => {
             return (
               <View
@@ -140,8 +136,6 @@ const ProfileScreen = (props: ProfileScreenProps<"Profile">) => {
                         break;
                       case "Checkin":
                         props.navigation.navigate("CheckIn");
-                        break;
-                      case "Chặn":
                         break;
                       case "Chính sách bảo mật":
                         props.navigation.navigate("Security");

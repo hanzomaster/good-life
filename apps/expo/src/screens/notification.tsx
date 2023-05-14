@@ -8,22 +8,23 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../root";
+import { ScreenProps } from "../types/navigation";
 
 const noti = [
   {
-    notification: "Kaylin đã đăng vào nhóm Self-love.",
-    time: "30 phút",
+    notification: "Nguyen đã đăng vào nhóm Self-love.",
+    time: "1 giờ",
   },
   {
     notification: "An đã đăng vào nhóm Self-love.",
     time: "1 giờ",
   },
   {
-    notification: "Phuong đã đăng vào nhóm Self-love.",
+    notification: "Phuong đã thích bài viết của bạn.",
     time: "1 giờ",
   },
   {
-    notification: "Kaylin đã đăng vào nhóm Self-love.",
+    notification: "Trang đã đăng vào nhóm Self-love.",
     time: "3 giờ",
   },
   {
@@ -31,20 +32,32 @@ const noti = [
     time: "5 giờ",
   },
   {
-    notification: "Phuong đã đăng vào nhóm Self-love.",
+    notification: "Phuong đã thích bài viết của bạn.",
     time: "8 giờ",
   },
   {
-    notification: "Kaylin đã đăng vào nhóm Self-love.",
+    notification: "Nguyen đã đăng vào nhóm Self-love.",
     time: "1 ngày",
   },
   {
     notification: "An đã đăng vào nhóm Self-love.",
     time: "2 ngày",
   },
+  {
+    notification: "Phuong đã đăng vào nhóm Self-love.",
+    time: "3 ngày",
+  },
+  {
+    notification: "Trang đã đăng vào nhóm Self-love.",
+    time: "3 ngày",
+  },
+  {
+    notification: "Bạn đã tham gia nhóm Self-love.",
+    time: "3 ngày",
+  },
 ];
 
-export const NotificationPage = () => {
+export const NotificationPage = (props: ScreenProps<"Notification">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className="absolute top-0 left-0">
@@ -53,7 +66,10 @@ export const NotificationPage = () => {
           source={require("../assets/images/notification/header.png")}
         />
         <View className="absolute top-10 flex flex-row p-1 align-baseline">
-          <TouchableOpacity className=" ">
+          <TouchableOpacity
+            className=" "
+            onPress={() => props.navigation.pop()}
+          >
             <Image
               className="ml-5"
               source={require("../assets/images/notification/back.png")}
@@ -68,34 +84,36 @@ export const NotificationPage = () => {
         </View>
       </View>
 
-      <ScrollView className="relative left-[5%] mt-32 w-[90%]">
-        {noti.map((item) => {
-          return (
-            <TouchableOpacity className="mt-5">
-              <View className=" flex flex-row">
-                <Image
-                  className="mt-1 items-baseline justify-between object-fill"
-                  source={require("../assets/images/notification/leave.png")}
-                />
-                <View className="ml-5 flex flex-col">
-                  <Text
-                    className=" font-quicksand text-sm text-[#3C3C43] "
-                    style={styles().textFont}
-                  >
-                    {item.time} trước
-                  </Text>
-                  <Text
-                    className=" font-quicksand text-sm text-[#5A2D22] "
-                    style={styles().textFontSemiBold}
-                  >
-                    {item.notification}
-                  </Text>
+      <ScrollView className=" relative  z-10 mt-32">
+        <View className="left-[5%] w-[90%]">
+          {noti.map((item) => {
+            return (
+              <TouchableOpacity className="mt-5">
+                <View className=" flex flex-row">
+                  <Image
+                    className="mt-1 items-baseline justify-between object-fill"
+                    source={require("../assets/images/notification/leave.png")}
+                  />
+                  <View className="ml-5 flex flex-col">
+                    <Text
+                      className=" font-quicksand text-sm text-[#3C3C43] "
+                      style={styles().textFont}
+                    >
+                      {item.time} trước
+                    </Text>
+                    <Text
+                      className=" font-quicksand text-sm text-[#5A2D22] "
+                      style={styles().textFontSemiBold}
+                    >
+                      {item.notification}
+                    </Text>
+                  </View>
                 </View>
-              </View>
-              <View className="mt-4 h-0.5 bg-[#CCCCCC]"></View>
-            </TouchableOpacity>
-          );
-        })}
+                <View className="mt-4 h-0.5 bg-[#CCCCCC]"></View>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
       </ScrollView>
 
       <View className="absolute inset-x-0 bottom-0 items-stretch">

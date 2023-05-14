@@ -84,6 +84,14 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
           className="h-auto object-cover"
           source={require("../assets/images/physique/header.png")}
         />
+        <View className="absolute inset-x-0 mt-16 items-center">
+          <Text
+            className="font-quicksand text-2xl text-white"
+            style={styles().textFontSemiBold}
+          >
+            Body
+          </Text>
+        </View>
         <TouchableOpacity
           className="absolute top-20 right-10 p-1"
           onPress={() => {

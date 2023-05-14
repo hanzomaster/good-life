@@ -53,20 +53,25 @@ const video = [
 export const Recent = (props: ProfileScreenProps<"Recent">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className=" absolute top-0 left-0">
+      <View className="absolute top-0 left-0">
         <Image
           className="h-auto object-cover"
           source={require("../../assets/images/profile/recent/header.png")}
         />
-        <TouchableOpacity
-          className="absolute top-10 left-5 p-1"
-          onPress={() => props.navigation.pop()}
-        >
-          <Image
-            className="top-5"
-            source={require("../../assets/images/profile/recent/back.png")}
-          />
-        </TouchableOpacity>
+        <View className="absolute top-10 flex flex-row p-1 align-baseline">
+          <TouchableOpacity className="" onPress={() => props.navigation.pop()}>
+            <Image
+              className="ml-5"
+              source={require("../../assets/images/profile/recent/back.png")}
+            />
+          </TouchableOpacity>
+          <Text
+            className=" font-quicksand ml-8 text-2xl text-white "
+            style={styles().textFontBold}
+          >
+            Gần đây
+          </Text>
+        </View>
       </View>
 
       <ScrollView className="mt-44">

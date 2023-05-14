@@ -44,6 +44,8 @@ export type RootStackParamList = {
   GroupPost: undefined;
   GroupIntro: undefined;
   GroupPage: undefined;
+  Notification: undefined;
+  Search: undefined;
 };
 
 export type AuthStackParamList = {

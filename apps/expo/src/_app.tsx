@@ -29,6 +29,8 @@ import { RootStackParamList, SignOutStackParamList } from "./types/navigation";
 import { tokenCache } from "./utils/cache";
 import { BodyPage } from "./screens/body/bodyinf";
 import { NutritionPage } from "./screens/body/nutritionpage";
+import { NotificationPage } from "./screens/notification";
+import { Search } from "./screens/search";
 
 // Remove background color from the bottom navigation bar when focus
 const theme = {
@@ -93,6 +95,13 @@ export const App = () => {
                       component={GroupIntroduce}
                     />
                     <Stack.Screen name="GroupPage" component={GroupPage} />
+
+                    <Stack.Screen
+                      name="Notification"
+                      component={NotificationPage}
+                    />
+
+                    <Stack.Screen name="Search" component={Search} />
                   </Stack.Navigator>
                 </NavigationContainer>
                 {/* <GroupPage /> */}
