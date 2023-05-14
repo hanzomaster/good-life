@@ -75,11 +75,11 @@ const SignInScreen = (props: AuthScreenProps<"Login">) => {
   }, [isSubmitSuccessful]);
 
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED] px-6">
+    <SafeAreaView className="absolute inset-0 max-w-full content-end bg-[#FFF4ED]">
       <View className="absolute">
         <Image source={require("../assets/images/signin/Vector.png")} />
       </View>
-      <View className=" mt-20 flex flex-row justify-between">
+      <View className="mt-16 flex flex-row justify-between px-6">
         <TouchableOpacity>
           <Image source={require("../assets/images/signin/Mask.png")} />
         </TouchableOpacity>
@@ -100,7 +100,7 @@ const SignInScreen = (props: AuthScreenProps<"Login">) => {
           </TouchableOpacity>
         </View>
       </View>
-      <View className="mt-24">
+      <View className="mt-24 px-6">
         <Text
           className="mb-10 text-xl font-bold text-[#5A2D22]"
           style={styles().textFontBold}
@@ -200,8 +200,11 @@ const SignInScreen = (props: AuthScreenProps<"Login">) => {
           </Text>
         </TouchableOpacity>
 
-        <View className="my-8">
-          <Image source={require("../assets/images/signin/Group_37198.png")} />
+        <View className="inset-x-0 my-8">
+          <Image
+            className="max-w-full object-cover"
+            source={require("../assets/images/signin/Group_37198.png")}
+          />
         </View>
         <SignInWithOAuth />
       </View>
@@ -252,15 +255,15 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED] px-6">
+    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className="absolute">
         <Image source={require("../assets/images/signin/Vector.png")} />
       </View>
-      <View className=" mt-20 flex flex-row justify-between">
+      <View className=" mt-20 flex flex-row justify-between px-6">
         <TouchableOpacity>
           <Image source={require("../assets/images/signin/Mask.png")} />
         </TouchableOpacity>
-        <View className="flex flex-row ">
+        <View className="flex flex-row">
           <Text
             className="text-sm font-semibold text-[#A5A5A5]"
             style={styles().textFont}
@@ -275,7 +278,7 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
           </TouchableOpacity>
         </View>
       </View>
-      <View className="mt-24">
+      <View className="mt-24 px-6">
         <Text
           className="mb-10 text-xl font-bold text-[#5A2D22]"
           style={styles().textFontBold}
@@ -436,7 +439,7 @@ const SignUpScreen = (props: AuthScreenProps<"Register">) => {
         </TouchableOpacity>
       </View>
 
-      <View className="inset-x-0 mt-28 flex flex-col">
+      <View className="inset-x-0 mt-10 flex flex-col">
         <View className="mt-10 flex flex-row justify-center">
           <TouchableOpacity>
             <Text
