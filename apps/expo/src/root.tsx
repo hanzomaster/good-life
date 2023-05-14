@@ -11,7 +11,7 @@ import {
   BodyScreen,
   HomeScreen,
   MindScreen,
-  ProfileScreen,
+  ProfileStackNavigator,
   SocialScreen,
 } from "./screens";
 import { RootStackParamList } from "./types/navigation";
@@ -163,7 +163,7 @@ const Root = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileStackNavigator}
         options={{
           tabBarAccessibilityLabel: "Profile",
           tabBarLabel: "Hồ sơ",

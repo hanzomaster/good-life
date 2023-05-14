@@ -1,5 +1,4 @@
 import { Quicksand_500Medium, useFonts } from "@expo-google-fonts/quicksand";
-import { useNavigation } from "@react-navigation/native";
 import {
   Image,
   SafeAreaView,
@@ -8,9 +7,9 @@ import {
   View,
 } from "react-native";
 import { styles } from "../../root";
+import { SignOutScreenProps } from "../../types/navigation";
 
-export const LandingPage2 = () => {
-  const navigation = useNavigation();
+export const LandingPage2 = (props: SignOutScreenProps<"LandingPage2">) => {
   const [loaded] = useFonts({
     Quicksand_500Medium,
   });
@@ -59,7 +58,7 @@ export const LandingPage2 = () => {
         <TouchableOpacity
           className="absolute z-10 mt-44 h-14 w-14 items-center justify-center rounded-full bg-[#FF835C]"
           onPress={() => {
-            navigation.navigate("LandingPage3" as never);
+            props.navigation.navigate("LandingPage3" as never);
           }}
         >
           <Image

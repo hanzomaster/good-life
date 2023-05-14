@@ -8,12 +8,13 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View,
   useWindowDimensions,
+  View,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../../root";
+import { ScreenProps } from "../../types/navigation";
 import { GroupChat } from "./groupChat";
 import { GroupDesc } from "./groupDesc";
 import { GroupLib } from "./groupLib";
@@ -61,7 +62,7 @@ const renderTabBar = (props: any) => {
   );
 };
 const data = [1, 2, 3, 4, 5];
-export const GroupPage = () => {
+export const GroupPage = (props: ScreenProps<"GroupPage">) => {
   const [modalVisible, setModalVisible] = useState(false);
   const layout = useWindowDimensions();
   const [value, onChangeText] = useState("");
@@ -151,7 +152,10 @@ export const GroupPage = () => {
           />
         </View>
 
-        <TouchableOpacity className="absolute mt-12 ml-5 h-10 w-10 items-center justify-center rounded-xl bg-[#000]/25">
+        <TouchableOpacity
+          className="absolute mt-12 ml-5 h-10 w-10 items-center justify-center rounded-xl bg-[#000]/25"
+          onPress={() => props.navigation.navigate("Social")}
+        >
           <Image source={require("../../assets/images/group/arrowleft.png")} />
         </TouchableOpacity>
 

@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
+import { ScreenProps } from "../../types/navigation";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -17,7 +18,7 @@ function classNames(...classes: string[]) {
 
 const data = [1, 2, 3, 4, 5];
 
-export const GroupIntroduce = () => {
+export const GroupIntroduce = (props: ScreenProps<"GroupIntro">) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -29,7 +30,10 @@ export const GroupIntroduce = () => {
         />
       </View>
 
-      <TouchableOpacity className="absolute mt-12 ml-5 h-10 w-10 items-center justify-center rounded-xl bg-[#000]/25">
+      <TouchableOpacity
+        className="absolute mt-12 ml-5 h-10 w-10 items-center justify-center rounded-xl bg-[#000]/25"
+        onPress={() => props.navigation.pop()}
+      >
         <Image source={require("../../assets/images/group/arrowleft.png")} />
       </TouchableOpacity>
 
@@ -154,7 +158,10 @@ export const GroupIntroduce = () => {
               </Text>
             </View>
             <View className="inset-x-0 mt-[15%] items-center">
-              <TouchableOpacity className=" h-14 w-2/3 items-center justify-center rounded-full bg-[#7A9861]">
+              <TouchableOpacity
+                className=" h-14 w-2/3 items-center justify-center rounded-full bg-[#7A9861]"
+                onPress={() => props.navigation.navigate("GroupPage")}
+              >
                 <View className="flex flex-row items-center justify-between space-x-4">
                   <Text
                     className="ml-3 text-lg text-white"

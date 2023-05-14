@@ -101,7 +101,12 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
                     {data.map((item) => {
                       return (
                         <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
-                          <TouchableOpacity className="flex flex-row justify-start space-x-3">
+                          <TouchableOpacity
+                            className="flex flex-row justify-start space-x-3"
+                            onPress={() =>
+                              props.navigation.navigate("GroupIntro")
+                            }
+                          >
                             <View className="rounded-3xl">
                               <Image
                                 source={require("../assets/images/group/groupList/avatar.png")}
@@ -170,7 +175,10 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
               {data.map((item) => {
                 return (
                   <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
-                    <TouchableOpacity className="flex flex-row justify-start space-x-3">
+                    <TouchableOpacity
+                      className="flex flex-row justify-start space-x-3"
+                      onPress={() => props.navigation.navigate("GroupPage")}
+                    >
                       <View className="overflow-hidden rounded-xl">
                         <Image
                           source={require("../assets/images/group/groupList/avatar.png")}
@@ -300,7 +308,10 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
               {data.map((item) => {
                 return (
                   <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
-                    <TouchableOpacity className="flex flex-row justify-start space-x-3">
+                    <TouchableOpacity
+                      className="flex flex-row justify-start space-x-3"
+                      onPress={() => props.navigation.navigate("GroupIntro")}
+                    >
                       <View className="rounded-3xl">
                         <Image
                           source={require("../assets/images/group/groupList/avatar.png")}
@@ -311,7 +322,7 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
                           className="text-[#5A2D22]"
                           style={styles().textFontBold}
                         >
-                          Chia sẻ nhạc hay
+                          Chia sẻ nhạc không hay
                         </Text>
                         <Text
                           className="text-sm text-[#9B9B9B]"

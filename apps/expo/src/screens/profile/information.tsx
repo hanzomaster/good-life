@@ -1,7 +1,7 @@
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
-import { ScreenProps } from "../../types/navigation";
+import { ProfileScreenProps } from "../../types/navigation";
 
 const data = [
   {
@@ -33,7 +33,7 @@ const data = [
     data: "Hà Nội",
   },
 ];
-export const Information = () => {
+export const Information = (props: ProfileScreenProps<"Infomation">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className=" absolute">
@@ -42,7 +42,7 @@ export const Information = () => {
           source={require("../../assets/images/profile/information/header.png")}
         />
         <View className="absolute top-14 flex flex-row p-1 align-baseline">
-          <TouchableOpacity className=" ">
+          <TouchableOpacity className="" onPress={() => props.navigation.pop()}>
             <Image
               className="ml-5"
               source={require("../../assets/images/profile/information/back.png")}
