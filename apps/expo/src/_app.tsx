@@ -17,8 +17,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DefaultTheme, Provider } from "react-native-paper";
 import { AudioStatusProvider } from "./context/audio";
+import Root from "./root";
 import { LandingPage2, LandingPage3, LandingPage4 } from "./screens";
+import { BodyPage } from "./screens/body/bodyinf";
 import { NutritionPage } from "./screens/body/nutritionpage";
+import { GroupIntroduce } from "./screens/group/groupIntro";
+import { GroupPage } from "./screens/group/groupPage";
+import { MindDetailScreen } from "./screens/mindDetail";
+import MusicScreen from "./screens/music";
+import { MusicPlayerScreen } from "./screens/musicPlayer";
 import SignInSignUpScreen from "./screens/signin";
 import { RootStackParamList, SignOutStackParamList } from "./types/navigation";
 import { tokenCache } from "./utils/cache";
@@ -57,7 +64,36 @@ export const App = () => {
             <Provider theme={theme}>
               <AudioStatusProvider>
                 <NavigationContainer>
-                  <NutritionPage />
+                  <Stack.Navigator
+                    screenOptions={{
+                      headerShown: false,
+                    }}
+                  >
+                    <Stack.Screen name="Root" component={Root} />
+                    {/* <Stack.Screen name="GroupChat" component={GroupChat} /> */}
+                    <Stack.Screen name="BodyInf" component={BodyPage} />
+
+                    <Stack.Screen
+                      name="NutritionPage"
+                      component={NutritionPage}
+                    />
+
+                    <Stack.Screen name="Music" component={MusicScreen} />
+
+                    <Stack.Screen
+                      name="MusicPlayer"
+                      component={MusicPlayerScreen}
+                    />
+                    <Stack.Screen
+                      name="MindDetail"
+                      component={MindDetailScreen}
+                    />
+                    <Stack.Screen
+                      name="GroupIntro"
+                      component={GroupIntroduce}
+                    />
+                    <Stack.Screen name="GroupPage" component={GroupPage} />
+                  </Stack.Navigator>
                 </NavigationContainer>
                 {/* <GroupPage /> */}
               </AudioStatusProvider>

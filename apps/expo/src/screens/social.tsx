@@ -18,10 +18,10 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
   const [modalOtherGroup, setModalOtherGroup] = useState(false);
 
   return (
-    <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
-      <View className="absolute top-0">
+    <SafeAreaView className="absolute inset-0 w-full bg-[#FFF4ED]">
+      <View className="absolute inset-x-0 top-0">
         <Image
-          className="top-0"
+          className="relative top-0 max-w-full"
           source={require("../assets/images/group/groupList/top.png")}
         />
         <View className="absolute inset-x-4 mt-10 flex flex-row items-baseline justify-between">

@@ -78,9 +78,9 @@ export const Save = (props: ProfileScreenProps<"Save">) => {
   };
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className=" absolute top-0 left-0">
+      <View className=" absolute inset-x-0 top-0 left-0">
         <Image
-          className="h-auto object-cover"
+          className="h-auto max-w-full object-cover"
           source={require("../../assets/images/profile/save/header.png")}
         />
         <TouchableOpacity
@@ -153,7 +153,7 @@ export const Save = (props: ProfileScreenProps<"Save">) => {
           }}
         >
           <View
-            className=" relative ml-1 items-center"
+            className="relative mx-1 items-center"
             style={styles().itemsWrap}
           >
             {video.map((item) => {

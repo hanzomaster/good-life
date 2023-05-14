@@ -70,9 +70,9 @@ const ProfileScreen = (props: ProfileScreenProps<"Profile">) => {
   const { signOut } = useAuth();
   return (
     <SafeAreaView className="absolute inset-0 box-content w-screen bg-[#FFF4ED]">
-      <View className="absolute" style={{ alignItems: "center" }}>
+      <View className="absolute inset-x-0" style={{ alignItems: "center" }}>
         <Image
-          className="h-auto object-cover"
+          className="h-auto max-w-full object-cover"
           source={require("../assets/images/profile/header.png")}
         />
         <View className="absolute flex flex-row" style={{ marginTop: "25%" }}>

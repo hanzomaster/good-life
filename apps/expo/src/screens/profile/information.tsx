@@ -6,7 +6,7 @@ import { ProfileScreenProps } from "../../types/navigation";
 const data = [
   {
     name: "Email",
-    data: "pthanhgranden@gmail.com",
+    data: "nguyentrang@gmail.com",
   },
   {
     name: "Loại tài khoản",
@@ -26,7 +26,7 @@ const data = [
   },
   {
     name: "Ngày sinh",
-    data: "Ngày 11 tháng 1 năm 2000",
+    data: "Ngày 11 tháng 1 năm 2002",
   },
   {
     name: "Địa chỉ",
@@ -35,34 +35,37 @@ const data = [
 ];
 export const Information = (props: ProfileScreenProps<"Infomation">) => {
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className=" absolute">
+    <SafeAreaView className="absolute inset-0 w-full content-end bg-[#FFF4ED]">
+      <View className=" absolute inset-x-0 ">
         <Image
-          className="h-auto object-cover"
+          className="h-auto max-w-full object-cover"
           source={require("../../assets/images/profile/information/header.png")}
         />
-        <View className="absolute top-14 flex flex-row p-1 align-baseline">
+        <View className="absolute inset-x-0 top-14 mx-5 flex flex-row justify-between">
           <TouchableOpacity className="" onPress={() => props.navigation.pop()}>
             <Image
-              className="ml-5"
+              className=""
               source={require("../../assets/images/profile/information/back.png")}
             />
           </TouchableOpacity>
-          <Text
-            className=" font-quicksand ml-3 text-2xl text-white "
-            style={styles().textFontBold}
-          >
-            Thông tin của tôi
-          </Text>
+          <View>
+            <Text
+              className=" font-quicksand text-xl text-white "
+              style={styles().textFontBold}
+            >
+              Thông tin của tôi
+            </Text>
+          </View>
+
+          <TouchableOpacity className=" h-fit ">
+            <Text
+              className=" font-quicksand left-3 text-base text-white "
+              style={styles().textFontBold}
+            >
+              Sửa
+            </Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity className="absolute top-14 right-10">
-          <Text
-            className=" font-quicksand left-3 text-2xl text-white "
-            style={styles().textFontBold}
-          >
-            Sửa
-          </Text>
-        </TouchableOpacity>
 
         <View className="absolute ml-[30%] mt-[35%]">
           <View className="box-content h-40 w-40 items-center justify-center overflow-hidden rounded-full bg-slate-50">
