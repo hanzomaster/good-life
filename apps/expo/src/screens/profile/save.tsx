@@ -83,15 +83,20 @@ export const Save = (props: ProfileScreenProps<"Save">) => {
           className="h-auto max-w-full object-cover"
           source={require("../../assets/images/profile/save/header.png")}
         />
-        <TouchableOpacity
-          className="absolute top-14 left-5 p-1"
-          onPress={() => props.navigation.pop()}
-        >
-          <Image
-            className=""
-            source={require("../../assets/images/profile/save/back.png")}
-          />
-        </TouchableOpacity>
+        <View className="absolute top-10 flex flex-row p-1 align-baseline">
+          <TouchableOpacity className="" onPress={() => props.navigation.pop()}>
+            <Image
+              className="ml-5"
+              source={require("../../assets/images/profile/save/back.png")}
+            />
+          </TouchableOpacity>
+          <Text
+            className=" font-quicksand ml-8 text-2xl text-white "
+            style={styles().textFontBold}
+          >
+            Đã lưu
+          </Text>
+        </View>
       </View>
 
       <View className=" mt-32 justify-center align-middle">

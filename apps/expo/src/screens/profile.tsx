@@ -33,10 +33,6 @@ const data = [
     image: require("../assets/images/profile/checkin.png"),
   },
   {
-    name: "Chặn",
-    image: require("../assets/images/profile/block.png"),
-  },
-  {
     name: "Chính sách bảo mật",
     image: require("../assets/images/profile/security.png"),
   },
@@ -140,8 +136,6 @@ const ProfileScreen = (props: ProfileScreenProps<"Profile">) => {
                         break;
                       case "Checkin":
                         props.navigation.navigate("CheckIn");
-                        break;
-                      case "Chặn":
                         break;
                       case "Chính sách bảo mật":
                         props.navigation.navigate("Security");

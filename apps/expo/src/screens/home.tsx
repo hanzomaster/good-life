@@ -41,7 +41,9 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
             The good life
           </Text>
           <View className="flex flex-row">
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("Notification")}
+            >
               <Image
                 className=""
                 source={require("../assets/images/home/noti.png")}
@@ -53,7 +55,9 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                 source={require("../assets/images/home/message.png")}
               />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => props.navigation.navigate("Search")}
+            >
               <Image
                 className="ml-5"
                 source={require("../assets/images/home/search.png")}

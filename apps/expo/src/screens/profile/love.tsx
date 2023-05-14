@@ -83,15 +83,20 @@ export const Love = (props: ProfileScreenProps<"Love">) => {
           className="h-auto max-w-full object-cover"
           source={require("../../assets/images/profile/love/header.png")}
         />
-        <TouchableOpacity
-          className="absolute top-14 left-5 p-1"
-          onPress={() => props.navigation.pop()}
-        >
-          <Image
-            className=""
-            source={require("../../assets/images/profile/love/back.png")}
-          />
-        </TouchableOpacity>
+        <View className="absolute top-10 flex flex-row p-1 align-baseline">
+          <TouchableOpacity className="" onPress={() => props.navigation.pop()}>
+            <Image
+              className="ml-5"
+              source={require("../../assets/images/profile/love/back.png")}
+            />
+          </TouchableOpacity>
+          <Text
+            className=" font-quicksand ml-8 text-2xl text-white "
+            style={styles().textFontBold}
+          >
+            Các nội dung yêu thích
+          </Text>
+        </View>
       </View>
 
       <View className=" mt-32 justify-center align-middle">

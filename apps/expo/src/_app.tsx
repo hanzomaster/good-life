@@ -19,8 +19,6 @@ import { DefaultTheme, Provider } from "react-native-paper";
 import { AudioStatusProvider } from "./context/audio";
 import Root from "./root";
 import { LandingPage2, LandingPage3, LandingPage4 } from "./screens";
-import { BodyPage } from "./screens/body/bodyinf";
-import { NutritionPage } from "./screens/body/nutritionpage";
 import { GroupIntroduce } from "./screens/group/groupIntro";
 import { GroupPage } from "./screens/group/groupPage";
 import { MindDetailScreen } from "./screens/mindDetail";
@@ -29,6 +27,10 @@ import { MusicPlayerScreen } from "./screens/musicPlayer";
 import SignInSignUpScreen from "./screens/signin";
 import { RootStackParamList, SignOutStackParamList } from "./types/navigation";
 import { tokenCache } from "./utils/cache";
+import { BodyPage } from "./screens/body/bodyinf";
+import { NutritionPage } from "./screens/body/nutritionpage";
+import { NotificationPage } from "./screens/notification";
+import { Search } from "./screens/search";
 
 // Remove background color from the bottom navigation bar when focus
 const theme = {
@@ -93,6 +95,13 @@ export const App = () => {
                       component={GroupIntroduce}
                     />
                     <Stack.Screen name="GroupPage" component={GroupPage} />
+
+                    <Stack.Screen
+                      name="Notification"
+                      component={NotificationPage}
+                    />
+
+                    <Stack.Screen name="Search" component={Search} />
                   </Stack.Navigator>
                 </NavigationContainer>
                 {/* <GroupPage /> */}
