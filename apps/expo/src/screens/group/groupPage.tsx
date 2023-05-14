@@ -140,7 +140,7 @@ export const GroupPage = (props: ScreenProps<"GroupPage">) => {
   // });
 
   return (
-    <>
+    <View className="h-full bg-[#FFFFFF]">
       <Animated.View
         className="h-fit"
         style={{ transform: [{ translateY: animated }] }}
@@ -294,7 +294,7 @@ export const GroupPage = (props: ScreenProps<"GroupPage">) => {
           </View>
         </View>
       </Modal>
-    </>
+    </View>
   );
 };
 {
