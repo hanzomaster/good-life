@@ -31,7 +31,7 @@ export const comments = [
   },
 ];
 
-export const list = [
+export const mindList = [
   {
     id: 1,
     name: "Thiền về tình yêu",

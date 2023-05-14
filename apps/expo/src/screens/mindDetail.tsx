@@ -9,9 +9,9 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { comments, mindList, sharingOptions } from "../assets/data/mind";
 import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
-import { comments, list, sharingOptions } from "../assets/data/mind";
 
 export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
   const mind = props.route.params.mind;
@@ -358,7 +358,7 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                   <View className="mt-10 h-1/2 px-5">
                     <ScrollView showsVerticalScrollIndicator={false}>
                       <View className="flex flex-col gap-3">
-                        {list.map((item, index) => (
+                        {mindList.map((item, index) => (
                           <View
                             key={index}
                             className="mb-5 flex flex-row items-center justify-between rounded-lg bg-[#fff4ed] p-3 "
@@ -428,7 +428,7 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                 showsHorizontalScrollIndicator={false}
               >
                 <View className="flex flex-row gap-3">
-                  {list.map((item) => (
+                  {mindList.map((item) => (
                     <View key={item.id}>
                       <TouchableOpacity
                         onPress={() =>

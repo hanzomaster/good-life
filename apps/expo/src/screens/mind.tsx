@@ -1,15 +1,19 @@
-import { useState, useEffect } from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useEffect, useState } from "react";
 import {
+  Animated,
   Image,
   Text,
   TouchableOpacity,
+  useWindowDimensions,
   View,
-  TextInput,
-  ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { ScreenProps } from "../types/navigation";
+import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../root";
+import { MusicStackParamList, ScreenProps } from "../types/navigation";
+import { MindTab } from "./mind/mind";
+import MusicScreen from "./music";
 
 export type Mind = {
   id: number;
@@ -20,6 +24,52 @@ export type Mind = {
   date: string;
   description: string;
 };
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
+const renderTabBar = (props: any) => {
+  const layout = useWindowDimensions();
+  return (
+    <TabBar
+      {...props}
+      renderLabel={({ route, focused }) => (
+        <Text
+          className={classNames(focused ? "text-[#FF835C]" : "text-[#9B9B9B]")}
+          style={[styles().textFontSemiBold, { fontSize: 15 }]}
+        >
+          {route.title}
+        </Text>
+      )}
+      indicatorStyle={{
+        backgroundColor: "#7A9861",
+        maxWidth: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        height: 1,
+      }}
+      style={{
+        marginTop: 2,
+        backgroundColor: "#FFF4ED",
+        width: layout.width * 0.6,
+        justifyContent: "space-between",
+        alignSelf: "flex-start",
+        borderBottomColor: "#FFF4ED",
+        borderBottomWidth: 1,
+        height: 40,
+        shadowColor: "white",
+      }}
+      labelStyle={Object.assign(
+        { color: "#000000" },
+        styles().textFontSemiBold,
+      )}
+    />
+  );
+};
+
+const MusicStack = createNativeStackNavigator<MusicStackParamList>();
+
+const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 export const MindScreen = (props: ScreenProps<"Mind">) => {
   const [isPressed, setIsPressed] = useState(false);
 
@@ -121,9 +171,44 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
     setList(suggest?.list || []);
   }, [isActive]);
 
-  const handleOpenMusic = () => {
-    props.navigation.navigate("Music");
+  const FirstRoute = () => <MindTab navigate={mindDetailNavigate} />;
+  const navigate = (
+    list: any,
+    resumeSong: any,
+    pauseSong: any,
+    nextSong: any,
+    previousSong: any,
+  ) => {
+    // debugger;
+    props.navigation.navigate("MusicPlayer", {
+      // song: selectedSong,
+      list: list,
+      resumeSong: resumeSong,
+      pauseSong: pauseSong,
+      nextSong: nextSong,
+      previousSong: previousSong,
+    });
+    // props.navigation.navigate("GroupIntro");
   };
+  const mindDetailNavigate = (item: any) => {
+    props.navigation.navigate("MindDetail", {
+      mind: item,
+    });
+  };
+  const SecondRoute = () => <MusicScreen navigateFn={navigate} />;
+  const renderScene = SceneMap({
+    first: FirstRoute,
+    second: SecondRoute,
+  });
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    { key: "first", title: "Tâm trí" },
+    { key: "second", title: "Âm nhạc" },
+  ]);
+
+  const layout = useWindowDimensions();
+
+  const animatedDown = new Animated.Value(90);
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
       <View className="absolute top-0 left-0">
@@ -146,143 +231,24 @@ export const MindScreen = (props: ScreenProps<"Mind">) => {
       >
         <Image source={require("../assets/images/mind/Vector.png")} />
       </TouchableOpacity>
-
-      <View className="absolute mt-40 h-full px-5">
-        <View className="flex flex-row gap-10">
-          <TouchableOpacity onPress={() => {}}>
-            <Text
-              className={`${
-                !isPressed ? "text-[#FF8669]" : "text-[#9B9B9BE0]/80"
-              }
-            mb-2 text-xl font-semibold`}
-              style={styles().textFont}
-            >
-              Tâm trí
-            </Text>
-
-            <Image
-              source={require("../assets/images/mind/Rectangle_1315.png")}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => {
-              props.navigation.navigate("Music");
-            }}
-          >
-            <Text
-              className={`${
-                isPressed ? "text-[#FF8669]" : "text-[#9B9B9BE0]/80"
-              }
-            mb-2 text-xl font-semibold`}
-              style={styles().textFont}
-            >
-              Âm nhạc
-            </Text>
-          </TouchableOpacity>
-        </View>
-
-        <View className="mt-5">
-          <View
-            className="flex w-full flex-row items-center border-2  border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1"
-            style={{
-              borderRadius: 10,
-            }}
-          >
-            <Image source={require("../assets/images/mind/Icon.png")} />
-            <TextInput
-              placeholder="Tìm kiếm"
-              className="w-11/12 px-2 py-1 text-sm text-[#9B9B9B]"
-            />
-          </View>
-        </View>
-
-        <View className="mt-8 h-12">
-          <ScrollView
-            horizontal={true}
-            className=""
-            showsHorizontalScrollIndicator={false}
-          >
-            <View className="flex flex-row gap-3">
-              {suggests.map((item) => (
-                <TouchableOpacity
-                  key={item.name}
-                  onPress={() => setIsActive(item.name)}
-                  className={`${
-                    isActive === item.name ? "bg-[#7A9861]" : "bg-white "
-                  }
-            flex flex-row items-center rounded-lg px-4 text-sm font-semibold`}
-                >
-                  <Text
-                    className={`${
-                      isActive === item.name ? "text-white" : "text-[#9b9b9b]"
-                    }`}
-                    style={styles().textFont}
-                  >
-                    {item.name}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </ScrollView>
-        </View>
-
-        <View className="mt-8 h-96">
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles().itemsWrap}>
-              {list.map((item) => (
-                <View key={item.id} style={styles(2).singleItem}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      props.navigation.navigate("MindDetail", { mind: item })
-                    }
-                  >
-                    <View className="">
-                      <Image
-                        source={item.image}
-                        className="h-40 w-40 rounded-lg object-cover"
-                      />
-                      <View className="absolute bottom-2 left-2 right-6 flex flex-row items-center justify-between">
-                        <Text className="text-xs text-white">{`${item.time} phút`}</Text>
-                        <Image
-                          source={require("../assets/images/mind/Group_36586.png")}
-                          className=""
-                        />
-                      </View>
-                    </View>
-                    <View className="mt-2">
-                      <Text
-                        className="text-[#5A2D22]"
-                        style={styles().textFontBold}
-                      >
-                        {item.name}
-                      </Text>
-                      <View className="flex flex-row items-center gap-2">
-                        <Image
-                          source={require("../assets/images/mind/Heart.png")}
-                        />
-                        <Text
-                          className="text-xs text-[#B2B2B2]"
-                          style={styles().textFont}
-                        >{`${item.heart}`}</Text>
-                        <Image
-                          source={require("../assets/images/mind/Ellipse_206.png")}
-                        />
-                        <Text
-                          className="text-xs text-[#B2B2B2]"
-                          style={styles().textFont}
-                        >
-                          {item.date}
-                        </Text>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              ))}
-            </View>
-          </ScrollView>
-        </View>
-      </View>
+      <Animated.View
+        className="mt-10"
+        style={[
+          { minHeight: "95%" },
+          { flex: 1 },
+          { transform: [{ translateY: animatedDown }] },
+        ]}
+      >
+        <TabView
+          renderTabBar={renderTabBar}
+          style={{ height: "100%" }}
+          navigationState={{ index, routes }}
+          renderScene={renderScene}
+          onIndexChange={setIndex}
+          initialLayout={{ width: layout.width, height: layout.height }}
+          lazy={true}
+        />
+      </Animated.View>
     </SafeAreaView>
   );
 };

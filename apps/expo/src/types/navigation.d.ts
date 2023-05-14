@@ -77,6 +77,22 @@ export type SignOutStackParamList = {
   LandingPage4: undefined;
 };
 
+export type MusicStackParamList = {
+  Music: undefined;
+  MusicPlayer: {
+    list: Array<Song>;
+    resumeSong: () => void;
+    pauseSong: () => void;
+    nextSong: (index: number) => void;
+    previousSong: (index: number) => void;
+  };
+};
+
+export type MusicScreenProps<T extends keyof MusicStackParamList> = {
+  navigation: NativeStackNavigationProp<MusicStackParamList, T>;
+  route: RouteProp<MusicStackParamList, T>;
+};
+
 export type SignOutScreenProps<T extends keyof SignOutStackParamList> = {
   navigation: NativeStackNavigationProp<SignOutStackParamList, T>;
   route: RouteProp<SignOutStackParamList, T>;

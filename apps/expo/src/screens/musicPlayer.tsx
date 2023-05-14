@@ -22,7 +22,7 @@ export const MusicPlayerScreen = (props: ScreenProps<"MusicPlayer">) => {
       </View>
       {/* <Text>Music Player</Text> */}
       <TouchableOpacity
-        onPress={() => props.navigation.navigate("Music")}
+        onPress={() => props.navigation.pop()}
         className="absolute left-8 top-24"
       >
         <Image source={require("../assets/images/musicPlayer/Back.png")} />

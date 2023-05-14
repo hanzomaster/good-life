@@ -12,9 +12,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Song, suggest, suggestSongs } from "../assets/music/music";
 import { useAudioStatus } from "../context/audio";
 import { styles } from "../root";
-import { ScreenProps } from "../types/navigation";
 
-export const MusicScreen = (props: ScreenProps<"Music">) => {
+export const MusicScreen = ({ navigateFn }: any) => {
   const [isActive, setIsActive] = useState("Gợi ý");
   const [song, setSong] = useState<Audio.Sound>();
   const [selectedSong, setSelectedSong] = useState<Song>();
@@ -111,47 +110,7 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
   console.log(audioStatus.status);
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className="absolute top-0 left-0">
-        <Image
-          source={require("../assets/images/mind/Group_36924.png")}
-          className=""
-        />
-      </View>
-      <View className="absolute inset-x-0 mt-16 items-center">
-        <Text className=" text-2xl font-semibold text-white">Mind</Text>
-      </View>
-      <TouchableOpacity
-        onPress={() => {}}
-        className="absolute right-0 mt-20 mr-5"
-      >
-        <Image source={require("../assets/images/mind/Vector.png")} />
-      </TouchableOpacity>
-
       <View className="absolute mt-40 h-full px-5">
-        <View className="flex flex-row gap-10">
-          <TouchableOpacity onPress={() => props.navigation.navigate("Mind")}>
-            <Text
-              className="mb-2 text-xl font-semibold text-[#9B9B9BE0]/80"
-              style={styles().textFont}
-            >
-              Tâm trí
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={() => {}}>
-            <Text
-              className="mb-2 text-xl font-semibold text-[#FF8669]"
-              style={styles().textFont}
-            >
-              Âm nhạc
-            </Text>
-
-            <Image
-              source={require("../assets/images/mind/Rectangle_1315.png")}
-            />
-          </TouchableOpacity>
-        </View>
-
         <View className="mt-5">
           <View
             className="flex w-full flex-row items-center border-2  border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1"
@@ -258,18 +217,17 @@ export const MusicScreen = (props: ScreenProps<"Music">) => {
         </View>
       </View>
       {selectedSong && (
-        <View className="absolute inset-x-0 bottom-16 flex flex-row items-center justify-between bg-[#232C15]">
+        <View className="absolute inset-x-0 flex flex-row items-center justify-between bg-[#232C15]">
           <TouchableOpacity
             className="flex flex-row items-center "
             onPress={() =>
-              props.navigation.navigate("MusicPlayer", {
-                // song: selectedSong,
-                list: list,
-                resumeSong: resumeSong,
-                pauseSong: pauseSong,
-                nextSong: nextSong,
-                previousSong: previousSong,
-              })
+              navigateFn(
+                suggestSongs,
+                resumeSong,
+                pauseSong,
+                nextSong,
+                previousSong,
+              )
             }
           >
             <Image source={require("../assets/images/music/Avatar.png")} />
