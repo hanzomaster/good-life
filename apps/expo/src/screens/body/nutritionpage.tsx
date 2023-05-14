@@ -7,13 +7,12 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../../root";
 import { IngredientPage } from "./ingredient";
 import { InstructionPage } from "./instruction";
 import { ReviewsPage } from "./reviews";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { ScreenProps } from "../../types/navigation";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -57,7 +56,7 @@ const renderTabBar = (props: any) => {
   );
 };
 
-export const NutritionPage = (props: ScreenProps<"NutritionPage">) => {
+export const NutritionPage = () => {
   const layout = useWindowDimensions();
 
   const animated = new Animated.Value(0);
@@ -110,15 +109,15 @@ export const NutritionPage = (props: ScreenProps<"NutritionPage">) => {
   ]);
 
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
+    <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
       <Animated.View
         className="h-fit "
         style={{ transform: [{ translateY: animated }] }}
       >
         <View className="">
-          <View className="h-45 box-content w-full overflow-hidden bg-slate-50">
+          <View className=" relative box-content h-fit w-full overflow-hidden">
             <Image
-              className=" relative max-h-full max-w-full"
+              className=" relative max-h-80 max-w-full"
               source={require("../../assets/images/nutrition/imgheader.png")}
             />
           </View>
@@ -149,7 +148,7 @@ export const NutritionPage = (props: ScreenProps<"NutritionPage">) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View className="absolute left-[5%] mt-80 h-[45%] w-[90%] justify-center rounded-xl bg-white">
+        <View className="absolute left-[5%] mt-64 h-[40%] w-[90%] justify-center rounded-xl bg-white">
           <View className="ml-5">
             <Text
               className=" font-quicksand  text-2xl text-[#5A2D22] "
@@ -214,17 +213,10 @@ export const NutritionPage = (props: ScreenProps<"NutritionPage">) => {
           </View>
         </View>
       </Animated.View>
-      <Animated.View
-        className=""
-        style={[
-          { minHeight: "95%" },
-          { flex: 1 },
-          { transform: [{ translateY: animatedDown }] },
-        ]}
-      >
+      <Animated.View className="" style={[{ minHeight: "100%" }, {}]}>
         <TabView
           renderTabBar={renderTabBar}
-          style={{ height: "100%" }}
+          style={{ height: "150%" }}
           navigationState={{ index, routes }}
           renderScene={renderScene}
           onIndexChange={setIndex}

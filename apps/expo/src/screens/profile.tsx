@@ -69,7 +69,7 @@ export const ProfileStackNavigator = () => {
 const ProfileScreen = (props: ProfileScreenProps<"Profile">) => {
   const { signOut } = useAuth();
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
+    <SafeAreaView className="absolute inset-0 box-content w-screen bg-[#FFF4ED]">
       <View className="absolute" style={{ alignItems: "center" }}>
         <Image
           className="h-auto object-cover"

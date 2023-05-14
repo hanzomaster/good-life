@@ -10,8 +10,8 @@ const data = [
 
 export const InstructionPage = () => {
   return (
-    <SafeAreaView className="inset-50 absolute h-48 content-end bg-[#FFF4ED]">
-      <ScrollView className="">
+    <SafeAreaView className="inset-0 h-48 content-end bg-[#FFF4ED]">
+      <ScrollView className=" relative inset-0">
         <View className="ml-5 mr-5 flex flex-col">
           {data.map((item) => {
             return (
