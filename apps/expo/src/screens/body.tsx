@@ -78,10 +78,10 @@ export const BodyScreen = (props: ScreenProps<"Body">) => {
   const animatedDown = new Animated.Value(90);
 
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className=" absolute top-0 left-0">
+    <SafeAreaView className="absolute inset-0 w-full content-end bg-[#FFF4ED]">
+      <View className=" absolute inset-x-0 ml-0 ">
         <Image
-          className="h-auto object-cover"
+          className="relative h-auto max-w-full object-cover"
           source={require("../assets/images/physique/header.png")}
         />
         <View className="absolute inset-x-0 mt-16 items-center">

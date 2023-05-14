@@ -147,9 +147,9 @@ const comment = [
 export const CheckIn = (props: ProfileScreenProps<"CheckIn">) => {
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className="absolute top-0 left-0">
+      <View className="absolute inset-x-0 top-0 left-0">
         <Image
-          className="h-auto object-cover"
+          className="h-auto max-w-full object-cover"
           source={require("../../assets/images/profile/checkin/header.png")}
         />
         <View className="absolute top-10 flex flex-row p-1 align-baseline">

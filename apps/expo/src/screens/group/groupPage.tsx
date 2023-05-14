@@ -145,9 +145,9 @@ export const GroupPage = (props: ScreenProps<"GroupPage">) => {
         className="h-fit"
         style={{ transform: [{ translateY: animated }] }}
       >
-        <View className="relative top-0 -mt-14 h-1/2">
+        <View className="relative inset-x-0 top-0 -mt-14 h-1/2">
           <Image
-            className=" top-0"
+            className=" top-0 max-w-full"
             source={require("../../assets/images/group/top.png")}
           />
         </View>

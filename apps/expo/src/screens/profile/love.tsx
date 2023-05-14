@@ -78,10 +78,10 @@ export const Love = (props: ProfileScreenProps<"Love">) => {
   };
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className="absolute top-0 left-0">
+      <View className=" absolute inset-x-0">
         <Image
-          className="h-auto object-cover"
-          source={require("../../assets/images/profile/checkin/header.png")}
+          className="h-auto max-w-full object-cover"
+          source={require("../../assets/images/profile/love/header.png")}
         />
         <View className="absolute top-10 flex flex-row p-1 align-baseline">
           <TouchableOpacity className="" onPress={() => props.navigation.pop()}>
@@ -158,7 +158,7 @@ export const Love = (props: ProfileScreenProps<"Love">) => {
           }}
         >
           <View
-            className=" relative ml-1 items-center"
+            className=" relative mx-1 items-center"
             style={styles().itemsWrap}
           >
             {video.map((item) => {
