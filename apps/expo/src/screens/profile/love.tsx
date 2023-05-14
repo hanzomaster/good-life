@@ -96,6 +96,7 @@ export const Love = (props: ProfileScreenProps<"Love">) => {
 
       <View className=" mt-32 justify-center align-middle">
         <ScrollView
+          horizontal
           className=""
           alwaysBounceHorizontal
           alwaysBounceVertical={false}

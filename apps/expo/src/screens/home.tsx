@@ -40,12 +40,26 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
           >
             The good life
           </Text>
-          <TouchableOpacity>
-            <Image
-              className=""
-              source={require("../assets/images/home/noti.png")}
-            />
-          </TouchableOpacity>
+          <View className="flex flex-row">
+            <TouchableOpacity>
+              <Image
+                className=""
+                source={require("../assets/images/home/noti.png")}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Image
+                className="ml-5"
+                source={require("../assets/images/home/message.png")}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Image
+                className="ml-5"
+                source={require("../assets/images/home/search.png")}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
         <View className="inset-x-0 mt-9 flex flex-col items-center justify-between">
           <Image
