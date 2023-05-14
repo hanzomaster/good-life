@@ -1,10 +1,10 @@
 import {
-  Text,
-  ScrollView,
-  View,
   Image,
+  ScrollView,
+  Text,
   TextInput,
   TouchableOpacity,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../../root";
@@ -26,7 +26,7 @@ const comments = [
 
 export const ReviewsPage = () => {
   return (
-    <SafeAreaView className="absolute inset-0 h-48 content-end bg-[#FFF4ED]">
+    <SafeAreaView className="absolute inset-0 h-60 content-end bg-[#FFF4ED]">
       <ScrollView className="">
         <View className=" ml-5 mr-5 mt-0 flex flex-row items-center rounded-lg  border-2 border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1">
           <Image source={require("../../assets/images/physique/Icon.png")} />

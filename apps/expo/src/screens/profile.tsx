@@ -65,7 +65,7 @@ export const ProfileStackNavigator = () => {
 const ProfileScreen = (props: ProfileScreenProps<"Profile">) => {
   const { signOut } = useAuth();
   return (
-    <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
+    <SafeAreaView className="absolute inset-0 box-content w-screen bg-[#FFF4ED]">
       <View className="absolute" style={{ alignItems: "center" }}>
         <Image
           className="h-auto object-cover"
@@ -108,19 +108,19 @@ const ProfileScreen = (props: ProfileScreenProps<"Profile">) => {
       </View>
 
       <ScrollView
-        className="inset-x-0 mt-60"
+        className="inset-x-0 mt-60 "
         showsVerticalScrollIndicator={false}
       >
-        <View className="relative" style={styles().itemsWrap}>
+        <View className="" style={styles().itemsWrap}>
           {data.map((item, index) => {
             return (
               <View
-                className="mt-5 justify-center"
+                className="z-50 mt-5 justify-center"
                 style={styles(1).singleItem}
                 key={index}
               >
                 <TouchableOpacity
-                  className="flex flex-row items-baseline space-x-6"
+                  className=" flex flex-row items-baseline space-x-6"
                   onPress={() => {
                     switch (item.name) {
                       case "Gần đây":
