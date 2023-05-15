@@ -110,7 +110,7 @@ export const MusicScreen = ({ navigateFn }: any) => {
   console.log(audioStatus.status);
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className="absolute mt-40 h-full px-5">
+      <View className="absolute h-full px-5">
         <View className="mt-5">
           <View
             className="flex w-full flex-row items-center border-2  border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1"
@@ -217,7 +217,7 @@ export const MusicScreen = ({ navigateFn }: any) => {
         </View>
       </View>
       {selectedSong && (
-        <View className="absolute inset-x-0 flex flex-row items-center justify-between bg-[#232C15]">
+        <View className="absolute inset-x-0 bottom-28 flex flex-row items-center justify-between bg-[#232C15]">
           <TouchableOpacity
             className="flex flex-row items-center "
             onPress={() =>

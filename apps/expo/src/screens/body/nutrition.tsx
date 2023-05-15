@@ -56,7 +56,7 @@ const suggest = [
   },
 ];
 
-export const Nutrition = () => {
+export const Nutrition = ({ navigate }: any) => {
   const [selectedSuggest, setSelectedSuggest] = useState<string[]>([]);
   const updateSelectedSuggest = (item: string) => {
     const copyArray = [...selectedSuggest];
@@ -142,6 +142,9 @@ export const Nutrition = () => {
                   key={item.name}
                   className=""
                   style={styles(2).singleItem}
+                  onPress={() => {
+                    navigate();
+                  }}
                 >
                   <View className="relative box-content w-40">
                     <Image

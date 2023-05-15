@@ -74,7 +74,7 @@ export const Recent = (props: ProfileScreenProps<"Recent">) => {
         </View>
       </View>
 
-      <ScrollView className="mt-44">
+      <ScrollView className="mt-44" showsVerticalScrollIndicator={false}>
         <View
           className=""
           style={{
@@ -87,10 +87,10 @@ export const Recent = (props: ProfileScreenProps<"Recent">) => {
             className=" relative ml-1 items-center"
             style={styles().itemsWrap}
           >
-            {video.map((item) => {
+            {video.map((item, index) => {
               return (
                 <TouchableOpacity
-                  key={item.name}
+                  key={index}
                   className=""
                   style={styles(2).singleItem}
                 >

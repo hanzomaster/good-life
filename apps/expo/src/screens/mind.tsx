@@ -5,8 +5,8 @@ import {
   Image,
   Text,
   TouchableOpacity,
-  useWindowDimensions,
   View,
+  useWindowDimensions,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
@@ -36,7 +36,7 @@ const renderTabBar = (props: any) => {
       renderLabel={({ route, focused }) => (
         <Text
           className={classNames(focused ? "text-[#FF835C]" : "text-[#9B9B9B]")}
-          style={[styles().textFontSemiBold, { fontSize: 15 }]}
+          style={[styles().textFontSemiBold, { fontSize: 18 }]}
         >
           {route.title}
         </Text>

@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { styles } from "../../root";
 
-import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Eat from "../../assets/svgs/things/eat";
 import Finance from "../../assets/svgs/things/finance";
@@ -22,6 +21,7 @@ import Study from "../../assets/svgs/things/study";
 import Training from "../../assets/svgs/things/training";
 import Travel from "../../assets/svgs/things/travel";
 import Work from "../../assets/svgs/things/work";
+import { ScreenProps } from "../../types/navigation";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -57,8 +57,7 @@ function checkIndex(item: any, array: any) {
   }
 }
 
-export const EmotionChoosing1 = () => {
-  const navigation = useNavigation();
+export const EmotionChoosing1 = (props: ScreenProps<"EmotionChoosing1">) => {
   const [selectedEmotion, setSelectedEmotion] = useState<string[]>([]);
 
   const [value, onChangeText] = useState("");
@@ -143,7 +142,12 @@ export const EmotionChoosing1 = () => {
         </View>
 
         <View className="absolute inset-x-0 z-10 mx-7 mt-16 items-end">
-          <TouchableOpacity className="h-10 w-10 items-center justify-center rounded-full bg-[#FFFFFF]">
+          <TouchableOpacity
+            className="h-10 w-10 items-center justify-center rounded-full bg-[#FFFFFF]"
+            onPress={() => {
+              props.navigation.navigate("Home");
+            }}
+          >
             <Image
               className=""
               source={require("../../assets/images/emotion/exit.png")}
@@ -210,7 +214,7 @@ export const EmotionChoosing1 = () => {
           <TouchableOpacity
             className="h-14 w-14 items-center justify-center rounded-full bg-[#7A9861]"
             onPress={() => {
-              navigation.navigate("EmotionChoosing2" as never);
+              props.navigation.navigate("EmotionChoosing2");
             }}
           >
             <Image source={require("../../assets/images/emotion/arrow.png")} />

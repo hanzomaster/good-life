@@ -1,11 +1,4 @@
-import {
-  Image,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
@@ -86,9 +79,9 @@ export const NotificationPage = (props: ScreenProps<"Notification">) => {
 
       <ScrollView className=" relative  z-10 mt-32">
         <View className="left-[5%] w-[90%]">
-          {noti.map((item) => {
+          {noti.map((item, index) => {
             return (
-              <TouchableOpacity className="mt-5">
+              <TouchableOpacity key={index} className="mt-5">
                 <View className=" flex flex-row">
                   <Image
                     className="mt-1 items-baseline justify-between object-fill"

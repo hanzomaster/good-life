@@ -122,7 +122,7 @@ export const MindTab = ({ navigate }: any) => {
 
   return (
     <SafeAreaView className="absolute inset-0 content-end bg-[#FFF4ED]">
-      <View className="absolute mt-40 h-full px-5">
+      <View className="absolute h-full px-5">
         <View className="mt-5">
           <View
             className="flex w-full flex-row items-center border-2  border-[#FF835C33]/20 bg-[#FFF4ED] px-3 py-1"
@@ -218,6 +218,7 @@ export const MindTab = ({ navigate }: any) => {
               ))}
             </View>
           </ScrollView>
+          <View className="bottom-0 h-20 w-full"></View>
         </View>
       </View>
     </SafeAreaView>

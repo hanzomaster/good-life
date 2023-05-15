@@ -115,7 +115,7 @@ const Root = () => {
         component={BodyScreen}
         options={{
           tabBarAccessibilityLabel: "Body",
-          tabBarLabel: "Body",
+          tabBarLabel: "Hình thể",
           tabBarIcon: ({ color, focused }) => {
             return focused ? (
               <View className="border-t-primary-orange border-t-2 pt-1">
@@ -132,7 +132,7 @@ const Root = () => {
         component={MindScreen}
         options={{
           tabBarAccessibilityLabel: "Mind",
-          tabBarLabel: "Mind",
+          tabBarLabel: "Tâm trí",
           tabBarIcon: ({ color, focused }) => {
             return focused ? (
               <View className="border-t-primary-orange border-t-2 pt-1">

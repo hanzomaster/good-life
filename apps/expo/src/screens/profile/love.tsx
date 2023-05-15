@@ -110,9 +110,9 @@ export const Love = (props: ProfileScreenProps<"Love">) => {
           showsHorizontalScrollIndicator={false}
         >
           <View className="relative ml-5 mt-4 flex h-fit flex-row space-x-6 ">
-            {suggest.map((item) => {
+            {suggest.map((item, index) => {
               return (
-                <View className="h-[1/9] w-fit" key={item.name}>
+                <View className="h-[1/9] w-fit" key={index}>
                   <TouchableOpacity
                     className={classNames(
                       selectedSuggest.includes(item.name)
@@ -161,10 +161,10 @@ export const Love = (props: ProfileScreenProps<"Love">) => {
             className=" relative mx-1 items-center"
             style={styles().itemsWrap}
           >
-            {video.map((item) => {
+            {video.map((item, index) => {
               return (
                 <TouchableOpacity
-                  key={item.name}
+                  key={index}
                   className=""
                   style={styles(2).singleItem}
                 >

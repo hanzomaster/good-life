@@ -27,7 +27,7 @@ const renderTabBar = (props: any) => {
       renderLabel={({ route, focused }) => (
         <Text
           className={classNames(focused ? "text-[#FF835C]" : "text-[#9B9B9B]")}
-          style={[styles().textFontSemiBold, { fontSize: 15 }]}
+          style={[styles().textFontSemiBold, { fontSize: 18 }]}
         >
           {route.title}
         </Text>
@@ -60,8 +60,11 @@ const renderTabBar = (props: any) => {
 
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 export const BodyScreen = (props: ScreenProps<"Body">) => {
+  const navigateFn = () => {
+    props.navigation.navigate("NutritionPage");
+  };
   const FirstRoute = () => <Physique />;
-  const SecondRoute = () => <Nutrition />;
+  const SecondRoute = () => <Nutrition navigate={navigateFn} />;
 
   const renderScene = SceneMap({
     first: FirstRoute,

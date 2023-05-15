@@ -182,9 +182,9 @@ export const CheckIn = (props: ProfileScreenProps<"CheckIn">) => {
 
             <View>
               <View className="ml-2 mt-7 flex flex-row" style={{ flex: 1 }}>
-                {day.map((item) => {
+                {day.map((item, index) => {
                   return (
-                    <View style={{ flex: 1 }}>
+                    <View key={index} style={{ flex: 1 }}>
                       <Text
                         className=" font-quicksand text-lg text-[#5A2D22] "
                         style={styles().textFontSemiBold}
@@ -199,7 +199,11 @@ export const CheckIn = (props: ProfileScreenProps<"CheckIn">) => {
               <View className="ml-2 flex flex-row" style={{ flex: 1 }}>
                 {week1.map((item) => {
                   return (
-                    <View className="mt-3 flex flex-col" style={{ flex: 1 }}>
+                    <View
+                      key={item.name}
+                      className="mt-3 flex flex-col"
+                      style={{ flex: 1 }}
+                    >
                       <Image className="" source={item.status} />
                       <Text
                         className=" font-quicksand ml-2 text-sm text-[#5A2D22] "
@@ -213,9 +217,13 @@ export const CheckIn = (props: ProfileScreenProps<"CheckIn">) => {
               </View>
 
               <View className="ml-2 flex flex-row" style={{ flex: 1 }}>
-                {week2.map((item) => {
+                {week2.map((item, index) => {
                   return (
-                    <View className="mt-3 flex flex-col" style={{ flex: 1 }}>
+                    <View
+                      key={index + 40}
+                      className="mt-3 flex flex-col"
+                      style={{ flex: 1 }}
+                    >
                       <Image className="" source={item.status} />
                       <Text
                         className=" font-quicksand ml-2 text-sm text-[#5A2D22] "
@@ -229,9 +237,13 @@ export const CheckIn = (props: ProfileScreenProps<"CheckIn">) => {
               </View>
 
               <View className="ml-2 flex flex-row" style={{ flex: 1 }}>
-                {week3.map((item) => {
+                {week3.map((item, index) => {
                   return (
-                    <View className="mt-3 flex flex-col" style={{ flex: 1 }}>
+                    <View
+                      key={index + 10}
+                      className="mt-3 flex flex-col"
+                      style={{ flex: 1 }}
+                    >
                       <Image className="" source={item.status} />
                       <Text
                         className=" font-quicksand ml-2 text-sm text-[#5A2D22] "
@@ -245,9 +257,13 @@ export const CheckIn = (props: ProfileScreenProps<"CheckIn">) => {
               </View>
 
               <View className="ml-2 flex flex-row" style={{ flex: 1 }}>
-                {week4.map((item) => {
+                {week4.map((item, index) => {
                   return (
-                    <View className="mt-3 flex flex-col" style={{ flex: 1 }}>
+                    <View
+                      key={index + 20}
+                      className="mt-3 flex flex-col"
+                      style={{ flex: 1 }}
+                    >
                       <Image className="" source={item.status} />
                       <Text
                         className=" font-quicksand ml-2 text-sm text-[#5A2D22] "
@@ -279,9 +295,9 @@ export const CheckIn = (props: ProfileScreenProps<"CheckIn">) => {
           </View>
 
           <View className=" mt-0">
-            {comment.map((item) => {
+            {comment.map((item, index) => {
               return (
-                <View className=" mt-10 rounded-lg bg-white">
+                <View key={index + 30} className=" mt-10 rounded-lg bg-white">
                   <View className="mt-5 ml-[5%] flex flex-row">
                     <Text
                       className=" font-quicksand ml-2 text-sm text-[#5A2D22] "

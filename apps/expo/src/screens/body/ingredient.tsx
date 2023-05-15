@@ -18,6 +18,7 @@ export const IngredientPage = () => {
           {data.map((item) => {
             return (
               <Text
+                key={item}
                 className="mb-3 text-[#5A2D22]"
                 style={styles().textFontSemiBold}
               >

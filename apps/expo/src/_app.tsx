@@ -17,6 +17,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { DefaultTheme, Provider } from "react-native-paper";
 import { AudioStatusProvider } from "./context/audio";
+import HomeStackNavigator from "./homeStack";
 import Root from "./root";
 import { LandingPage2, LandingPage3, LandingPage4 } from "./screens";
 import { BodyPage } from "./screens/body/bodyinf";
@@ -99,7 +100,10 @@ export const App = () => {
                       name="Notification"
                       component={NotificationPage}
                     />
-
+                    <Stack.Screen
+                      name="HomeStack"
+                      component={HomeStackNavigator}
+                    />
                     <Stack.Screen name="Search" component={Search} />
                   </Stack.Navigator>
                 </NavigationContainer>

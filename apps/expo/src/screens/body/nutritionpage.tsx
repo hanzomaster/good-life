@@ -10,6 +10,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SceneMap, TabBar, TabView } from "react-native-tab-view";
 import { styles } from "../../root";
+import { ScreenProps } from "../../types/navigation";
 import { IngredientPage } from "./ingredient";
 import { InstructionPage } from "./instruction";
 import { ReviewsPage } from "./reviews";
@@ -56,7 +57,7 @@ const renderTabBar = (props: any) => {
   );
 };
 
-export const NutritionPage = () => {
+export const NutritionPage = (props: ScreenProps<"NutritionPage">) => {
   const layout = useWindowDimensions();
 
   const animated = new Animated.Value(0);
@@ -123,7 +124,12 @@ export const NutritionPage = () => {
           </View>
 
           <View className="absolute inset-x-4 mt-14 justify-between ">
-            <TouchableOpacity className="h-9 w-9 items-center justify-center rounded-xl bg-[#000]/25">
+            <TouchableOpacity
+              className="h-9 w-9 items-center justify-center rounded-xl bg-[#000]/25"
+              onPress={() => {
+                props.navigation.pop();
+              }}
+            >
               <Image
                 source={require("../../assets/images/nutrition/back.png")}
               />

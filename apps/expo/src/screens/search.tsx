@@ -85,12 +85,12 @@ export const Search = (props: ScreenProps<"Search">) => {
         </View>
       </View>
 
-      <View className=" mt-32">
+      <View className=" mt-32 w-96">
         <View className=" ml-3 mr-3 flex flex-row items-center rounded-lg bg-[#FFFFFF] px-3 py-1">
           <Image source={require("../assets/images/search/Icon.png")} />
           <TextInput
             placeholder="Tìm kiếm"
-            className="px-2 py-1 text-sm text-[#9B9B9B]"
+            className=" px-2 py-1 text-sm text-[#9B9B9B]"
           />
         </View>
       </View>
@@ -124,6 +124,7 @@ export const Search = (props: ScreenProps<"Search">) => {
             className="flex h-fit"
             alwaysBounceHorizontal
             alwaysBounceVertical={false}
+            showsHorizontalScrollIndicator={false}
           >
             <View className=" relative ml-3 flex w-4/5 flex-row space-x-6">
               {for_you.map((item) => {
@@ -201,6 +202,7 @@ export const Search = (props: ScreenProps<"Search">) => {
             horizontal
             className="flex h-fit"
             alwaysBounceHorizontal
+            showsHorizontalScrollIndicator={false}
             alwaysBounceVertical={false}
           >
             <View className=" relative ml-3 flex flex-row space-x-6">
@@ -246,6 +248,7 @@ export const Search = (props: ScreenProps<"Search">) => {
               })}
             </View>
           </ScrollView>
+          <View className="h-3"></View>
         </View>
       </ScrollView>
     </SafeAreaView>

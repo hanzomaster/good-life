@@ -99,7 +99,12 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
             >
               Thứ 2, ngày 1 tháng 12{" "}
             </Text>
-            <TouchableOpacity className=" inset-x-0 z-10 mx-3 mt-10">
+            <TouchableOpacity
+              className=" inset-x-0 z-10 mx-3 mt-10"
+              onPress={() => {
+                props.navigation.navigate("HomeStack");
+              }}
+            >
               <View className="inset-x-0 flex w-full flex-row space-x-3">
                 <View className="box-content rounded-2xl bg-white object-fill">
                   <Image
@@ -135,16 +140,16 @@ export const HomeScreen = (props: ScreenProps<"Home">) => {
                   </View>
                   <View className="inset-0flex-col relative flex  w-full justify-between">
                     <Text className="text-[#DED5C6]" style={styles().textFont}>
-                      DAILY CHECK IN
+                      SUGGESTED
                     </Text>
                     <Text
                       className="text-[#FFFFFF]"
                       style={styles().textFontSemiBold}
                     >
-                      Hôm nay bạn cảm thấy thế nào?
+                      Gần đây
                     </Text>
                     <Text className="text-[#DED5C6]" style={styles().textFont}>
-                      Tạm ổn &#8226; 2 ngày trước
+                      Thiền buổi sáng
                     </Text>
                   </View>
                 </View>

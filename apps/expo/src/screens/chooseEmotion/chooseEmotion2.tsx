@@ -11,12 +11,13 @@ import { styles } from "../../root";
 
 import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { ScreenProps } from "../../types/navigation";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const EmotionChoosing2 = () => {
+export const EmotionChoosing2 = (props: ScreenProps<"EmotionChoosing2">) => {
   const [selectedEmotion, setSelectedEmotion] = useState<string[]>([]);
   const navigation = useNavigation();
   const [value, onChangeText] = useState("");
@@ -47,7 +48,12 @@ export const EmotionChoosing2 = () => {
           />
         </View>
         <View className="absolute inset-x-0 z-10 mx-7 mt-10 items-end">
-          <TouchableOpacity className="h-10 w-10 items-center justify-center rounded-full bg-[#FFFFFF]">
+          <TouchableOpacity
+            className="h-10 w-10 items-center justify-center rounded-full bg-[#FFFFFF]"
+            onPress={() => {
+              props.navigation.navigate("Home");
+            }}
+          >
             <Image
               className=""
               source={require("../../assets/images/emotion/exit.png")}
@@ -121,7 +127,7 @@ export const EmotionChoosing2 = () => {
           </View>
         </View>
 
-        <View className="relative inset-x-0 items-center">
+        <View className="relative inset-x-0 -mt-5 items-center">
           <Image
             className="mb-4"
             source={require("../../assets/images/emotion/slider2.png")}
@@ -129,7 +135,7 @@ export const EmotionChoosing2 = () => {
           <TouchableOpacity
             className="h-14 w-14 items-center justify-center rounded-full bg-[#7A9861]"
             onPress={() => {
-              navigation.navigate("EmotionChoosing" as never);
+              props.navigation.navigate("Suggest");
             }}
           >
             <Image source={require("../../assets/images/emotion/arrow.png")} />

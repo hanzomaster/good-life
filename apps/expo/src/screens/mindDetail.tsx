@@ -32,7 +32,7 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
           className="absolute top-4 left-4"
         />
       </TouchableOpacity>
-      <View className="absolute inset-x-0 top-80 h-1/2 px-6">
+      <View className="absolute inset-x-0 top-80 h-3/5 px-6">
         <ScrollView showsVerticalScrollIndicator={false}>
           <View>
             <Text
@@ -269,7 +269,7 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                   </View>
                 </View>
               </Modal>
-              <View className="mt-5 h-24">
+              <View className="mt-5 h-28">
                 <ScrollView
                   horizontal={true}
                   className=""
@@ -357,11 +357,11 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
 
                   <View className="mt-10 h-1/2 px-5">
                     <ScrollView showsVerticalScrollIndicator={false}>
-                      <View className="flex flex-col gap-3">
+                      <View className="flex flex-col">
                         {mindList.map((item, index) => (
                           <View
                             key={index}
-                            className="mb-5 flex flex-row items-center justify-between rounded-lg bg-[#fff4ed] p-3 "
+                            className="mb-5 flex flex-row items-center justify-between rounded-lg p-3 "
                           >
                             <TouchableOpacity
                               className="flex flex-row items-center gap-10"
@@ -483,6 +483,7 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
               </ScrollView>
             </View>
           </View>
+          <View className="h-5 w-full"></View>
         </ScrollView>
       </View>
     </SafeAreaView>

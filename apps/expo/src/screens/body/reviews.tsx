@@ -36,9 +36,12 @@ export const ReviewsPage = () => {
           />
         </View>
         <View className=" mt-0">
-          {comments.map((item) => {
+          {comments.map((item, index) => {
             return (
-              <View className=" mt-5 ml-[5%] w-[90%] rounded-lg bg-white">
+              <View
+                key={index}
+                className=" mt-5 ml-[5%] w-[90%] rounded-lg bg-white"
+              >
                 <View className="mt-3 ml-[5%] flex w-[90%] flex-row">
                   <Image source={item.image} />
                   <View className="ml-4">
