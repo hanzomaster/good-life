@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Text, View, TextInput, TouchableOpacity } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { styles } from "../../root";
 
@@ -50,6 +50,27 @@ export const GroupChat = () => {
               </View>
             </View>
           </View>
+        </View>
+      </View>
+      <View className="flex flex-row items-center justify-between bg-[#FFFFFF] px-5">
+        <TouchableOpacity>
+          <Image
+            className="h-9 w-9"
+            source={require("../../assets/images/group/add.png")}
+          />
+        </TouchableOpacity>
+        <View className=" flex h-10 w-5/6 flex-row items-center rounded-2xl border-2 border-[#FF835C]/20 bg-[#FFF4ED] px-3 py-0">
+          <TextInput
+            placeholder="Viết tin nhắn..."
+            className="w-full px-2 py-2 text-inherit focus:outline-none"
+            style={styles().textFont}
+          />
+          <TouchableOpacity>
+            <Image
+              className="right-6"
+              source={require("../../assets/images/group/send.png")}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </KeyboardAwareScrollView>
