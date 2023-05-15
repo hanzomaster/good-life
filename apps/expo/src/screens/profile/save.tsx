@@ -46,7 +46,7 @@ const video = [
     date: "11.02.2023",
   },
   {
-    name: "Pilates xx",
+    name: "Căng cơ",
     image: require("../../assets/images/profile/save/img6.png"),
     time: 21,
     heart: 20,

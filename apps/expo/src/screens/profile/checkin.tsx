@@ -277,9 +277,13 @@ export const CheckIn = (props: ProfileScreenProps<"CheckIn">) => {
               </View>
 
               <View className="mb-5 ml-2 flex flex-row" style={{ flex: 1 }}>
-                {week5.map((item) => {
+                {week5.map((item, index) => {
                   return (
-                    <View className="mt-3 flex flex-col" style={{ flex: 1 }}>
+                    <View
+                      className="mt-3 flex flex-col"
+                      style={{ flex: 1 }}
+                      key={index + 30}
+                    >
                       <Image className="" source={item.status} />
                       <Text
                         className=" font-quicksand ml-2 text-sm text-[#5A2D22] "
