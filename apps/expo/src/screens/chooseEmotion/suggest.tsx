@@ -17,6 +17,126 @@ function classNames(...classes: string[]) {
 }
 
 const data = [1, 2, 3, 4, 5];
+const physique = [
+  {
+    name: "Pilates xx",
+    image: require("../../assets/images/physique/img1.png"),
+    time: 21,
+    heart: 2,
+    date: "11.02.2023",
+  },
+  {
+    name: "Giãn cơ 20 phút",
+    image: require("../../assets/images/physique/img2.png"),
+    time: 21,
+    heart: 20,
+    date: "11.02.2023",
+  },
+  {
+    name: "Chạy",
+    image: require("../../assets/images/physique/img3.png"),
+    time: 21,
+    heart: 10,
+    date: "11.02.2023",
+  },
+  {
+    name: "Tập cơ tay",
+    image: require("../../assets/images/physique/img4.png"),
+    time: 20,
+    heart: 52,
+    date: "11.02.2023",
+  },
+];
+
+const nutrition = [
+  {
+    name: "Súp bí đỏ",
+    image: require("../../assets/images/nutrition/img1.png"),
+    heart: 2,
+    date: "11.02.2023",
+  },
+  {
+    name: "Sinh tố dâu",
+    image: require("../../assets/images/nutrition/img2.png"),
+    heart: 20,
+    date: "11.02.2023",
+  },
+  {
+    name: "Bánh plan",
+    image: require("../../assets/images/nutrition/img4.png"),
+    heart: 10,
+    date: "11.02.2023",
+  },
+  {
+    name: "Cốm",
+    image: require("../../assets/images/nutrition/img3.png"),
+    heart: 52,
+    date: "11.02.2023",
+  },
+];
+
+const mind = [
+  {
+    name: "Thiền về tình yêu",
+    image: require("../../assets/images/mind/Rectangle_1245.png"),
+    time: 21,
+    heart: 22,
+    date: "11.02.2023",
+  },
+  {
+    name: "Thiền về tâm hồn",
+    image: require("../../assets/images/mind/img1.png"),
+    time: 21,
+    heart: 2,
+    date: "11.02.2023",
+  },
+  {
+    name: "Thiền về cuộc sống",
+    image: require("../../assets/images/mind/img2.png"),
+    time: 21,
+    heart: 2,
+    date: "11.02.2023",
+  },
+  {
+    name: "Thiền tĩnh tâm",
+    image: require("../../assets/images/mind/img3.png"),
+    time: 21,
+    heart: 2,
+    date: "11.02.2023",
+  },
+];
+
+const music = [
+  {
+    name: "Morning Chill",
+    image: require("../../assets/images/music/img1.png"),
+    time: 2,
+    heart: 12,
+    date: "11.04.2023",
+  },
+  {
+    name: "Trending songs",
+    image: require("../../assets/images/music/img2.png"),
+    time: 3,
+    heart: 10,
+    date: "01.02.2023",
+  },
+  {
+    name: "Nhạc hay",
+    image: require("../../assets/images/music/img3.png"),
+    time: 8,
+    heart: 26,
+    date: "11.02.2023",
+  },
+  {
+    name: "Nhạc tĩnh tâm",
+    image: require("../../assets/images/music/img4.png"),
+    time: 5,
+    heart: 36,
+    date: "30.03.2023",
+  },
+];
+
 export const Suggest = (props: ScreenProps<"Suggest">) => {
   return (
     <SafeAreaView className="absolute inset-0 bg-[#FFF4ED]">
@@ -83,16 +203,16 @@ export const Suggest = (props: ScreenProps<"Suggest">) => {
             alwaysBounceVertical={false}
           >
             <View className=" relative ml-3 flex flex-row space-x-6">
-              {data.map((item) => (
-                <TouchableOpacity className="">
+              {physique.map((item) => (
+                <TouchableOpacity className="" key={item.name}>
                   <View className="relative box-content">
                     <Image
                       className="h-40 w-40 rounded-lg object-fill"
-                      source={require("../../assets/images/home/testnewcontentpic.png")}
+                      source={item.image}
                     />
                     <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
                       <Text className="text-white" style={styles().textFont}>
-                        21 phút
+                        {item.time} phút
                       </Text>
                     </View>
                   </View>
@@ -102,14 +222,14 @@ export const Suggest = (props: ScreenProps<"Suggest">) => {
                       className="text-base text-[#5A2D22]"
                       style={styles().textFontSemiBold}
                     >
-                      Thiền buổi tối
+                      {item.name}
                     </Text>
                     <View className=" flex flex-row items-baseline space-x-1">
                       <Image
                         source={require("../../assets/images/home/heart.png")}
                       />
                       <Text className="text-xs text-[#B2B2B2]">
-                        22 &#8226; 11.02.2023{" "}
+                        {item.heart} &#8226; {item.date}{" "}
                       </Text>
                     </View>
                   </View>
@@ -147,18 +267,13 @@ export const Suggest = (props: ScreenProps<"Suggest">) => {
             alwaysBounceVertical={false}
           >
             <View className=" relative ml-3 flex flex-row space-x-6">
-              {data.map((item) => (
-                <TouchableOpacity className="">
+              {nutrition.map((item) => (
+                <TouchableOpacity className="" key={item.name}>
                   <View className="relative box-content">
                     <Image
                       className="h-40 w-40 rounded-lg object-fill"
-                      source={require("../../assets/images/home/testnewcontentpic.png")}
+                      source={item.image}
                     />
-                    <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
-                      <Text className="text-white" style={styles().textFont}>
-                        21 phút
-                      </Text>
-                    </View>
                   </View>
 
                   <View className="mt-2">
@@ -166,14 +281,14 @@ export const Suggest = (props: ScreenProps<"Suggest">) => {
                       className="text-base text-[#5A2D22]"
                       style={styles().textFontSemiBold}
                     >
-                      Thiền buổi tối
+                      {item.name}
                     </Text>
                     <View className=" flex flex-row items-baseline space-x-1">
                       <Image
                         source={require("../../assets/images/home/heart.png")}
                       />
                       <Text className="text-xs text-[#B2B2B2]">
-                        22 &#8226; 11.02.2023{" "}
+                        {item.heart} &#8226; {item.date}{" "}
                       </Text>
                     </View>
                   </View>
@@ -211,16 +326,16 @@ export const Suggest = (props: ScreenProps<"Suggest">) => {
             alwaysBounceVertical={false}
           >
             <View className=" relative ml-3 flex flex-row space-x-6">
-              {data.map((item) => (
-                <TouchableOpacity className="">
+              {mind.map((item) => (
+                <TouchableOpacity className="" key={item.name}>
                   <View className="relative box-content">
                     <Image
                       className="h-40 w-40 rounded-lg object-fill"
-                      source={require("../../assets/images/home/testnewcontentpic.png")}
+                      source={item.image}
                     />
                     <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
                       <Text className="text-white" style={styles().textFont}>
-                        21 phút
+                        {item.time} phút
                       </Text>
                     </View>
                   </View>
@@ -230,14 +345,14 @@ export const Suggest = (props: ScreenProps<"Suggest">) => {
                       className="text-base text-[#5A2D22]"
                       style={styles().textFontSemiBold}
                     >
-                      Thiền buổi tối
+                      {item.name}
                     </Text>
                     <View className=" flex flex-row items-baseline space-x-1">
                       <Image
                         source={require("../../assets/images/home/heart.png")}
                       />
                       <Text className="text-xs text-[#B2B2B2]">
-                        22 &#8226; 11.02.2023{" "}
+                        {item.heart} &#8226; {item.date}{" "}
                       </Text>
                     </View>
                   </View>
@@ -275,16 +390,16 @@ export const Suggest = (props: ScreenProps<"Suggest">) => {
             alwaysBounceVertical={false}
           >
             <View className=" relative ml-3 flex flex-row space-x-6">
-              {data.map((item) => (
-                <TouchableOpacity className="">
+              {music.map((item) => (
+                <TouchableOpacity className="" key={item.name}>
                   <View className="relative box-content">
                     <Image
                       className="h-40 w-40 rounded-lg object-fill"
-                      source={require("../../assets/images/home/testnewcontentpic.png")}
+                      source={item.image}
                     />
                     <View className="absolute bottom-2 left-4 rounded-2xl bg-slate-900/40 bg-opacity-10 p-1 ">
                       <Text className="text-white" style={styles().textFont}>
-                        21 phút
+                        {item.time} phút
                       </Text>
                     </View>
                   </View>
@@ -294,14 +409,14 @@ export const Suggest = (props: ScreenProps<"Suggest">) => {
                       className="text-base text-[#5A2D22]"
                       style={styles().textFontSemiBold}
                     >
-                      Thiền buổi tối
+                      {item.name}
                     </Text>
                     <View className=" flex flex-row items-baseline space-x-1">
                       <Image
                         source={require("../../assets/images/home/heart.png")}
                       />
                       <Text className="text-xs text-[#B2B2B2]">
-                        22 &#8226; 11.02.2023{" "}
+                        {item.heart} &#8226; {item.date}{" "}
                       </Text>
                     </View>
                   </View>
