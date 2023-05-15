@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { ResizeMode, Video } from "expo-av";
+import React, { useRef, useState } from "react";
 import {
   Alert,
   Image,
@@ -6,14 +7,19 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
+  useWindowDimensions,
   View,
 } from "react-native";
+import { default as ReactModal } from "react-native-modal";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { comments, mindList, sharingOptions } from "../assets/data/mind";
 import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
 
 export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
+  const video = useRef(null);
+  const [status, setStatus] = useState({});
+  const [showVid, setShowVid] = useState(false);
   const mind = props.route.params.mind;
   const [modalVisible, setModalVisible] = useState(false);
   const [modalComment, setModalComment] = useState(false);
@@ -70,7 +76,35 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                 {`${mind.time} phút`}
               </Text>
             </View>
-            <TouchableOpacity className="mt-5 rounded-lg bg-[#7A9861] py-2">
+            <TouchableOpacity
+              className="mt-5 rounded-lg bg-[#7A9861] py-2"
+              onPress={() => setShowVid(true)}
+            >
+              <ReactModal
+                isVisible={showVid}
+                backdropOpacity={1}
+                style={{
+                  alignItems: undefined,
+                  justifyContent: undefined,
+                  margin: 0,
+                  backgroundColor: "#000",
+                }}
+                statusBarTranslucent={true}
+                onBackdropPress={() => setShowVid(!showVid)}
+                supportedOrientations={["portrait", "landscape"]}
+              >
+                <View className="flex-1 items-center justify-center">
+                  <Video
+                    ref={video}
+                    style={{ width: useWindowDimensions().width, height: 300 }}
+                    source={require("../assets/videos/1.mp4")}
+                    useNativeControls
+                    resizeMode={ResizeMode.CONTAIN}
+                    onPlaybackStatusUpdate={setStatus}
+                  />
+                </View>
+              </ReactModal>
+
               <View className="m-auto flex flex-row items-center">
                 <Image
                   source={require("../assets/images/mindDetail/Frame.png")}
@@ -161,7 +195,10 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                     <View className="px-3">
                       <View className="" style={styles().itemsWrap}>
                         {sharingOptions.map((option) => (
-                          <TouchableOpacity style={styles(4).singleItem}>
+                          <TouchableOpacity
+                            style={styles(4).singleItem}
+                            key={option.name}
+                          >
                             <Image source={option.image} />
                             <Text
                               className="text-xs text-[#5A2D22]"
