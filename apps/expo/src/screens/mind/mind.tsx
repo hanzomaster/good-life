@@ -168,7 +168,7 @@ export const MindTab = ({ navigate }: any) => {
           </ScrollView>
         </View>
 
-        <View className="mt-8 h-96">
+        <View className="mt-8">
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles().itemsWrap}>
               {list.map((item) => (

@@ -113,7 +113,7 @@ export const MindDetailScreen = (props: ScreenProps<"MindDetail">) => {
                   className="text-lg text-white"
                   style={styles().textFontBold}
                 >
-                  Play
+                  Phát
                 </Text>
               </View>
             </TouchableOpacity>
