@@ -12,8 +12,44 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { styles } from "../root";
 import { ScreenProps } from "../types/navigation";
 
+const groupData = [
+  {
+    name: "Chia sẻ nhạc hay",
+    image: require("../assets/images/group/groupList/avatar.png"),
+    number: "1651 thành viên",
+  },
+  {
+    name: "Hội mê phượt",
+    image: require("../assets/images/group/groupList/avatar1.png"),
+    number: "1601 thành viên",
+  },
+  {
+    name: "Kết bạn tâm sự",
+    image: require("../assets/images/group/groupList/avatar2.png"),
+    number: "1652 thành viên",
+  },
+  {
+    name: "Mê du lịch",
+    image: require("../assets/images/group/groupList/avatar3.png"),
+    number: "161 thành viên",
+  },
+  {
+    name: "Nấu ăn hạnh phúc",
+    image: require("../assets/images/group/groupList/avatar4.png"),
+    number: "151 thành viên",
+  },
+  {
+    name: "Hội làm đẹp",
+    image: require("../assets/images/group/groupList/avatar5.png"),
+    number: "1655 thành viên",
+  },
+  {
+    name: "Self-love",
+    image: require("../assets/images/group/avatarTest.png"),
+    number: "1651 thành viên",
+  },
+];
 export const SocialScreen = (props: ScreenProps<"Social">) => {
-  const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   const [modalMyGroup, setModalMyGroup] = useState(false);
   const [modalOtherGroup, setModalOtherGroup] = useState(false);
 
@@ -98,18 +134,19 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
               <View className="mt-10 h-1/2 px-5">
                 <ScrollView showsVerticalScrollIndicator={false}>
                   <View className="flex flex-col gap-3">
-                    {data.map((item) => {
+                    {groupData.map((item, index) => {
                       return (
-                        <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
+                        <View className="mr-5 mb-5 h-[1/9] w-72" key={index}>
                           <TouchableOpacity
                             className="flex flex-row justify-start space-x-3"
                             onPress={() =>
                               props.navigation.navigate("GroupIntro")
                             }
                           >
-                            <View className="rounded-3xl">
+                            <View className="relative h-20 w-20 overflow-hidden rounded-3xl bg-black ">
                               <Image
-                                source={require("../assets/images/group/groupList/avatar.png")}
+                                className="relative object-cover"
+                                source={item.image}
                               />
                             </View>
                             <View className="flex flex-col items-start justify-center">
@@ -117,13 +154,13 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
                                 className="text-[#5A2D22]"
                                 style={styles().textFontBold}
                               >
-                                Chia sẻ nhạc hay
+                                {item.name}
                               </Text>
                               <Text
                                 className="text-sm text-[#9B9B9B]"
                                 style={styles().textFont}
                               >
-                                1651 thành viên
+                                {item.number}
                               </Text>
                             </View>
                           </TouchableOpacity>
@@ -172,16 +209,17 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
                   </View>
                 </TouchableOpacity>
               </View>
-              {data.map((item) => {
+              {groupData.map((item, index) => {
                 return (
-                  <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
+                  <View className="mr-5 mb-5 h-[1/9] w-72" key={index}>
                     <TouchableOpacity
                       className="flex flex-row justify-start space-x-3"
                       onPress={() => props.navigation.navigate("GroupPage")}
                     >
-                      <View className="overflow-hidden rounded-xl">
+                      <View className="relative h-[72] w-[72] items-center justify-center overflow-hidden rounded-xl bg-black ">
                         <Image
-                          source={require("../assets/images/group/groupList/avatar.png")}
+                          className="relative object-cover "
+                          source={item.image}
                         />
                       </View>
                       <View className="flex flex-col items-start justify-center">
@@ -189,13 +227,13 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
                           className="text-[#5A2D22]"
                           style={styles().textFontBold}
                         >
-                          Chia sẻ nhạc hay
+                          {item.name}
                         </Text>
                         <Text
                           className="text-sm text-[#9B9B9B]"
                           style={styles().textFont}
                         >
-                          1651 thành viên
+                          {item.number}
                         </Text>
                       </View>
                     </TouchableOpacity>
@@ -251,13 +289,14 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
               <View className="mt-10 h-1/2 px-5">
                 <ScrollView showsVerticalScrollIndicator={false}>
                   <View className="flex flex-col gap-3">
-                    {data.map((item) => {
+                    {groupData.map((item, index) => {
                       return (
-                        <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
+                        <View className="mr-5 mb-5 h-[1/9] w-72" key={index}>
                           <TouchableOpacity className="flex flex-row justify-start space-x-3">
-                            <View className="rounded-3xl">
+                            <View className="relative h-[72] w-[72] items-center justify-center overflow-hidden rounded-xl bg-black ">
                               <Image
-                                source={require("../assets/images/group/groupList/avatar.png")}
+                                className="relative object-cover"
+                                source={item.image}
                               />
                             </View>
                             <View className="flex flex-col items-start justify-center">
@@ -265,13 +304,13 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
                                 className="text-[#5A2D22]"
                                 style={styles().textFontBold}
                               >
-                                Chia sẻ nhạc hay
+                                {item.name}
                               </Text>
                               <Text
                                 className="text-sm text-[#9B9B9B]"
                                 style={styles().textFont}
                               >
-                                1651 thành viên
+                                {item.number}
                               </Text>
                             </View>
                           </TouchableOpacity>
@@ -305,16 +344,17 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
               className=" relative ml-5 flex h-72 flex-col flex-wrap "
               style={{ marginHorizontal: 12 / 2, marginVertical: 12 / 2 }}
             >
-              {data.map((item) => {
+              {groupData.map((item, index) => {
                 return (
-                  <View className="mr-5 mb-5 h-[1/9] w-72" key={item}>
+                  <View className="mr-5 mb-5 h-[1/9] w-72" key={index}>
                     <TouchableOpacity
                       className="flex flex-row justify-start space-x-3"
                       onPress={() => props.navigation.navigate("GroupIntro")}
                     >
-                      <View className="rounded-3xl">
+                      <View className="relative h-[72] w-[72] items-center justify-center overflow-hidden rounded-xl bg-black ">
                         <Image
-                          source={require("../assets/images/group/groupList/avatar.png")}
+                          className="relative object-cover"
+                          source={item.image}
                         />
                       </View>
                       <View className="flex flex-col items-start justify-center">
@@ -322,13 +362,13 @@ export const SocialScreen = (props: ScreenProps<"Social">) => {
                           className="text-[#5A2D22]"
                           style={styles().textFontBold}
                         >
-                          Chia sẻ nhạc không hay
+                          {item.name}
                         </Text>
                         <Text
                           className="text-sm text-[#9B9B9B]"
                           style={styles().textFont}
                         >
-                          1651 thành viên
+                          {item.number}
                         </Text>
                       </View>
                     </TouchableOpacity>

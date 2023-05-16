@@ -42,7 +42,7 @@ const renderTabBar = (props: any) => {
       style={{
         marginTop: 2,
         backgroundColor: "#FFF4ED",
-        width: layout.width * 0.6,
+        width: layout.width * 0.7,
         justifyContent: "space-between",
         alignSelf: "flex-start",
         borderBottomColor: "#FFF4ED",
