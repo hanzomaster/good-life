@@ -2,7 +2,6 @@ import { StatusBar } from "expo-status-bar";
 
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TRPCProvider } from "./utils/trpc";
 
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 import {
@@ -62,57 +61,52 @@ export const App = () => {
     >
       {/* <AudioProvider> */}
       <SignedIn>
-        <TRPCProvider>
-          <SafeAreaProvider>
-            <Provider theme={theme}>
-              <AudioStatusProvider>
-                <NavigationContainer>
-                  <Stack.Navigator
-                    screenOptions={{
-                      headerShown: false,
-                    }}
-                  >
-                    <Stack.Screen name="Root" component={Root} />
-                    {/* <Stack.Screen name="GroupChat" component={GroupChat} /> */}
-                    <Stack.Screen name="BodyInf" component={BodyPage} />
+        <SafeAreaProvider>
+          <Provider theme={theme}>
+            <AudioStatusProvider>
+              <NavigationContainer>
+                <Stack.Navigator
+                  screenOptions={{
+                    headerShown: false,
+                  }}
+                >
+                  <Stack.Screen name="Root" component={Root} />
+                  {/* <Stack.Screen name="GroupChat" component={GroupChat} /> */}
+                  <Stack.Screen name="BodyInf" component={BodyPage} />
 
-                    <Stack.Screen
-                      name="NutritionPage"
-                      component={NutritionPage}
-                    />
+                  <Stack.Screen
+                    name="NutritionPage"
+                    component={NutritionPage}
+                  />
 
-                    <Stack.Screen name="Music" component={MusicScreen} />
+                  <Stack.Screen name="Music" component={MusicScreen} />
 
-                    <Stack.Screen
-                      name="MusicPlayer"
-                      component={MusicPlayerScreen}
-                    />
-                    <Stack.Screen
-                      name="MindDetail"
-                      component={MindDetailScreen}
-                    />
-                    <Stack.Screen
-                      name="GroupIntro"
-                      component={GroupIntroduce}
-                    />
-                    <Stack.Screen name="GroupPage" component={GroupPage} />
-                    <Stack.Screen
-                      name="Notification"
-                      component={NotificationPage}
-                    />
-                    <Stack.Screen
-                      name="HomeStack"
-                      component={HomeStackNavigator}
-                    />
-                    <Stack.Screen name="Search" component={Search} />
-                  </Stack.Navigator>
-                </NavigationContainer>
-                {/* <GroupPage /> */}
-              </AudioStatusProvider>
-            </Provider>
-            <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
-          </SafeAreaProvider>
-        </TRPCProvider>
+                  <Stack.Screen
+                    name="MusicPlayer"
+                    component={MusicPlayerScreen}
+                  />
+                  <Stack.Screen
+                    name="MindDetail"
+                    component={MindDetailScreen}
+                  />
+                  <Stack.Screen name="GroupIntro" component={GroupIntroduce} />
+                  <Stack.Screen name="GroupPage" component={GroupPage} />
+                  <Stack.Screen
+                    name="Notification"
+                    component={NotificationPage}
+                  />
+                  <Stack.Screen
+                    name="HomeStack"
+                    component={HomeStackNavigator}
+                  />
+                  <Stack.Screen name="Search" component={Search} />
+                </Stack.Navigator>
+              </NavigationContainer>
+              {/* <GroupPage /> */}
+            </AudioStatusProvider>
+          </Provider>
+          <StatusBar hidden={false} networkActivityIndicatorVisible={true} />
+        </SafeAreaProvider>
       </SignedIn>
       <SignedOut>
         <SafeAreaProvider>

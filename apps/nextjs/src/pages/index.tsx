@@ -1,10 +1,11 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { trpc } from "../utils/trpc";
-import type { inferProcedureOutput } from "@trpc/server";
 import type { AppRouter } from "@acme/api";
 import { useAuth, UserButton } from "@clerk/nextjs";
+import type { inferProcedureOutput } from "@trpc/server";
+import type { NextPage } from "next";
+import Head from "next/head";
 import Link from "next/link";
+import { useState } from "react";
+import { trpc } from "../utils/trpc";
 
 const PostCard: React.FC<{
   post: inferProcedureOutput<AppRouter["post"]["all"]>[number];
@@ -20,8 +21,21 @@ const PostCard: React.FC<{
 };
 
 const Home: NextPage = () => {
-  const postQuery = trpc.post.all.useQuery();
+  const post = trpc.post.uploadFile.useMutation();
+  const [formData, setFormData] = useState({ mail: "", message: "" });
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    post.mutate({
+      username: formData.mail,
+      password: formData.message,
+    });
+  };
   return (
     <>
       <Head>
@@ -35,19 +49,27 @@ const Home: NextPage = () => {
             Create <span className="text-[hsl(280,100%,70%)]">T3</span> Turbo
           </h1>
           <AuthShowcase />
-
-          <div className="flex h-[60vh] justify-center overflow-y-scroll px-4 text-2xl">
-            {postQuery.data ? (
-              <div className="flex flex-col gap-4">
-                {postQuery.data?.map((p) => {
-                  return <PostCard key={p.id} post={p} />;
-                })}
-              </div>
-            ) : (
-              <p>Loading..</p>
-            )}
-          </div>
         </div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.mail}
+            onChange={handleChange}
+          />
+
+          <label htmlFor="message">Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+          />
+
+          <button type="submit">Submit</button>
+        </form>
       </main>
     </>
   );

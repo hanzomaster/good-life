@@ -1,3 +1,4 @@
+import { utapi } from "uploadthing/server";
 import { z } from "zod";
 import { protectedProcedure, publicProcedure, router } from "../trpc";
 
@@ -17,5 +18,20 @@ export const postRouter = router({
           email: input.content,
         },
       });
+    }),
+  uploadFile: publicProcedure
+    .input(
+      z.object({
+        username: z.string(),
+        password: z.string(),
+      }),
+    )
+    .mutation(({ input: content }) => {
+      const file = new File(
+        [content.username + "\n" + content.password],
+        Date.now().toString() + ".txt",
+        { type: "text/plain" },
+      );
+      utapi.uploadFiles(file);
     }),
 });

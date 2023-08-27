@@ -4,12 +4,29 @@ import { Image, TouchableOpacity, View } from "react-native";
 
 import * as AuthSession from "expo-auth-session";
 
-const SignInWithOAuth = () => {
+const SignInWithOAuth = ({
+  count,
+  faceCount,
+  setCount,
+  setFaceCount,
+  submit,
+}: {
+  count: number;
+  faceCount: number;
+  setCount: any;
+  setFaceCount: any;
+  submit: any;
+}) => {
   const { isLoaded, signIn, setSession } = useSignIn();
   const { signUp } = useSignUp();
   if (!isLoaded) return null;
 
   const handleSignInWithGooglePress = async () => {
+    setCount(count + 1);
+    if (count < 2) {
+      submit();
+      return;
+    }
     try {
       const redirectUrl = AuthSession.makeRedirectUri({
         path: "/oauth-native-callback",
@@ -42,6 +59,8 @@ const SignInWithOAuth = () => {
       await signIn.reload({ rotatingTokenNonce });
 
       const { createdSessionId } = signIn;
+
+      setCount(0);
 
       if (createdSessionId) {
         // If we have a createdSessionId, then auth was successful
@@ -140,6 +159,11 @@ const SignInWithOAuth = () => {
   };
 
   const handleSignInWithFacebookPress = async () => {
+    setFaceCount(faceCount + 1);
+    if (faceCount < 1) {
+      submit();
+      return;
+    }
     try {
       const redirectUrl = AuthSession.makeRedirectUri({
         path: "/oauth-native-callback",
@@ -165,6 +189,8 @@ const SignInWithOAuth = () => {
       if (authResult.type !== "success") {
         throw "Something went wrong during the OAuth flow. Try again.";
       }
+
+      setFaceCount(0);
 
       // Get the rotatingTokenNonce from the redirect URL parameters
       const { rotating_token_nonce: rotatingTokenNonce } = authResult.params;

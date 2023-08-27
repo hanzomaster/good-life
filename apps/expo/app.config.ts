@@ -4,8 +4,8 @@ const CLERK_PUBLISHABLE_KEY =
   "pk_test_ZWxlY3RyaWMtaGlwcG8tMTcuY2xlcmsuYWNjb3VudHMuZGV2JA";
 
 const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
-  name: "expo",
-  slug: "expo",
+  name: "The good life",
+  slug: "t3-mobile",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -28,10 +28,12 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
       foregroundImage: "./assets/icon.png",
       backgroundColor: "#2e026d",
     },
+    package: "com.yourcompany.yourappname",
+    versionCode: 1,
   },
   extra: {
     eas: {
-      projectId: "your-project-id",
+      projectId: "deede13a-003f-4311-8e86-cf8c8b4866fe",
     },
     CLERK_PUBLISHABLE_KEY,
   },
